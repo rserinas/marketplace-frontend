@@ -1,0 +1,14 @@
+.banner {
+    padding: 40px;
+    background-color: #f7f7f7;
+    color: #333333;
+    margin: 0px 0px 40px 0px;
+}
+
+.banner-header {
+    text-align: center;
+}
+
+.banner-p {
+    text-align: center;
+}

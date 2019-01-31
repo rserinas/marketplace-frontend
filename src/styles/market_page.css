@@ -1,0 +1,84 @@
+#crm {
+    background-image: url('/CRM.png');
+}
+
+#builder {
+    background-image: url('/builder.png');
+}
+
+#landing {
+    background-image: url('/landing.png');
+}
+
+#domain {
+    background-image: url('/domain.png');
+}
+
+#fb {
+    background-image: url('/fb.png');
+}
+
+#google {
+    background-image: url('/google.png');
+}
+
+#campaign {
+    background-image: url('/campaign.png');
+}
+
+#bounce {
+    background-image: url('/bounce.png');
+}
+
+#buynsell {
+    background-image: url('/buynsell.png');
+}
+
+.page-box {
+    margin:15px 5px;
+    padding:20px;
+    border:1px solid #cdd1d1;
+    border-radius:5px;
+    color:#333333;
+}
+
+.page-box h4 {
+    text-align: center;
+}
+
+.shop-icon {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+}
+
+.shop-details {
+    margin:0px 30px;
+    text-align: center;
+}
+
+.shop-box {
+    margin-top: 20px;
+}
+
+.more-info {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+}
+
+.add-to-cart {
+    display: inline-block;
+    text-align: right;
+    width: 49%;
+    vertical-align: middle;
+}
+
+.info-link {
+    color:#666666;
+    font-weight: bold;
+}
+.shop-btn {
+    background-color: #5ACBF0;
+    color:#FFFFFF;
+}

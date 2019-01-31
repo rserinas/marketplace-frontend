@@ -1,23 +1,22 @@
 const initialState = {
-    record: {},
-    btnEnabled: false,
     alert: {
         error: 2,
         msg: ''
-    }
+    },
+    input: {}
 };
 
 export default function(state = initialState, action) {
     switch(action.type) {
+        // case 'SET_INPUT_VALUE':
+        //     return {
+        //         ...state,
+        //         input: action.payload
+        //     }
         case 'SHOW_ALERT':
             return {
                 ...state,
                 alert: action.payload
-            };
-        case 'ACCEPT_TOS':
-            return {
-                ...state,
-                btnEnabled: action.payload
             };
         case 'CREATE_ACCOUNT':
             return {
