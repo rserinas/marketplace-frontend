@@ -1,0 +1,13 @@
+.domain-banner {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #CCCCCC;
+    text-align: center;
+}
+
+.preloader {
+    width: 32px;
+    height: 32px;
+    background: url('/preloader.gif') no-repeat center center;
+    margin: 30px auto;
+}

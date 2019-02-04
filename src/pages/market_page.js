@@ -6,6 +6,34 @@ class MarketPage extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="banner">
+          <h3 className="banner-header">Prosperna Marketplace</h3>
+          <p className="banner-p">Everything You Need to Sell Smarter, 
+          Faster &amp; Build Better Relationships</p>
+          <div className="step-container">
+            <div className="step-box">
+              <div className="step-img" id="first-blue"></div>
+              <p className="p-blue">Create Your Account</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="second-blue"></div>
+              <p className="p-blue">Select Your Apps</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="third"></div>
+              <p>Review Your Order</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="fourth"></div>
+              <p>Select Payment Method</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="fifth"></div>
+              <p>Get Started</p>
+            </div>
+            <div className="step-line"></div>
+          </div>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-xs-4">

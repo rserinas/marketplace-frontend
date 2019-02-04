@@ -146,17 +146,32 @@ class Signup extends Component {
           <h3 className="banner-header">Prosperna Marketplace</h3>
           <p className="banner-p">Everything You Need to Sell Smarter, 
           Faster &amp; Build Better Relationships</p>
-
+          <div className="step-container">
+            <div className="step-box">
+              <div className="step-img" id="first-blue"></div>
+              <p className="p-blue">Create Your Account</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="second"></div>
+              <p>Select Your Apps</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="third"></div>
+              <p>Review Your Order</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="fourth"></div>
+              <p>Select Payment Method</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="fifth"></div>
+              <p>Get Started</p>
+            </div>
+            <div className="step-line"></div>
+          </div>
         </div>
         <div className="container">
           <div style={{ maxWidth: '400px', margin: '20px auto'}}>
-            {(this.props.alert.error !== 2) ?
-              <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
-                <strong>{(this.props.alert.error===1 ? 'Warning :' : 'Success :')}</strong>
-                {this.props.alert.msg}
-              </div>
-            : ''
-            }
             <div className="form-group">
               <label htmlFor="fname">First Name:</label>
               <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
@@ -234,10 +249,19 @@ class Signup extends Component {
               <label><input type="checkbox" id="tos" checked={this.props.tos} onChange={ this.seeTOS } /> 
               I accept Prosperna's Terms of Service &amp; Privacy Policy</label>
             </div>
-            <button id="btn-submit" className={"btn btn-primary btn-lg "+(this.props.tos?'':'disabled')} 
-            onClick={ this.submitRecord }>
-            Create Account
-            </button>
+            <div className="form-group">
+              <button id="btn-submit" className={"btn btn-primary btn-lg "+(this.props.tos?'':'disabled')} 
+              onClick={ this.submitRecord }>
+              Create Account
+              </button>
+            </div>
+            {this.props.alert.error !== 2 ?
+              <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
+                <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
+                {this.props.alert.msg}
+              </div>
+            : ''
+            }
           </div>
         </div>
       </React.Fragment>
