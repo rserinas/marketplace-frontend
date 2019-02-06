@@ -28,7 +28,10 @@ export const submitLogin = data => dispatch => {
     .then(data => {
         if (data.error === 0) {
             sessionStorage.setItem('userId', data.user_id);
+            sessionStorage.setItem('fname', data.fname);
+            sessionStorage.setItem('lname', data.lname);
             sessionStorage.setItem('email', data.email);
+            sessionStorage.setItem('phone', data.phone);
             window.location = `${baseUrl}/market-page`;
         }
         dispatch({

@@ -3,7 +3,12 @@ import '../styles/market_page.css';
 
 class MarketPage extends Component {
   
-  render() {
+  gotoDomain = () => {
+    let baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/domain-search`;      
+  };
+  
+    render() {
     return (
       <React.Fragment>
         <div className="banner">
@@ -79,7 +84,10 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Search</button> </div>                   
+                        <div className="add-to-cart">
+                            <button onClick={this.gotoDomain} 
+                            className="shop-btn btn btn-default btn-lg">Search</button> 
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,25 +8,25 @@ class DomainSearch extends Component {
   constructor (props) {
     super (props);
     this.state = {
-      fetching: false
+      domainName: '',
+      domainExt: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
   
   handleInputChange(event) {
-    
     const target = event.target;
-    const value = (target.type === 'checkbox' ? target.checked : target.value);
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.id;
     
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
     
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
-    } 
+    }
   }
 
-  async submitSearch ()  {
+  submitSearch = () => {
     
     let alert = {};
     let re = null;
@@ -56,23 +56,41 @@ class DomainSearch extends Component {
       return this.props.showAlert(alert);
     }
     
-    await this.setState({ fetching: true }, () => {
-      this.props.submitDomain(data);
-       this.testFunction();
-    });
+    this.props.submitDomain(data);
+
   };
 
-  testFunction = () => {
-    if (this.props.result.has_result === true) {
-      this.setState({ fetching : false})
-    }
-  }
+
+  addToCart = () => {
+    let item = this.props.result.domainName + this.props.result.domainExt;
+    const data = {
+      product: 'domain',
+      description: item,
+      qty: 1,
+      price: this.props.result.price.toFixed(2)
+    };
+
+    let cart = [];
+    let totalCount = 1;
+
+    if (sessionStorage.getItem('cartCount') !== 0) {
+      cart = JSON.parse(sessionStorage.getItem('cart')).slice();
+      totalCount = cart.push(data);
+    } else {
+      cart[0] = data;
+    } 
+    sessionStorage.setItem('cartCount', totalCount);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+
+    console.log(JSON.parse(sessionStorage.getItem('cart')), sessionStorage.getItem('cartCount'));
+  };
+
   
   render() {
-
+    // eslint-disable-next-line
     const showResults = this.props.result.suggest.map((a, i) => {
       if (this.props.result.count) {
-        return <tr><td>{a.domain}</td><td>{a.status}</td></tr>;
+        return <tr key={i}><td>{a.domain}</td><td>{a.status}</td></tr>;
       }
     }); 
 
@@ -141,7 +159,7 @@ class DomainSearch extends Component {
                   {this.props.result.availability === 'available' ? 
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
-                      <button className="btn btn-cart btn-lg">
+                      <button onClick={this.addToCart} className="btn btn-cart btn-lg">
                         Add To Cart
                       </button>
                     </React.Fragment>
@@ -152,7 +170,7 @@ class DomainSearch extends Component {
               : 
                 null 
               }
-              {(this.state.fetching) ? 
+              {(this.props.loader) ? 
                 <div className="preloader"></div>
               :
                 null
@@ -160,7 +178,7 @@ class DomainSearch extends Component {
             </div>
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
-                {(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}
+                <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
                 {this.props.alert.msg}
               </div>
             : ''
@@ -193,7 +211,8 @@ class DomainSearch extends Component {
 const mapStateToProps = state =>  {
   return {
     alert: state.domain.alert,
-    result: state.domain.result
+    result: state.domain.result,
+    loader: state.domain.loader
   }
 }
 

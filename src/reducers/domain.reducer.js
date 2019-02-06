@@ -7,11 +7,17 @@ const initialState = {
         has_result: false,
         availability: 'taken',
         suggest: []
-    }
+    },
+    loader: false
 };
 
 export default function(state = initialState, action) {
     switch(action.type) {
+        case 'GET_LOADER':
+            return {
+                ...state,
+                loader: action.payload
+            };
         case 'SHOW_ALERT':
             return {
                 ...state,
