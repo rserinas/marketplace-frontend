@@ -8,7 +8,8 @@ const initialState = {
         availability: 'taken',
         suggest: []
     },
-    loader: false
+    loader: false,
+    checkout: false
 };
 
 export default function(state = initialState, action) {
@@ -27,7 +28,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 result: action.payload
-            }; 
+            };
+        case 'GET_CHECKOUT':
+            return {
+                ...state,
+                checkout: action.payload
+            };
         default:
             return state;
     }

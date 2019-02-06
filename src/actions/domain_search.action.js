@@ -7,6 +7,14 @@ export const showAlert = data => dispatch => {
 };
 
 
+export const goCheckout = data => dispatch => {
+    dispatch({
+        type: 'GET_CHECKOUT',
+        payload: data
+    });
+};
+
+
 export const submitDomain = data => dispatch => {
     
     let apiUrl = sessionStorage.getItem('apiUrl');

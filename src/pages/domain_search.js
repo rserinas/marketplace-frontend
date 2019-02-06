@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitDomain, showAlert } from '../actions/domain_search.action';
+import { submitDomain, showAlert, goCheckout } from '../actions/domain_search.action';
 import '../styles/domain_search.css';
 
 class DomainSearch extends Component {
@@ -28,6 +28,8 @@ class DomainSearch extends Component {
 
   submitSearch = () => {
     
+    this.props.goCheckout(false);
+
     let alert = {};
     let re = null;
 
@@ -73,8 +75,9 @@ class DomainSearch extends Component {
     let cart = [];
     let totalCount = 1;
 
-    if (sessionStorage.getItem('cartCount') !== 0) {
-      cart = JSON.parse(sessionStorage.getItem('cart')).slice();
+    if (sessionStorage.getItem('cartCount') !== '0') {
+      let buff = JSON.parse(sessionStorage.getItem('cart'));
+      cart = buff.slice();
       totalCount = cart.push(data);
     } else {
       cart[0] = data;
@@ -82,7 +85,15 @@ class DomainSearch extends Component {
     sessionStorage.setItem('cartCount', totalCount);
     sessionStorage.setItem('cart', JSON.stringify(cart));
 
-    console.log(JSON.parse(sessionStorage.getItem('cart')), sessionStorage.getItem('cartCount'));
+    // console.log(JSON.parse(sessionStorage.getItem('cart')), sessionStorage.getItem('cartCount'));
+
+    this.props.goCheckout(true);
+  };
+
+  checkout = () => {
+    let baseUrl = sessionStorage('baseUrl');
+
+    window.location = `${baseUrl}/order`;
   };
 
   
@@ -175,6 +186,15 @@ class DomainSearch extends Component {
               :
                 null
               }
+              {(this.props.checkout) ?
+                <div className="checkout-box">
+                  <button onClick={this.checkout} className="btn btn-lg btn-cart">Review Your Order</button>
+                  <br />
+                  <p>Or Continue Searching...</p>
+                </div>
+              : 
+                ''
+              }
             </div>
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
@@ -185,7 +205,7 @@ class DomainSearch extends Component {
             }
             {this.props.result.has_result ? 
               <div>
-                <table class="table table-striped">
+                <table className="table table-striped">
                   <thead>
                     <tr>
                       <th>Suggestions</th>
@@ -212,14 +232,16 @@ const mapStateToProps = state =>  {
   return {
     alert: state.domain.alert,
     result: state.domain.result,
-    loader: state.domain.loader
+    loader: state.domain.loader,
+    checkout: state.domain.checkout
   }
 }
 
 const matchDispatchToProps = dispatch => {
   return bindActionCreators({
     submitDomain: submitDomain,
-    showAlert: showAlert
+    showAlert: showAlert,
+    goCheckout: goCheckout
   },
   dispatch
   )

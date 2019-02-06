@@ -11,3 +11,14 @@
     background: url('/preloader.gif') no-repeat center center;
     margin: 30px auto;
 }
+
+.checkout-box {
+    border-top: 1px solid #cccccc;
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+.checkout-box button {
+    margin-bottom: 15px;
+}
