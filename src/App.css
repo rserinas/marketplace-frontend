@@ -1,32 +1,144 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+  padding: 20px;
+}
+
+.logo-box {
+  width: 48%;
+  display: inline-block;
+}
+
+.header-panel {
+  width:48%;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.cart-icon {
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.badge {
+  background-color: #990000;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.btn-color {
+  background-color: #5ACBF1;
+  border:1px solid #4eafd0;
+  color: #FFFFFF;
+}
+
+.btn-cart {
+  background-color: #2ca94f;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.btn-cart:hover {
+  background-color: #35ca5e;
+  color: #FFFFFF;
+}
+
+.footer {
+  margin: 40px 0px;
+  color:#666666;
+  text-align: center;
+  line-height: 2em;
+}
+
+.banner {
+  padding: 40px;
+  background-color: #f7f7f7;
+  color: #333333;
+  margin: 0px 0px 40px 0px;
+}
+
+.banner-header {
+  text-align: center;
+}
+
+.banner-p {
+  text-align: center;
+}
+
+.step-container {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.step-box {
+  display: inline-block;
+  width: 20%;
+}
+
+.step-img {
+  width: 55px;
+  height: 55px;
+  margin: 0px auto 10px;
+}
+
+.step-box p {
+  text-align: center;
+  color: #666666;
+}
+
+.p-blue {
+  font-weight: bold;
+}
+
+.step-line {
+  border-top: 1px solid #BABFBF;
+  width: 75%;
+  margin: -60px auto 0px;
+}
+
+#first {
+  background: url('/useraccount.png') no-repeat center center;
+}
+
+#first-blue {
+  background: url('/useraccountblue.png') no-repeat center center;
+}
+
+#second {
+  background: url('/select.png') no-repeat center center;
+}
+
+#second-blue {
+  background: url('/selectblue.png') no-repeat center center;
+}
+
+#third {
+  background: url('/review.png') no-repeat center center;
+}
+
+#third-blue {
+  background: url('/reviewblue.png') no-repeat center center;
+}
+
+#fourth {
+  background: url('/payment.png') no-repeat center center;
+}
+
+#fourth-blue {
+  background: url('/paymemtblue.png') no-repeat center center;
+}
+
+#fifth {
+  background: url('/start.png') no-repeat center center;
+}
+
+#fifth-blue {
+  background: url('/startblue.png') no-repeat center center;
 }
