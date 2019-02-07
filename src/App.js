@@ -14,6 +14,7 @@ import EmailNotVerified from './pages/email_not_verified';
 import Login from './pages/login';
 import MarketPage from './pages/market_page';
 import DomainSearch from './pages/domain_search';
+import Test from './pages/test';
 
 
 library.add(faIgloo)
@@ -23,7 +24,16 @@ library.add(faShoppingCart)
 class App extends Component {
 
   componentDidMount = () => {
-    sessionStorage.setItem('baseUrl', window.location.hostname);
+
+    let baseUrl = null; 
+    
+    if (window.location.protocol == 'https:') { 
+      baseUrl = 'https://' + window.location.hostname;
+    } else {
+      baseUrl = 'http://' + window.location.hostname;
+    }
+
+    sessionStorage.setItem('baseUrl', baseUrl);
     sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
   }
 
@@ -93,6 +103,7 @@ class App extends Component {
             </div>
           </div>
           <Switch>
+            <Route path="/test" component={ Test } exact />
             <Route path="/" component={ SignUp } exact />
             <Route path="/email-verified" component={ EmailVerified } exact />
             <Route path="/email-not-verified" component={ EmailNotVerified } exact />
@@ -125,6 +136,7 @@ class App extends Component {
             </div>
           </div>
           <Switch>
+            <Route path="/test" component={ Test } exact />
             <Route path="/" component={ SignUp } exact />
             <Route path="/email-verified" component={ EmailVerified } exact />
             <Route path="/email-not-verified" component={ EmailNotVerified } exact />
