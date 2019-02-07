@@ -23,10 +23,8 @@ library.add(faShoppingCart)
 class App extends Component {
 
   componentDidMount = () => {
-    sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-    sessionStorage.setItem('apiUrl', 'http://localhost:8000');
-    sessionStorage.setItem('cart', JSON.stringify({}));
-    sessionStorage.setItem('cartCount', 0);
+    sessionStorage.setItem('baseUrl', window.location.hostname);
+    sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
   }
 
   login = () => {
@@ -41,23 +39,46 @@ class App extends Component {
     sessionStorage.removeItem('fname');
     sessionStorage.removeItem('lname');
     sessionStorage.removeItem('phone');
+    sessionStorage.removeItem('cartCount');
+    sessionStorage.removeItem('cart');
 
     this.login();
   }
 
- checkLogin = () => {
+  checkLogin = () => {
     
-  let userId = sessionStorage.getItem('userId');
-  let email = sessionStorage.getItem('email');
+    let userId = sessionStorage.getItem('userId');
+    let email = sessionStorage.getItem('email');
 
-  if (userId && email) {
-    return this.isLoggedIn();
-  } else {
-    return this.isLoggedOut();
-  }
- };
+    if (userId && email) {
+      return this.isLoggedIn();
+    } else {
+      return this.isLoggedOut();
+    }
+  };
+
+  showCart = () => {
+    const cartCount = sessionStorage.getItem('cartCount');
+    console.log('cartCount: ' + sessionStorage.getItem('cartCount'));
+    // eslint-disable-next-line
+    if (cartCount != 0) {
+      return ( 
+        <div style={{display:'inline-block'}}> 
+        <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
+        <span className="badge">{cartCount}</span>
+        <button onClick={this.gotoCheckout} className="btn btn-cart btn-lg">Checkout</button>
+        </div>
+      );
+    }
+  };
+
+  gotoCheckout = () => {
+    let baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/checkout`;
+  };
 
   isLoggedIn = () => {
+        
     return (
       <Provider store={ store }>
         <BrowserRouter>
@@ -67,9 +88,7 @@ class App extends Component {
               <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
             </div>
             <div className="header-panel">
-              <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
-              <span className="badge">5</span>
-              <button className="btn btn-cart btn-lg">Checkout</button>
+              { this.showCart() }
               <button onClick={this.logout} className="btn btn-default btn-lg">Logout</button>
             </div>
           </div>

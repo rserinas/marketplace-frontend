@@ -8,6 +8,15 @@ export const showAlert = data => dispatch => {
 
 
 export const goCheckout = data => dispatch => {
+    let result = {
+        has_result: false,
+        availability: 'taken',
+        suggest: []
+    };
+    dispatch({
+        type: 'DOMAIN_SEARCH',
+        payload: result
+    });
     dispatch({
         type: 'GET_CHECKOUT',
         payload: data
@@ -40,7 +49,6 @@ export const submitDomain = data => dispatch => {
             });
         }
         else {
-            console.log(data);
             dispatch({
                 type: 'DOMAIN_SEARCH',
                 payload: data

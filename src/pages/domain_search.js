@@ -74,30 +74,31 @@ class DomainSearch extends Component {
 
     let cart = [];
     let totalCount = 1;
-
-    if (sessionStorage.getItem('cartCount') !== '0') {
+    // console.log('Count: ', sessionStorage.getItem('cartCount'));
+    // eslint-disable-next-line
+    if (sessionStorage.getItem('cartCount') != 0) {
       let buff = JSON.parse(sessionStorage.getItem('cart'));
       cart = buff.slice();
       totalCount = cart.push(data);
     } else {
       cart[0] = data;
     } 
+    // console.log('Cart: ', cart);
     sessionStorage.setItem('cartCount', totalCount);
     sessionStorage.setItem('cart', JSON.stringify(cart));
-
-    // console.log(JSON.parse(sessionStorage.getItem('cart')), sessionStorage.getItem('cartCount'));
-
+    // console.log(sessionStorage.getItem('cart'), sessionStorage.getItem('cartCount'));
     this.props.goCheckout(true);
   };
 
   checkout = () => {
-    let baseUrl = sessionStorage('baseUrl');
+    let baseUrl = sessionStorage.getItem('baseUrl');
 
     window.location = `${baseUrl}/order`;
   };
 
   
   render() {
+    
     // eslint-disable-next-line
     const showResults = this.props.result.suggest.map((a, i) => {
       if (this.props.result.count) {
