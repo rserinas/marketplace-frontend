@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
                 ...state,
                 alert: action.payload
             };
-        case 'CREATE_ACCOUNT':
+        case 'LOGIN_ACCOUNT':
             return {
                 ...state,
                 alert: action.payload

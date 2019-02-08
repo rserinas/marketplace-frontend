@@ -16,6 +16,7 @@ class DomainSearch extends Component {
   
   handleInputChange(event) {
     const target = event.target;
+    
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.id;
     
@@ -74,31 +75,25 @@ class DomainSearch extends Component {
 
     let cart = [];
     let totalCount = 1;
-    // console.log('Count: ', sessionStorage.getItem('cartCount'));
+    console.log('Count: ', sessionStorage.getItem('cartCount'));
     // eslint-disable-next-line
-    if (sessionStorage.getItem('cartCount') != 0) {
+    if (sessionStorage.getItem('cartCount') != null) {
       let buff = JSON.parse(sessionStorage.getItem('cart'));
       cart = buff.slice();
       totalCount = cart.push(data);
     } else {
       cart[0] = data;
     } 
-    // console.log('Cart: ', cart);
+    
     sessionStorage.setItem('cartCount', totalCount);
     sessionStorage.setItem('cart', JSON.stringify(cart));
-    // console.log(sessionStorage.getItem('cart'), sessionStorage.getItem('cartCount'));
+    
     this.props.goCheckout(true);
-  };
-
-  checkout = () => {
-    let baseUrl = sessionStorage.getItem('baseUrl');
-
-    window.location = `${baseUrl}/order`;
   };
 
   
   render() {
-    
+    const baseUrl = sessionStorage.getItem('baseUrl');
     // eslint-disable-next-line
     const showResults = this.props.result.suggest.map((a, i) => {
       if (this.props.result.count) {
@@ -189,7 +184,7 @@ class DomainSearch extends Component {
               }
               {(this.props.checkout) ?
                 <div className="checkout-box">
-                  <button onClick={this.checkout} className="btn btn-lg btn-cart">Review Your Order</button>
+                  <a href={`${baseUrl}/order`} className="checkout-link">Review Your Order</a>
                   <br />
                   <p>Or Continue Searching...</p>
                 </div>
