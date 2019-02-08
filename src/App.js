@@ -33,8 +33,10 @@ class App extends Component {
       baseUrl = 'http://' + window.location.hostname;
     }
 
-    sessionStorage.setItem('baseUrl', baseUrl);
-    sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+    // sessionStorage.setItem('baseUrl', baseUrl);
+    // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+    sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+    sessionStorage.setItem('apiUrl', 'http://localhost:8000');
   }
 
   login = () => {
@@ -71,7 +73,7 @@ class App extends Component {
     const cartCount = sessionStorage.getItem('cartCount');
     console.log('cartCount: ' + sessionStorage.getItem('cartCount'));
     // eslint-disable-next-line
-    if (cartCount != 0) {
+    if (cartCount != null) {
       return ( 
         <div style={{display:'inline-block'}}> 
         <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
