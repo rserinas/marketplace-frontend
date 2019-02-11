@@ -2,8 +2,7 @@ const initialState = {
     alert: {
         error: 2,
         msg: ''
-    },
-    input: {}
+    }
 };
 
 export default function(state = initialState, action) {
@@ -13,11 +12,6 @@ export default function(state = initialState, action) {
                 ...state,
                 alert: action.payload
             };
-        case 'LOGIN_ACCOUNT':
-            return {
-                ...state,
-                alert: action.payload
-            }; 
         default:
             return state;
     }

@@ -3,7 +3,12 @@ const initialState = {
         error: 2,
         msg: ''
     },
-    input: {}
+    trans: {
+        subTotal: 0,
+        discount: 0,
+        total: 0,
+        cart: [{}]
+    }
 };
 
 export default function(state = initialState, action) {
@@ -13,10 +18,10 @@ export default function(state = initialState, action) {
                 ...state,
                 alert: action.payload
             };
-        case 'LOGIN_ACCOUNT':
+        case 'SHOW_TOTAL':
             return {
                 ...state,
-                alert: action.payload
+                trans: action.payload
             }; 
         default:
             return state;

@@ -1,0 +1,46 @@
+.gateway-container {
+    margin: 30px 0px;
+}
+
+.gateway-solo {
+    text-align: center;
+}
+
+.gateway-solo a {
+    color: #999999;
+}
+
+.gateway-solo p {
+    margin-top: 15px;
+}
+
+.gateway-img {
+    width: 160px;
+    height: 160px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+}
+
+#pay-stripe {
+    background: url('/pay-stripe.png') no-repeat center center;
+}
+
+#pay-paypal {
+    background: url('/pay-paypal.png') no-repeat center center;
+}
+
+#pay-coins {
+    background: url('/pay-coins.png') no-repeat center center;
+}
+
+#pay-dragon {
+    background: url('/pay-dragon.png') no-repeat center center;
+}
+
+#pay-gcash {
+    background: url('/pay-gcash.png') no-repeat center center;
+}
+
+#pay-paymaya {
+    background: url('/pay-paymaya.png') no-repeat center center;
+}

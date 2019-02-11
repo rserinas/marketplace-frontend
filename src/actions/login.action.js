@@ -1,11 +1,4 @@
 
-// export const setInputValue = data => dispatch => {
-//     return dispatch({
-//         type: 'SET_INPUT_VALUE',
-//         payload: data
-//     });
-// };
-
 export const showAlert = data => dispatch => {
     return dispatch({
         type: 'SHOW_ALERT',
