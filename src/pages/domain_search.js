@@ -9,7 +9,7 @@ class DomainSearch extends Component {
     super (props);
     this.state = {
       domainName: '',
-      domainExt: ''
+      domainExt: '.com'
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -47,7 +47,21 @@ class DomainSearch extends Component {
       return this.props.showAlert(alert);
     }
 
-    let domain = data.domainName + data.domainExt ;
+    const domain = data.domainName + data.domainExt ;
+
+    if (sessionStorage.getItem('cartCount')) {
+      JSON.parse(sessionStorage.getItem('cart')).map(a => {
+        if (a.description === domain) {
+          alert = {
+            error: 1,
+            msg: 'You can only add another year to your domain on review of your order.'
+          };
+    
+          return this.props.showAlert(alert);  
+        }
+      });
+    }
+    
     re = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/;
     
     if ( ! re.test(String(domain).toLowerCase())) {
@@ -59,23 +73,27 @@ class DomainSearch extends Component {
       return this.props.showAlert(alert);
     }
     
-    this.props.submitDomain(data);
+    if ( ! alert.error) {
+      this.props.submitDomain(data);
+    }
 
   };
 
 
   addToCart = () => {
     let item = this.props.result.domainName + this.props.result.domainExt;
-    const data = {
+    let data = {
       product: 'domain',
       description: item,
+      ext: this.props.result.domainExt,
       qty: 1,
+      supplierPrice: this.props.result.supplierPrice,
       price: this.props.result.price.toFixed(2)
     };
 
     let cart = [];
     let totalCount = 1;
-    console.log('Count: ', sessionStorage.getItem('cartCount'));
+    
     // eslint-disable-next-line
     if (sessionStorage.getItem('cartCount') != null) {
       let buff = JSON.parse(sessionStorage.getItem('cart'));
@@ -104,9 +122,8 @@ class DomainSearch extends Component {
     return (
       <React.Fragment>
         <div className="banner">
-          <h3 className="banner-header">Prosperna Marketplace</h3>
-          <p className="banner-p">Everything You Need to Sell Smarter, 
-          Faster &amp; Build Better Relationships</p>
+          <h3 className="banner-header">Domain Search</h3>
+          <p className="banner-p">Search the availability of your desired domain</p>
           <div className="step-container">
             <div className="step-box">
               <div className="step-img" id="first-blue"></div>
@@ -140,7 +157,6 @@ class DomainSearch extends Component {
                 onInput={ this.handleInputChange } id="domainName" name="domainName"/>
                 <select className="form-control col-lg-3"
                   id="domainExt" name="domainExt" onChange={this.handleInputChange}>
-                  <option value="">Select</option>
                   <option value=".com">.com</option>
                   <option value=".net">.net</option>
                   <option value=".org">.org</option>
@@ -184,7 +200,7 @@ class DomainSearch extends Component {
               }
               {(this.props.checkout) ?
                 <div className="checkout-box">
-                  <a href={`${baseUrl}/order`} className="checkout-link">Review Your Order</a>
+                  <a href={`${baseUrl}/checkout`} className="checkout-link">Review Your Order</a>
                   <br />
                   <p>Or Continue Searching...</p>
                 </div>

@@ -1,4 +1,6 @@
-
+body {
+  font-size: 120%;
+}
 .App-link {
   color: #61dafb;
 }
@@ -132,7 +134,7 @@
 }
 
 #fourth-blue {
-  background: url('/paymemtblue.png') no-repeat center center;
+  background: url('/paymentblue.png') no-repeat center center;
 }
 
 #fifth {

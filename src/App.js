@@ -6,7 +6,7 @@ import store from './store';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo , faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 import SignUp from './pages/signup';
 import EmailVerified from './pages/email_verified';
@@ -14,10 +14,11 @@ import EmailNotVerified from './pages/email_not_verified';
 import Login from './pages/login';
 import MarketPage from './pages/market_page';
 import DomainSearch from './pages/domain_search';
-import Test from './pages/test';
+import Checkout from './pages/checkout';
+import Payment from './pages/payment';
 
 
-library.add(faIgloo)
+
 library.add(faShoppingCart)
 
 
@@ -71,7 +72,7 @@ class App extends Component {
 
   showCart = () => {
     const cartCount = sessionStorage.getItem('cartCount');
-    console.log('cartCount: ' + sessionStorage.getItem('cartCount'));
+    
     // eslint-disable-next-line
     if (cartCount != null) {
       return ( 
@@ -105,13 +106,14 @@ class App extends Component {
             </div>
           </div>
           <Switch>
-            <Route path="/test" component={ Test } exact />
             <Route path="/" component={ SignUp } exact />
             <Route path="/email-verified" component={ EmailVerified } exact />
             <Route path="/email-not-verified" component={ EmailNotVerified } exact />
             <Route path="/login" component={ Login } exact />
-            <Route path="/domain-search" component={ DomainSearch } exact />
             <Route path="/market-page" component={ MarketPage } exact />
+            <Route path="/domain-search" component={ DomainSearch } exact />
+            <Route path="/checkout" component={ Checkout } exact />
+            <Route path="/payment" component={ Payment } exact />
           </Switch>
           <div className="footer">
               An Xtendly Company<br />
@@ -138,7 +140,6 @@ class App extends Component {
             </div>
           </div>
           <Switch>
-            <Route path="/test" component={ Test } exact />
             <Route path="/" component={ SignUp } exact />
             <Route path="/email-verified" component={ EmailVerified } exact />
             <Route path="/email-not-verified" component={ EmailNotVerified } exact />

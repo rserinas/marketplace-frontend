@@ -142,12 +142,13 @@ class Signup extends Component {
 
   
   render() {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+
     return (
       <React.Fragment>
         <div className="banner">
-          <h3 className="banner-header">Prosperna Marketplace</h3>
-          <p className="banner-p">Everything You Need to Sell Smarter, 
-          Faster &amp; Build Better Relationships</p>
+          <h3 className="banner-header">Create Your Account</h3>
+          <p className="banner-p">Already have an Account? <a href={`${baseUrl}/login`}>Log in</a></p>
           <div className="step-container">
             <div className="step-box">
               <div className="step-img" id="first-blue"></div>

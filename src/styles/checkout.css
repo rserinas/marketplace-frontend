@@ -1,0 +1,24 @@
+.header-label {
+    padding-left: 0px;
+}
+
+.table-sub-total {
+    width: 100%;
+    border-bottom: 1px solid #666666;
+}
+
+.table-sub-total tr td {
+    padding: 10px;
+}
+
+.table-footer {
+    width: 100%;
+}
+
+.table-footer tr td {
+    padding: 10px;
+}
+
+.pay-method {
+    text-align: right;
+}

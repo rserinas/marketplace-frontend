@@ -22,8 +22,14 @@ class Login extends Component {
     
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
-    } 
+    }
   }
+
+  checkEnterKey = (event) => {
+    if (event.charCode == 13) {
+      this.submitRecord();
+    }
+  };
 
   submitRecord = () => {
     
@@ -76,11 +82,13 @@ class Login extends Component {
               <h1 style={{marginBottom: '20px'}}>Customer Login</h1>
               <div className="form-group">
                 <label htmlFor="email">Email:</label>
-                <input type="text" className="form-control input-lg" onInput={ this.handleInputChange } id="email"/>
+                <input type="text" className="form-control input-lg" onKeyPress={this.checkEnterKey} 
+                onInput={ this.handleInputChange } id="email"/>
               </div>
               <div className="form-group">
                 <label htmlFor="pwd">Password:</label>
-                <input type="password" className="form-control input-lg" onChange={ this.handleInputChange } id="pwd"/>
+                <input type="password" className="form-control input-lg" onKeyPress={this.checkEnterKey} 
+                onChange={ this.handleInputChange } id="pwd"/>
               </div>
               <button id="btn-submit" className="btn btn-primary btn-lg" 
               onClick={ this.submitRecord }>
