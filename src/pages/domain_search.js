@@ -117,6 +117,12 @@ class DomainSearch extends Component {
     this.props.goCheckout(true);
   };
 
+
+  gotoReview = () => {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/checkout`;
+  };
+
   
   render() {
     const baseUrl = sessionStorage.getItem('baseUrl');
@@ -208,9 +214,12 @@ class DomainSearch extends Component {
               }
               {(this.props.checkout) ?
                 <div className="checkout-box">
-                  <a href={`${baseUrl}/checkout`} className="checkout-link">Review Your Order</a>
+                  <button onClick={this.gotoReview} className="btn btn-cart btn-lg"
+                  style={{margin:'0px auto 20px'}}>
+                    Review Your Order
+                  </button>
                   <br />
-                  <p>Or Continue Searching...</p>
+                  <p>Or Continue Searching.</p>
                 </div>
               : 
                 ''

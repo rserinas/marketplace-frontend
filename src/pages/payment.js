@@ -50,16 +50,17 @@ class Payment extends Component {
   }
 
   onPPSuccess = (payment) => {
-    console.log("The payment was succeeded!", payment);
-    // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
-    this.props.showAlert({ error: 0, msg: 'PayPal Payment was successful.' });
-  }
+    //console.log("The payment was succeeded!", payment);
+    //this.props.showAlert({ error: 0, msg: 'PayPal Payment was successful.' });
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/get-started`;
+  };
 
   onPPCancel = (data) => {
     // User pressed "cancel" or close Paypal's popup!
     console.log('The payment was cancelled!', data);
     this.props.showAlert({ error: 1, msg: 'PayPal Payment was cancelled.' });
-  }
+  };
 
   onPPError = (err) => {
     // The main Paypal's script cannot be loaded or somethings block the loading of that script!
@@ -67,7 +68,7 @@ class Payment extends Component {
     // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     this.props.showAlert({ error: 1, msg: err });
-  }
+  };
 
   showPayPal = () => {
     
