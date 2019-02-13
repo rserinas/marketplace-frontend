@@ -1,0 +1,15 @@
+.container-md {
+    margin: 50px auto; 
+    text-align: center;
+}
+
+.ellipse-icon {
+    width: 95px;
+    height: 95px;
+    margin: 0px auto 20px;
+    background: url('/get-started.png') no-repeat center center;
+}
+
+.btn-primary {
+    margin: 30px auto;
+}

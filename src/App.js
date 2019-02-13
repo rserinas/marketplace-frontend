@@ -16,6 +16,7 @@ import MarketPage from './pages/market_page';
 import DomainSearch from './pages/domain_search';
 import Checkout from './pages/checkout';
 import Payment from './pages/payment';
+import GetStarted from './pages/get_started';
 
 
 
@@ -114,6 +115,7 @@ class App extends Component {
             <Route path="/domain-search" component={ DomainSearch } exact />
             <Route path="/checkout" component={ Checkout } exact />
             <Route path="/payment" component={ Payment } exact />
+            <Route path="/get-started" component={ GetStarted } exact />
           </Switch>
           <div className="footer">
               An Xtendly Company<br />
