@@ -34,10 +34,10 @@ class App extends Component {
       baseUrl = 'http://' + window.location.hostname;
     }
 
-    // sessionStorage.setItem('baseUrl', baseUrl);
-    // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
-    sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-    sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+    sessionStorage.setItem('baseUrl', baseUrl);
+    sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+    // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+    // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
   }
 
   login = () => {

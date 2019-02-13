@@ -51,14 +51,17 @@ export const fetchNewPrice = (data, qty, i) => dispatch => {
 
             let st = 0;
             cart.map((a, i) => {
-                st = +st + (+a.price * +a.qty);
+                st = +st + +a.price;
             });
         
             let disc = 0;
             if (sessionStorage.getItem('discount')) {
                 disc = sessionStorage.getItem('discount')
             }
-
+            sessionStorage.setItem('subTotal', st);
+            sessionStorage.setItem('discount', disc);
+            sessionStorage.setItem('total', (st - disc));
+            
             let buff = {
                 subTotal: st,
                 discount: disc,
