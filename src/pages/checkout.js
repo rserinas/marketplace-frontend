@@ -13,6 +13,14 @@ class Checkout extends Component {
             st = +st + +a.price;
         });
         
+        let disc = 0;
+        if (sessionStorage.getItem('discount')) {
+            disc = sessionStorage.getItem('discount')
+        }
+        sessionStorage.setItem('subTotal', st);
+        sessionStorage.setItem('discount', disc);
+        sessionStorage.setItem('total', (st - disc));
+        
         const data = {
             subTotal: st,
             details: cart 
