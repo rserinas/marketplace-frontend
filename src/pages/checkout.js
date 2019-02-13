@@ -10,14 +10,14 @@ class Checkout extends Component {
         const cart  = JSON.parse(sessionStorage.getItem('cart'));
         let st = 0;
         cart.map((a, i) => {
-            st = +st + (+a.price * +a.qty);
+            st = +st + +a.price;
         });
-
+        
         const data = {
             subTotal: st,
             details: cart 
         };
-        console.log('Data: ', data);
+        
         this.props.showTotal(data);
     };
 
@@ -49,6 +49,7 @@ class Checkout extends Component {
         const cart  = JSON.parse(sessionStorage.getItem('cart'));
 
         const viewCart = cart.map((a, i) => {
+            let amt = a.price;
             
             return ( 
             <tr key={i}>
@@ -62,19 +63,19 @@ class Checkout extends Component {
                         <option value="3">3 yrs</option>
                     </select>
                 </td>
-                <td align="right">${(a.qty*a.price).toFixed(2)}</td>
+                <td align="right">${parseFloat(amt).toFixed(2)}</td>
             </tr>
             );
         });
 
         let discount = 0.00;
         if (this.props.trans.discount) {
-            discount = this.props.trans.discount.toFixed(2);
+            discount = this.props.trans.discount;
         } 
 
         let total = 0.00;
         if (this.props.trans.total) {
-            total = this.props.trans.total.toFixed(2);
+            total = parseFloat(this.props.trans.total).toFixed(2);
         }
 
     return (
