@@ -52,6 +52,12 @@ class Payment extends Component {
   onPPSuccess = (payment) => {
     //console.log("The payment was succeeded!", payment);
     //this.props.showAlert({ error: 0, msg: 'PayPal Payment was successful.' });
+    sessionStorage.removeItem('cartCount');
+    sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('subTotal');
+    sessionStorage.removeItem('discount');
+    sessionStorage.removeItem('total');
+    
     const baseUrl = sessionStorage.getItem('baseUrl');
     window.location = `${baseUrl}/get-started`;
   };
