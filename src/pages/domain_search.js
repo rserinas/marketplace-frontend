@@ -25,7 +25,15 @@ class DomainSearch extends Component {
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
     }
-  }
+  };
+
+
+  checkEnterKey = (event) => {
+    if (event.charCode == 13) {
+      this.submitSearch();
+    }
+  };
+
 
   submitSearch = () => {
     
@@ -153,7 +161,7 @@ class DomainSearch extends Component {
             <div className="well">
               <h1 style={{marginBottom: '20px'}}>Domain Search:</h1>
               <div className="form-group"style={{marginBottom: '20px'}}>
-                <input type="text" className="form-control col-lg-9" 
+                <input type="text" className="form-control col-lg-9" onKeyPress={ this.checkEnterKey } 
                 onInput={ this.handleInputChange } id="domainName" name="domainName"/>
                 <select className="form-control col-lg-3"
                   id="domainExt" name="domainExt" onChange={this.handleInputChange}>
