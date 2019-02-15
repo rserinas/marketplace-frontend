@@ -21,6 +21,18 @@ body {
   vertical-align: middle;
 }
 
+.verify-sms {
+  color: #5ACBF1;
+  display: inline-block;
+  margin: 0px 10px 0px;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.verify-sms:hover {
+  text-decoration: none;
+}
+
 .cart-icon {
   font-size: 18px;
   display: inline-block;

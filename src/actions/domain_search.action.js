@@ -49,6 +49,7 @@ export const submitDomain = data => dispatch => {
             });
         }
         else {
+            console.log(data);
             dispatch({
                 type: 'DOMAIN_SEARCH',
                 payload: data

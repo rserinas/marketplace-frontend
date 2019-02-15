@@ -25,6 +25,8 @@ export const submitLogin = data => dispatch => {
             sessionStorage.setItem('lname', data.lname);
             sessionStorage.setItem('email', data.email);
             sessionStorage.setItem('phone', data.phone);
+            sessionStorage.setItem('status', data.status);
+            sessionStorage.setItem('sms_verify', data.sms_verify);
             window.location = `${baseUrl}/market-page`;
         }
         dispatch({
