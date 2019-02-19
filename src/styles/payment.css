@@ -22,7 +22,13 @@
 }
 
 .payment-option-box {
-    margin-top: 40px;
+    width: 60%;
+    margin: 40px auto 30px;
+    text-align: center;
+}
+
+.pay-link {
+    cursor: pointer;
 }
 
 #pay-stripe {

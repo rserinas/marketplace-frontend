@@ -48,7 +48,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -81,12 +81,12 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="domain"></div>
                     <h4>Domain Name</h4>
-                    <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
+                    <p className="shop-details">Find your perfect domain name.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
+                        <div className="more-info"></div>
                         <div className="add-to-cart">
                             <button onClick={this.gotoDomain} 
-                            className="shop-btn btn btn-default btn-lg">Search</button> 
+                            className="shop-btn btn btn-default btn-md">Search</button> 
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@ class MarketPage extends Component {
                     <p className="shop-details">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed </p>
                     <div className="shop-box">
                         <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-lg">Add to Cart</button> </div>                   
+                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
                     </div>
                 </div>
             </div>

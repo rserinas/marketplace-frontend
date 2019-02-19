@@ -4,39 +4,53 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {complete: false};
     this.submit = this.submit.bind(this);
   }
 
   async submit(ev) {
-    let token = {};
-    this.props.stripe.createToken({name: "Name"}).then(({data, error}) => {
-      if (error) {
-        console.log('Errors: ', error);
-      } else {
-        token = data;
-      }
-    });
-    console.log('token: ', token);
-    let response = await fetch("http://localhost:9000/charge", {
-      method: "POST",
-      headers: {"Content-Type": "text/plain"},
-      body: token.id
-    }).catch(err => {
-      console.log('error: ', err);
-    });
-  
-    if (response.ok) this.setState({complete: true});
+    const apiUrl = sessionStorage.getItem('apiUrl');
+    const fname = sessionStorage.getItem('fname');
+    const lname = sessionStorage.getItem('lname');
+    const userId = sessionStorage.getItem('userId');
+    const emailAdd = sessionStorage.getItem('email');
+
+    let {token} = await this.props.stripe.createToken({email: emailAdd});
+    token.userId = userId;
+    token.email = emailAdd;
+    token.cart = sessionStorage.getItem('cart');
+    token.subTotal = sessionStorage.getItem('subTotal');
+    token.discount = sessionStorage.getItem('discount');
+    token.total = sessionStorage.getItem('total');
+
+    fetch (`${apiUrl}/charge`, {
+      method: 'POST',
+      dataType: 'jsonp',
+      body: JSON.stringify(token),
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.error === 1) {
+          this.props.showAlert(data);
+        } else {
+          sessionStorage.removeItem('cartCount');
+          sessionStorage.removeItem('cart');
+          sessionStorage.removeItem('subTotal');
+          sessionStorage.removeItem('discount');
+          sessionStorage.removeItem('total');
+          
+          const baseUrl = sessionStorage.getItem('baseUrl');
+          window.location = `${baseUrl}/get-started`;
+        }
+    })
+    .catch((err) => { console.log(err); });
   }
 
   render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
-
     return (
       <div className="checkout">
         <p>Would you like to complete the purchase?</p>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <button className="btn btn-lg btn-primary" onClick={this.submit}>Pay Now</button>
       </div>
     );
   }

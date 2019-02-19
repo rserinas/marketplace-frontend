@@ -104,17 +104,31 @@ class DomainSearch extends Component {
     
     // eslint-disable-next-line
     if (sessionStorage.getItem('cartCount') != null) {
-      let buff = JSON.parse(sessionStorage.getItem('cart'));
-      cart = buff.slice();
-      totalCount = cart.push(data);
+      // let buff = JSON.parse(sessionStorage.getItem('cart'));
+      // cart = buff.slice();
+      // totalCount = cart.push(data);
+      
+      alert = {
+        error: 1,
+        msg: 'You can only purchase 1 domain at a time for now.'
+      };
+
+      return this.props.showAlert(alert);
+
     } else {
+      
       cart[0] = data;
+
+      sessionStorage.setItem('cartCount', totalCount);
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      
+      this.props.goCheckout(true);
     } 
     
-    sessionStorage.setItem('cartCount', totalCount);
-    sessionStorage.setItem('cart', JSON.stringify(cart));
+    // sessionStorage.setItem('cartCount', totalCount);
+    // sessionStorage.setItem('cart', JSON.stringify(cart));
     
-    this.props.goCheckout(true);
+    // this.props.goCheckout(true);
   };
 
 
@@ -165,25 +179,31 @@ class DomainSearch extends Component {
         <div className="container">
           <div style={{ maxWidth: '760px', margin: '20px auto'}}>
             <div className="well">
-              <h1 style={{marginBottom: '20px'}}>Domain Search:</h1>
-              <div className="form-group"style={{marginBottom: '20px'}}>
-                <input type="text" className="form-control col-lg-9" onKeyPress={ this.checkEnterKey } 
-                onInput={ this.handleInputChange } id="domainName" name="domainName"/>
-                <select className="form-control col-lg-3"
-                  id="domainExt" name="domainExt" onChange={this.handleInputChange}>
-                  <option value=".com">.com</option>
-                  <option value=".net">.net</option>
-                  <option value=".org">.org</option>
-                  <option value=".biz">.biz</option>
-                  <option value=".info">.info</option>
-                  <option value=".ph">.ph</option>
-                  <option value=".com.ph">.com.ph</option>
-                  <option value=".co">.co</option>
-                  <option value=".us">.us</option>
-                </select>
+              <div className="container">
+                <h2 style={{marginBottom: '20px'}}>Domain Search:</h2>
               </div>
-              <div className="form-group">
-                <button id="btn-submit" className="btn btn-primary btn-color btn-lg" 
+              <div className="form-group" style={{marginBottom: '20px'}}>
+                <div className="col-md-9">
+                  <input type="text" className="form-control col-md-9" onKeyPress={ this.checkEnterKey } 
+                  onInput={ this.handleInputChange } id="domainName" name="domainName"/>
+                </div>
+                <div className="col-md-3">
+                  <select className="form-control col-md-3"
+                    id="domainExt" name="domainExt" onChange={this.handleInputChange}>
+                    <option value=".com">.com</option>
+                    <option value=".net">.net</option>
+                    <option value=".org">.org</option>
+                    <option value=".biz">.biz</option>
+                    <option value=".info">.info</option>
+                    <option value=".ph">.ph</option>
+                    <option value=".com.ph">.com.ph</option>
+                    <option value=".co">.co</option>
+                    <option value=".us">.us</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-group" style={{textAlign:'center'}}>
+                <button id="btn-submit" className="btn btn-primary btn-color btn-md" 
                 style={{ margin: '20px auto 0px' }} onClick={ this.submitSearch }>
                     Check Availability
                 </button>
@@ -196,7 +216,7 @@ class DomainSearch extends Component {
                   {this.props.result.availability === 'available' ? 
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
-                      <button onClick={this.addToCart} className="btn btn-cart btn-lg">
+                      <button onClick={this.addToCart} className="btn btn-cart btn-md">
                         Add To Cart
                       </button>
                     </React.Fragment>
@@ -214,7 +234,7 @@ class DomainSearch extends Component {
               }
               {(this.props.checkout) ?
                 <div className="checkout-box">
-                  <button onClick={this.gotoReview} className="btn btn-cart btn-lg"
+                  <button onClick={this.gotoReview} className="btn btn-cart btn-md"
                   style={{margin:'0px auto 20px'}}>
                     Review Your Order
                   </button>

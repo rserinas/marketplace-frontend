@@ -2,7 +2,8 @@ body {
   font-size: 120%;
 }
 .App-link {
-  color: #61dafb;
+  color: #5ACBF1;
+  cursor: pointer;
 }
 
 .header {
@@ -19,6 +20,18 @@ body {
   display: inline-block;
   text-align: right;
   vertical-align: middle;
+}
+
+.verify-sms {
+  color: #5ACBF1;
+  display: inline-block;
+  margin: 0px 10px 0px;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.verify-sms:hover {
+  text-decoration: none;
 }
 
 .cart-icon {
