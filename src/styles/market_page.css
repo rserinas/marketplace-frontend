@@ -36,6 +36,7 @@
 
 .page-box {
     margin:15px 5px;
+    min-height: 250px;
     padding:20px;
     border:1px solid #cdd1d1;
     border-radius:5px;

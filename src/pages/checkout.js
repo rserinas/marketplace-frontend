@@ -64,11 +64,9 @@ class Checkout extends Component {
                 <td>{a.product}</td>
                 <td>{a.description}</td>
                 <td>
-                    <select className="form-control col-lg-3" value={a.qty} 
+                    <select className="form-control col-xs-3" value={a.qty} 
                     id="" name="" onChange={(e) => this.submitNewQty(i, e.target.value)}>
                         <option value="1">1 yr</option>
-                        <option value="2">2 yrs</option>
-                        <option value="3">3 yrs</option>
                     </select>
                 </td>
                 <td align="right">${parseFloat(amt).toFixed(2)}</td>
@@ -124,7 +122,7 @@ class Checkout extends Component {
                 {phone}
             </div>
         </div>
-        <div className="table-responsive"> 
+        <div> 
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -152,10 +150,10 @@ class Checkout extends Component {
                     <tr>
                         <td className="col-xs-7"></td><td></td>
                         <td className="col-xs-3" align="right">
-                            <input type="text" className="input-md" placeholder="Enter Promo Code" />
+                            <input type="text" className="form-control" placeholder="Enter Promo Code" />
                         </td>
                         <td  className="col-xs-2" align="right">
-                            <button className="btn btn-default btn-color btn-lg">Apply</button>
+                            <button className="btn btn-default btn-color btn-md">Apply</button>
                         </td>
                     </tr>
                     <tr>
@@ -183,7 +181,7 @@ class Checkout extends Component {
                     <tr>
                         <td className="col-xs-7"></td><td></td>
                         <td className="col-xs-5" className="pay-method" colSpan="2">
-                            <button className="btn btn-cart btn-lg" onClick={this.gotoPayment}>
+                            <button className="btn btn-cart btn-md" onClick={this.gotoPayment}>
                                 Proceed to Select Payment Method
                             </button>
                         </td>

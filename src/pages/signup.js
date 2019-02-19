@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { submitSignup, acceptTOS, showAlert } from '../actions/signup.action';
 import '../styles/signup.css';
 
+
 class Signup extends Component {
   constructor (props) {
     super (props);
@@ -39,6 +40,7 @@ class Signup extends Component {
       this.props.showAlert({ error: 2, msg: '' });
     }
   }
+
 
   seeTOS = (event) => {
     const target = event.target;
@@ -143,7 +145,7 @@ class Signup extends Component {
   
   render() {
     const baseUrl = sessionStorage.getItem('baseUrl');
-
+    
     return (
       <React.Fragment>
         <div className="banner">
@@ -177,36 +179,36 @@ class Signup extends Component {
           <div style={{ maxWidth: '400px', margin: '20px auto'}}>
             <div className="form-group">
               <label htmlFor="fname">First Name:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.fname} id="fname" />
             </div>
             <div className="form-group">
               <label htmlFor="lname">Last Name:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.lname} id="lname" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email address:<br />
               <small>This email address will be used so you can log into your account</small>
               </label>
-              <input type="email" className="form-control input-lg" onChange={this.handleInputChange} 
+              <input type="email" className="form-control input-md" onChange={this.handleInputChange} 
               value={this.props.record.email} id="email" />
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone:<br />
               <small>This phone number will be used to verify your account</small>
               </label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.phone} id="phone" />
             </div>
             <div className="form-group">
               <label htmlFor="pwd">Password:</label>
-              <input type="password" className="form-control input-lg" onChange={this.handleInputChange} 
+              <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
               value={this.props.record.pwd} id="pwd" />
             </div>
             <div className="form-group">
               <label htmlFor="pwd">Re-enter Password:</label>
-              <input type="password" className="form-control input-lg" onChange={this.handleInputChange} 
+              <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
               value={this.props.record.confpwd} id="confpwd" />
               <small>
               Note: Passwords must be 8-14 characters, contain one letter<br />
@@ -215,45 +217,46 @@ class Signup extends Component {
             </div>
             <div className="form-group">
               <label htmlFor="company">Company:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.company} id="company" />
             </div>
             <div className="form-group">
               <label htmlFor="address1">Address 1:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.address1} id="address1" />
             </div>
             <div className="form-group">
               <label htmlFor="address2">Address 2:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.address2} id="address2" />
             </div>
             <div className="form-group">
               <label htmlFor="city">City:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.city} id="city" />
             </div>
             <div className="form-group">
               <label htmlFor="state">State:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.state} id="state" />
             </div>
             <div className="form-group">
               <label htmlFor="country">Country:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.country} id="country" />
             </div>
             <div className="form-group">
               <label htmlFor="zip">Zip Code:</label>
-              <input type="text" className="form-control input-lg" onChange={this.handleInputChange}
+              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.zip} id="zip" />
             </div>
             <div className="checkbox">
               <label><input type="checkbox" id="tos" checked={this.props.tos} onChange={ this.seeTOS } /> 
-              I accept Prosperna's Terms of Service &amp; Privacy Policy</label>
+              I accept Prosperna's</label> <a href="/terms-of-service" target="_blank">Terms of Service</a> 
+              {' '}&amp; <a href="/privacy-policy" target="_blank">Privacy Policy</a>
             </div>
             <div className="form-group">
-              <button id="btn-submit" className={"btn btn-primary btn-lg "+(this.props.tos?'':'disabled')} 
+              <button id="btn-submit" className={"btn btn-primary btn-md "+(this.props.tos?'':'disabled')} 
               onClick={ this.submitRecord }>
               Create Account
               </button>

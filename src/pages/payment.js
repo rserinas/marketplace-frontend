@@ -100,11 +100,11 @@ class Payment extends Component {
   };
 
   showStripe = () => {
-    
+    const apiKey = sessionStorage.getItem('stripeApiKey')
+
     return (
-        <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-        <div className="example">
-          <h1>Credit or Debit Card Payment</h1>
+        <StripeProvider apiKey={apiKey}>
+        <div className="well">
           <Elements>
             <CheckoutForm />
           </Elements>
@@ -114,10 +114,26 @@ class Payment extends Component {
   };
 
   showDetails = () => {
+    
+    let title = '';
+    switch (this.props.trans.option) {
+      case 'stripe':
+        title = 'Complete your payment using Credit or Debit Card.';
+        break;
+      case 'paypal':
+        title = 'Complete your payment using PayPal.';
+        break;
+      case 'coins':
+        title = 'Complete your payment using Coins.ph.';
+        break;
+      default:
+        title = 'Complete your payment.';
+    }
+
     if (this.props.trans.has_option) {
       return (
-        <div style={{marginBottom: '20px'}}>
-          <h1>Order Details</h1>
+        <div style={{marginBottom: '30px', textAlign:"center"}}>
+          <h1>{title}</h1>
           <p>
             {this.props.user.name}<br />
             {
@@ -169,40 +185,46 @@ class Payment extends Component {
         <div className="container">
             <div className="gateway-container">
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#">
-                        <div id="pay-stripe" className="gateway-img"></div>
-                        <p>Credit or Debit Card</p>
-                    </a>
+                  <p>COMING SOON</p>
+                  <a className="pay-link" onClick={(e) => this.setPaymentOption('stripe')}>
+                      <div id="pay-stripe" className="gateway-img"></div>
+                      <p>Credit or Debit Card</p>
+                  </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#" onClick={(e) => this.setPaymentOption('paypal')}>
-                        <div id="pay-paypal" className="gateway-img"></div>
-                        <p>Paypal</p>
-                    </a>
+                  <p>AVAILABLE</p>
+                  <a className="pay-link" onClick={(e) => this.setPaymentOption('paypal')}>
+                      <div id="pay-paypal" className="gateway-img"></div>
+                      <p>Paypal</p>
+                  </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#" onClick={(e) => this.setPaymentOption('coins')}>
-                        <div id="pay-coins" className="gateway-img"></div>
-                        <p>Coins.ph</p>
-                    </a>
+                  <p>COMING SOON</p>
+                  <a className="pay-link" onClick={(e) => this.setPaymentOption('coins')}>
+                      <div id="pay-coins" className="gateway-img"></div>
+                      <p>Coins.ph</p>
+                  </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#">
-                        <div id="pay-dragon" className="gateway-img"></div>
-                        <p>OTC via DragonPay</p>
-                    </a>
+                  <p>COMING SOON</p>
+                  <a className="pay-link">
+                      <div id="pay-dragon" className="gateway-img"></div>
+                      <p>OTC via DragonPay</p>
+                  </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#">
-                        <div id="pay-gcash" className="gateway-img"></div>
-                        <p>GCash</p>
-                    </a>
+                  <p>COMING SOON</p>
+                  <a className="pay-link">
+                      <div id="pay-gcash" className="gateway-img"></div>
+                      <p>GCash</p>
+                  </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                    <a href="#">
-                        <div id="pay-paymaya" className="gateway-img"></div>
-                        <p>PayMaya</p>
-                    </a>
+                  <p>COMING SOON</p>
+                  <a className="pay-link">
+                      <div id="pay-paymaya" className="gateway-img"></div>
+                      <p>PayMaya</p>
+                  </a>
                 </div>
             </div>
             <div className="container" style={{clear: 'both'}}>  
@@ -214,7 +236,7 @@ class Payment extends Component {
             : ''
             }
             </div>
-            <div className="col-md-4 payment-option-box">
+            <div className="payment-option-box">
               { this.showDetails() }
               { this.props.trans.has_option == true ? this.showPaymentOption() : null }
             </div>

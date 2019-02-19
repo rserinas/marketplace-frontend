@@ -2,7 +2,8 @@ body {
   font-size: 120%;
 }
 .App-link {
-  color: #61dafb;
+  color: #5ACBF1;
+  cursor: pointer;
 }
 
 .header {
