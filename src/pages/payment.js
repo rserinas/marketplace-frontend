@@ -10,7 +10,16 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 class Payment extends Component {
   constructor (props) {
     super (props);
+
+    if ( ! sessionStorage.getItem('total')) {
+      sessionStorage.removeItem('cart');
+      sessionStorage.removeItem('payment');
+      const baseUrl = sessionStorage.getItem('baseUrl');
+      return window.location = `${baseUrl}/market-page`;
+    }
     
+    if ( ! sessionStorage.getItem('payment')) sessionStorage.setItem('payment', true);
+
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -57,6 +66,7 @@ class Payment extends Component {
     sessionStorage.removeItem('subTotal');
     sessionStorage.removeItem('discount');
     sessionStorage.removeItem('total');
+    sessionStorage.removeItem('payment');
     
     const baseUrl = sessionStorage.getItem('baseUrl');
     window.location = `${baseUrl}/get-started`;
@@ -159,20 +169,28 @@ class Payment extends Component {
         <div className="banner">
           <h3 className="banner-header">Select Payment Method</h3>
           <div className="step-container">
-            <div className="step-box">
-              <div className="step-img" id="first-blue"></div>
+          <div className="step-box">
+              <a href={`${baseUrl}/signup`}>
+                <div className="step-img" id="first-blue"></div>
+              </a>
               <p className="p-blue">Create Your Account</p>
             </div>
             <div className="step-box">
-              <div className="step-img" id="second-blue"></div>
+              <a href={`${baseUrl}/market-page`}>
+                <div className="step-img" id="second-blue"></div>
+              </a>
               <p className="p-blue">Select Your Apps</p>
             </div>
             <div className="step-box">
-              <div className="step-img" id="third-blue"></div>
+              <a href={`${baseUrl}/checkout`}>
+                <div className="step-img" id="third-blue"></div>
+              </a>
               <p>Review Your Order</p>
             </div>
             <div className="step-box">
-              <div className="step-img" id="fourth-blue"></div>
+              <a href={`${baseUrl}/payment`}>
+                <div className="step-img" id="fourth-blue"></div>
+              </a>
               <p>Select Payment Method</p>
             </div>
             <div className="step-box">
