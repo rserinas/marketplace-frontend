@@ -12,6 +12,14 @@
 
 .gateway-solo p {
     margin-top: 15px;
+    line-height:25px;
+}
+
+.available {
+    background-color: green;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 0px 25px 10px;
 }
 
 .gateway-img {
