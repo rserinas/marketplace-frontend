@@ -37,6 +37,10 @@ class DomainSearch extends Component {
 
   submitSearch = () => {
     
+    if (this.props.alert.error !== 2) {
+      this.props.showAlert({ error: 2, msg: '' });
+    }
+
     this.props.goCheckout(false);
 
     let alert = {};
@@ -240,6 +244,13 @@ class DomainSearch extends Component {
                   {this.props.result.availability === 'available' ? 
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
+                      - or - 
+                      <p>
+                        <strong>
+                          {this.props.result.pesoPrice ? 
+                          '₱ ' + this.props.result.pesoPrice.toFixed(2) + ' / year' : 'No Peso result.' }
+                        </strong>
+                      </p>
                       <button onClick={this.addToCart} className="btn btn-cart btn-md">
                         Proceed to Checkout
                       </button>

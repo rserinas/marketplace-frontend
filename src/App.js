@@ -47,6 +47,9 @@ class App extends Component {
     // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
 
     sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
+
+    sessionStorage.setItem('fixerUrl', 'http://data.fixer.io/api/');
+    sessionStorage.setItem('fixerApiKey', '4240e4c004e509403492088b44de4356');
   }
 
   login = () => {

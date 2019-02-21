@@ -8,20 +8,38 @@ export const showAlert = data => dispatch => {
 
 
 export const showTotal = data => dispatch => {
+    
     let disc = 0;
     if (sessionStorage.getItem('discount')) {
         disc = sessionStorage.getItem('discount')
     }
-    let buff = {
-        subTotal: data.subTotal,
-        discount: disc,
-        total: (data.subTotal - disc),
-        cart: data.details
-    };
+    
+    let tempTotal = (data.subTotal - disc)
+    const fixerUrl = sessionStorage.getItem('fixerUrl');
+    const key = sessionStorage.getItem('fixerApiKey');
+    
+    fetch (`${fixerUrl}/latest?access_key=${key}`)
+    .then(res => res.json())
+    .then(subData => {
+        let pesoPrice = 0;
+        if (subData.success) {
+            pesoPrice = (tempTotal/subData.rates.USD) * subData.rates.PHP;
+        } 
+        
+        sessionStorage.setItem('pesoTotal', pesoPrice);
 
-    return dispatch({
-        type: 'SHOW_TOTAL',
-        payload: buff
+        let buff = {
+            subTotal: data.subTotal,
+            discount: disc,
+            total: tempTotal,
+            pesoTotal: pesoPrice,
+            cart: data.details
+        };
+
+        return dispatch({
+            type: 'SHOW_TOTAL',
+            payload: buff
+        });
     });
 };
 

@@ -89,8 +89,8 @@ class Payment extends Component {
   showPayPal = () => {
     
     let env = 'sandbox'; // you can set here to 'production' for production
-    let currency = 'USD'; // or you can set this value from your props or state
-    let total = this.props.user.total; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+    let currency = 'PHP'; // or you can set this value from your props or state
+    let total = this.props.user.pesoTotal; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
@@ -125,16 +125,20 @@ class Payment extends Component {
 
   showDetails = () => {
     
+    if (this.props.alert.error !== 2) {
+      this.props.showAlert({ error: 2, msg: '' });
+    }
+
     let title = '';
     switch (this.props.trans.option) {
       case 'stripe':
-        title = 'Complete your payment using Credit or Debit Card.';
+        title = 'Credit or Debit Card.';
         break;
       case 'paypal':
         title = 'Complete your payment using PayPal.';
         break;
       case 'coins':
-        title = 'Complete your payment using Coins.ph.';
+        title = 'Coins.ph.';
         break;
       default:
         title = 'Complete your payment.';
@@ -154,7 +158,8 @@ class Payment extends Component {
             }<br />
             {this.props.user.email}
           </p>
-          <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong>
+          <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong><br />
+          <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
         </div>
       );
     }
@@ -162,7 +167,6 @@ class Payment extends Component {
 
   render() {
     let baseUrl = sessionStorage.getItem('baseUrl');
-
     
     return (
       <React.Fragment>
