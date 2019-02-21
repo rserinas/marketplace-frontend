@@ -156,21 +156,43 @@ class DomainSearch extends Component {
           <p className="banner-p">Search the availability of your desired domain</p>
           <div className="step-container">
             <div className="step-box">
-              <div className="step-img" id="first-blue"></div>
+              <a href={`${baseUrl}/signup`}>
+                <div className="step-img" id="first-blue"></div>
+              </a>
               <p className="p-blue">Create Your Account</p>
             </div>
             <div className="step-box">
-              <div className="step-img" id="second-blue"></div>
+              <a href={`${baseUrl}/market-page`}>
+                <div className="step-img" id="second-blue"></div>
+              </a>
               <p className="p-blue">Select Your Apps</p>
             </div>
-            <div className="step-box">
-              <div className="step-img" id="third"></div>
-              <p>Review Your Order</p>
-            </div>
-            <div className="step-box">
-              <div className="step-img" id="fourth"></div>
-              <p>Select Payment Method</p>
-            </div>
+            { sessionStorage.getItem('cart') ?
+              <div className="step-box">
+                <a href={`${baseUrl}/checkout`}>
+                  <div className="step-img" id="third-blue"></div>
+                </a>
+                <p>Review Your Order</p>
+              </div>
+            :
+              <div className="step-box">
+                <div className="step-img" id="third"></div>
+                <p>Review Your Order</p>
+              </div>
+            }
+            { sessionStorage.getItem('payment') ?
+              <div className="step-box">
+                <a href={`${baseUrl}/payment`}>
+                  <div className="step-img" id="fourth-blue"></div>
+                </a>
+                <p>Select Payment Method</p>
+              </div>
+            :
+              <div className="step-box">
+                <div className="step-img" id="fourth"></div>
+                <p>Select Payment Method</p>
+              </div>
+            }
             <div className="step-box">
               <div className="step-img" id="fifth"></div>
               <p>Get Started</p>

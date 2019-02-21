@@ -65,6 +65,10 @@ class App extends Component {
     sessionStorage.removeItem('sms_verify');
     sessionStorage.removeItem('cartCount');
     sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('payment');
+    sessionStorage.removeItem('subTotal');
+    sessionStorage.removeItem('discount');
+    sessionStorage.removeItem('total');
 
     this.login();
   }
