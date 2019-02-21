@@ -142,8 +142,9 @@ class App extends Component {
             <Route path="/privacy-policy" component={ PrivacyPolicy } exact />
           </Switch>
           <div className="footer">
-              An Xtendly Company<br />
-              &copy; 2019 Prosperna 
+            <div className="footer-img"></div>
+            An Xtendly Company<br />
+            &copy; 2019 Prosperna 
           </div>
         </div>
         </BrowserRouter>
@@ -174,8 +175,9 @@ class App extends Component {
               <Route path="/privacy-policy" component={ PrivacyPolicy } exact />
             </Switch>
             <div className="footer">
-                An Xtendly Company<br />
-                &copy; 2019 Prosperna 
+              <div className="footer-img"></div>
+              An Xtendly Company<br />
+              &copy; 2019 Prosperna 
             </div>
           </div>
         </BrowserRouter>

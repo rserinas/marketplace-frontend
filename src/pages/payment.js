@@ -192,7 +192,7 @@ class Payment extends Component {
                   </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                  <p>AVAILABLE</p>
+                  <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('paypal')}>
                       <div id="pay-paypal" className="gateway-img"></div>
                       <p>Paypal</p>

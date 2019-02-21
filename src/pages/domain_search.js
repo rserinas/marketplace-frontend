@@ -122,7 +122,9 @@ class DomainSearch extends Component {
       sessionStorage.setItem('cartCount', totalCount);
       sessionStorage.setItem('cart', JSON.stringify(cart));
       
-      this.props.goCheckout(true);
+      const baseUrl = sessionStorage.getItem('baseUrl');
+      window.location = `${baseUrl}/checkout`;
+      // this.props.goCheckout(true);
     } 
     
     // sessionStorage.setItem('cartCount', totalCount);
@@ -217,7 +219,7 @@ class DomainSearch extends Component {
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
                       <button onClick={this.addToCart} className="btn btn-cart btn-md">
-                        Add To Cart
+                        Proceed to Checkout
                       </button>
                     </React.Fragment>
                   : 
@@ -232,7 +234,7 @@ class DomainSearch extends Component {
               :
                 null
               }
-              {(this.props.checkout) ?
+              {/* {(this.props.checkout) ?
                 <div className="checkout-box">
                   <button onClick={this.gotoReview} className="btn btn-cart btn-md"
                   style={{margin:'0px auto 20px'}}>
@@ -243,7 +245,7 @@ class DomainSearch extends Component {
                 </div>
               : 
                 ''
-              }
+              } */}
             </div>
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
