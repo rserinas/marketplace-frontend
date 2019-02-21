@@ -51,6 +51,10 @@ class Signup extends Component {
 
   submitRecord = () => {
     
+    if (this.props.alert.error !== 2) {
+      this.props.showAlert({ error: 2, msg: '' });
+    }
+    
     let alert = {};
     let re = null;
 

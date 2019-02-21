@@ -92,6 +92,11 @@ class Checkout extends Component {
             total = parseFloat(this.props.trans.total).toFixed(2);
         }
 
+        let pesoTotal = 0.00;
+        if (this.props.trans.pesoTotal) {
+            pesoTotal = parseFloat(this.props.trans.pesoTotal).toFixed(2);
+        }
+
     return (
       <React.Fragment>
         <div className="banner">
@@ -199,6 +204,15 @@ class Checkout extends Component {
                         </td>
                         <td  className="col-xs-2" align="right">
                             <strong>$ {total}</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="col-xs-7"></td><td></td>
+                        <td className="col-xs-3" align="right">
+                            <strong>PESO TOTAL</strong>
+                        </td>
+                        <td  className="col-xs-2" align="right">
+                            <strong>₱ {pesoTotal}</strong>
                         </td>
                     </tr>
                     <tr>

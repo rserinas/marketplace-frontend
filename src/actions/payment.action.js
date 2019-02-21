@@ -43,7 +43,8 @@ export const getPayOption = opt => dispatch => {
                 status:     data.user_status,
                 subTotal:   sessionStorage.getItem('subTotal'),
                 discount:   sessionStorage.getItem('discount'),
-                total:      sessionStorage.getItem('total')
+                total:      sessionStorage.getItem('total'),
+                pesoTotal:  sessionStorage.getItem('pesoTotal'),
             };
             dispatch({
                 type: 'SHOW_PAY_OPTION',

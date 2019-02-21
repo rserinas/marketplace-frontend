@@ -125,16 +125,20 @@ class Payment extends Component {
 
   showDetails = () => {
     
+    if (this.props.alert.error !== 2) {
+      this.props.showAlert({ error: 2, msg: '' });
+    }
+
     let title = '';
     switch (this.props.trans.option) {
       case 'stripe':
-        title = 'Complete your payment using Credit or Debit Card.';
+        title = 'Credit or Debit Card.';
         break;
       case 'paypal':
         title = 'Complete your payment using PayPal.';
         break;
       case 'coins':
-        title = 'Complete your payment using Coins.ph.';
+        title = 'Coins.ph.';
         break;
       default:
         title = 'Complete your payment.';
@@ -154,7 +158,8 @@ class Payment extends Component {
             }<br />
             {this.props.user.email}
           </p>
-          <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong>
+          <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong><br />
+          <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
         </div>
       );
     }
@@ -162,7 +167,6 @@ class Payment extends Component {
 
   render() {
     let baseUrl = sessionStorage.getItem('baseUrl');
-
     
     return (
       <React.Fragment>
