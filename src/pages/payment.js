@@ -89,8 +89,8 @@ class Payment extends Component {
   showPayPal = () => {
     
     let env = 'sandbox'; // you can set here to 'production' for production
-    let currency = 'USD'; // or you can set this value from your props or state
-    let total = this.props.user.total; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+    let currency = 'PHP'; // or you can set this value from your props or state
+    let total = this.props.user.pesoTotal; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
