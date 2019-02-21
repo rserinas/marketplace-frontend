@@ -244,13 +244,13 @@ class DomainSearch extends Component {
                   {this.props.result.availability === 'available' ? 
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
-                      - or - 
+                      {/* - or - 
                       <p>
                         <strong>
                           {this.props.result.pesoPrice ? 
                           '₱ ' + this.props.result.pesoPrice.toFixed(2) + ' / year' : 'No Peso result.' }
                         </strong>
-                      </p>
+                      </p> */}
                       <button onClick={this.addToCart} className="btn btn-cart btn-md">
                         Proceed to Checkout
                       </button>

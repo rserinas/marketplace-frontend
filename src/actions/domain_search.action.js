@@ -49,28 +49,26 @@ export const submitDomain = data => dispatch => {
             });
         }
         else {
-            const fixerUrl = sessionStorage.getItem('fixerUrl');
-            const key = sessionStorage.getItem('fixerApiKey');
-            fetch (`${fixerUrl}/latest?access_key=${key}`)
-            .then(res => res.json())
-            .then(subData => {
-                let toPush = {};
-                if (subData.success) {
-                    data.pesoPrice = (data.price/subData.rates.USD) * subData.rates.PHP;
-                } else {
-                    console.log(subData);
-                    data.pesoPrice = 0 ;
-                }
-                
-                // let buff = JSON.parse(data);
-                // buff = buff.slice();
-                // buff.push(toPush);
-                // data = buff;
-                
-                dispatch({
-                    type: 'DOMAIN_SEARCH',
-                    payload: data
-                });
+            // const fixerUrl = sessionStorage.getItem('fixerUrl');
+            // const key = sessionStorage.getItem('fixerApiKey');
+            // fetch (`${fixerUrl}/latest?access_key=${key}`)
+            // .then(res => res.json())
+            // .then(subData => {
+            //     let toPush = {};
+            //     if (subData.success) {
+            //         data.pesoPrice = (data.price/subData.rates.USD) * subData.rates.PHP;
+            //     } else {
+            //         console.log(subData);
+            //         data.pesoPrice = 0 ;
+            //     }
+            //     dispatch({
+            //         type: 'DOMAIN_SEARCH',
+            //         payload: data
+            //     });
+            // });
+            dispatch({
+                type: 'DOMAIN_SEARCH',
+                payload: data
             });
         }
     })
