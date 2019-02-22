@@ -95,9 +95,19 @@ class App extends Component {
     if (cartCount != null) {
       return ( 
         <div style={{display:'inline-block'}}> 
-        <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
-        <span className="badge">{cartCount}</span>
-        <button onClick={this.gotoCheckout} className="btn btn-cart btn-md">Checkout</button>
+          <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
+          <span className="badge">{cartCount}</span>
+          { sessionStorage.getItem('userId') ? 
+            <button onClick={this.gotoCheckout} className="btn btn-cart btn-md">Checkout</button>
+          : null 
+          }
+        </div>
+      );
+    } else {
+      return (
+        <div style={{display:'inline-block'}}> 
+          <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
+          <span className="badge">0</span>
         </div>
       );
     }
@@ -135,18 +145,18 @@ class App extends Component {
             </div>
           </div>
           <Switch>
-            <Route path="/" component={ SignUp } exact />
+            <Route path="/" component={ MarketPage } exact />
+            <Route path="/domain-search" component={ DomainSearch } exact />
+            <Route path="/signup" component={ SignUp } exact />
             <Route path="/email-verified" component={ EmailVerified } exact />
             <Route path="/email-not-verified" component={ EmailNotVerified } exact />
-            <Route path="/verify-sms" component={ SmsVerify } exact />
+            <Route path="/terms-of-service" component={ Tos } exact />
+            <Route path="/privacy-policy" component={ PrivacyPolicy } exact />
             <Route path="/login" component={ Login } exact />
-            <Route path="/market-page" component={ MarketPage } exact />
-            <Route path="/domain-search" component={ DomainSearch } exact />
+            <Route path="/verify-sms" component={ SmsVerify } exact />
             <Route path="/checkout" component={ Checkout } exact />
             <Route path="/payment" component={ Payment } exact />
             <Route path="/get-started" component={ GetStarted } exact />
-            <Route path="/terms-of-service" component={ Tos } exact />
-            <Route path="/privacy-policy" component={ PrivacyPolicy } exact />
           </Switch>
           <div className="footer">
             <div className="footer-img"></div>
@@ -170,16 +180,19 @@ class App extends Component {
                 <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
               </div>
               <div className="header-panel">
+                { this.showCart() }
                 <button onClick={this.login} className="btn btn-default btn-lg">Login</button>
               </div>
             </div>
             <Switch>
-              <Route path="/" component={ SignUp } exact />
+              <Route path="/" component={ MarketPage } exact />
+              <Route path="/domain-search" component={ DomainSearch } exact />
+              <Route path="/signup" component={ SignUp } exact />
               <Route path="/email-verified" component={ EmailVerified } exact />
               <Route path="/email-not-verified" component={ EmailNotVerified } exact />
-              <Route path="/login" component={ Login } exact />
               <Route path="/terms-of-service" component={ Tos } exact />
               <Route path="/privacy-policy" component={ PrivacyPolicy } exact />
+              <Route path="/login" component={ Login } exact />
             </Switch>
             <div className="footer">
               <div className="footer-img"></div>

@@ -6,7 +6,7 @@ class getStarted extends Component {
   gotoMarket = () => {
     const baseUrl = sessionStorage.getItem('baseUrl');
 
-    window.location = `${baseUrl}/market-page`;
+    window.location = `${baseUrl}/`;
   };
 
   render() {
@@ -16,7 +16,7 @@ class getStarted extends Component {
           <div className="container-md">
             <div className="ellipse-icon"></div>
             <h1>Thank you for your business!</h1>
-            <p>Your account is now activated.</p>
+            <p>Our Prosperna Team Tech Support will email you once your domain has been activated.</p>
             <button className="btn btn-primary btn-lg" 
             onClick={ this.gotoMarket }>
                 Go Back to Marketplace

@@ -36,8 +36,9 @@ class CheckoutForm extends Component {
           sessionStorage.removeItem('cart');
           sessionStorage.removeItem('subTotal');
           sessionStorage.removeItem('discount');
-          sessionStorage.removeItem('total');
-          
+          sessionStorage.removeItem('total');      
+          sessionStorage.removeItem('payment');
+    
           const baseUrl = sessionStorage.getItem('baseUrl');
           window.location = `${baseUrl}/get-started`;
         }

@@ -157,25 +157,18 @@ class Signup extends Component {
           <p className="banner-p">Already have an Account? <a href={`${baseUrl}/login`}>Log in</a></p>
           <div className="step-container">
             <div className="step-box">
-              <a href={`${baseUrl}/signup`}>
+              <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
+              </a>
+              <p className="p-blue">Select Your Apps</p>
+            </div>      
+            <div className="step-box">
+              <a href={`${baseUrl}/signup`}>
+                <div className="step-img" id="second-blue"></div>
               </a>
               <p className="p-blue">Create Your Account</p>
             </div>
-            { sessionStorage.getItem('userId') ?
-              <div className="step-box">
-                <a href={`${baseUrl}/market-page`}>
-                  <div className="step-img" id="second-blue"></div>
-                </a>
-                <p className="p-blue">Select Your Apps</p>
-              </div>
-            :
-              <div className="step-box">
-                <div className="step-img" id="second"></div>
-                <p className="p-blue">Select Your Apps</p>
-              </div>
-            }
-            { sessionStorage.getItem('cart') ?
+            { sessionStorage.getItem('cart') && sessionStorage.getItem('userId') ?
               <div className="step-box">
                 <a href={`${baseUrl}/checkout`}>
                   <div className="step-img" id="third-blue"></div>

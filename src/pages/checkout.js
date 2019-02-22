@@ -102,18 +102,18 @@ class Checkout extends Component {
         <div className="banner">
           <h3 className="banner-header">Order Summary</h3>
           <p className="banner-p">Review Your Order</p>
+          <div className="step-box">
+            <a href={`${baseUrl}/`}>
+            <div className="step-img" id="first-blue"></div>
+            </a>
+            <p className="p-blue">Select Your Apps</p>
+          </div>
           <div className="step-container">
             <div className="step-box">
               <a href={`${baseUrl}/signup`}>
-                <div className="step-img" id="first-blue"></div>
-              </a>
-              <p className="p-blue">Create Your Account</p>
-            </div>
-            <div className="step-box">
-              <a href={`${baseUrl}/market-page`}>
                 <div className="step-img" id="second-blue"></div>
               </a>
-              <p className="p-blue">Select Your Apps</p>
+              <p className="p-blue">Create Your Account</p>
             </div>
             <div className="step-box">
               <a href={`${baseUrl}/checkout`}>
