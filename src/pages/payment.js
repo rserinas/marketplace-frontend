@@ -207,7 +207,7 @@ class Payment extends Component {
         <div className="container">
             <div className="gateway-container">
                 <div className="col-xs-2 gateway-solo">
-                  <p>COMING SOON</p>
+                <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('stripe')}>
                       <div id="pay-stripe" className="gateway-img"></div>
                       <p>Credit or Debit Card</p>
