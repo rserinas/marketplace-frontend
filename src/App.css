@@ -126,19 +126,19 @@ body {
 }
 
 #first {
-  background: url('/useraccount.png') no-repeat center center;
-}
-
-#first-blue {
-  background: url('/useraccountblue.png') no-repeat center center;
-}
-
-#second {
   background: url('/select.png') no-repeat center center;
 }
 
-#second-blue {
+#first-blue {
   background: url('/selectblue.png') no-repeat center center;
+}
+
+#second {
+  background: url('/useraccount.png') no-repeat center center;
+}
+
+#second-blue {
+  background: url('/useraccountblue.png') no-repeat center center;
 }
 
 #third {

@@ -127,7 +127,12 @@ class DomainSearch extends Component {
       sessionStorage.setItem('cart', JSON.stringify(cart));
       
       const baseUrl = sessionStorage.getItem('baseUrl');
-      window.location = `${baseUrl}/checkout`;
+
+      if (sessionStorage.getItem('userId')) {
+        window.location = `${baseUrl}/checkout`;
+      } else {
+        window.location = `${baseUrl}/signup`;
+      }
       // this.props.goCheckout(true);
     } 
     
@@ -138,10 +143,10 @@ class DomainSearch extends Component {
   };
 
 
-  gotoReview = () => {
-    const baseUrl = sessionStorage.getItem('baseUrl');
-    window.location = `${baseUrl}/checkout`;
-  };
+  // gotoReview = () => {
+  //   const baseUrl = sessionStorage.getItem('baseUrl');
+  //   window.location = `${baseUrl}/checkout`;
+  // };
 
   
   render() {
@@ -160,18 +165,27 @@ class DomainSearch extends Component {
           <p className="banner-p">Search the availability of your desired domain</p>
           <div className="step-container">
             <div className="step-box">
-              <a href={`${baseUrl}/signup`}>
+              <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
-              </a>
-              <p className="p-blue">Create Your Account</p>
-            </div>
-            <div className="step-box">
-              <a href={`${baseUrl}/market-page`}>
-                <div className="step-img" id="second-blue"></div>
               </a>
               <p className="p-blue">Select Your Apps</p>
             </div>
-            { sessionStorage.getItem('cart') ?
+            { sessionStorage.getItem('userId') ? 
+              <div className="step-box">
+                <a href={`${baseUrl}/signup`}>
+                    <div className="step-img" id="second-blue"></div>
+                </a>
+                <p className="p-blue">Create Your Account</p>
+              </div>
+            :
+              <div className="step-box">
+                <a href={`${baseUrl}/signup`}>
+                    <div className="step-img" id="second"></div>
+                </a>
+                <p className="p-blue">Create Your Account</p>
+              </div>
+            }
+            { sessionStorage.getItem('cart') && sessionStorage.getItem('userId') ?
               <div className="step-box">
                 <a href={`${baseUrl}/checkout`}>
                   <div className="step-img" id="third-blue"></div>
@@ -252,7 +266,7 @@ class DomainSearch extends Component {
                         </strong>
                       </p> */}
                       <button onClick={this.addToCart} className="btn btn-cart btn-md">
-                        Proceed to Checkout
+                        Proceed
                       </button>
                     </React.Fragment>
                   : 

@@ -16,8 +16,9 @@ export const acceptTOS = data => dispatch => {
 
 export const submitSignup = data => dispatch => {
     
-    let apiUrl = sessionStorage.getItem('apiUrl');
-    
+    const apiUrl = sessionStorage.getItem('apiUrl');
+    // const baseUrl = sessionStorage.getItem('baseUrl');
+
     fetch (`${apiUrl}/user/put`, {
         method: 'POST',
         dataType: 'jsonp',
@@ -25,6 +26,7 @@ export const submitSignup = data => dispatch => {
     })
     .then(res => res.json())
     .then(data => {
+        // window.location = `${baseUrl}/login`;
         dispatch({
             type: 'CREATE_ACCOUNT',
             payload: data
