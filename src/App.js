@@ -72,6 +72,10 @@ class App extends Component {
     sessionStorage.removeItem('subTotal');
     sessionStorage.removeItem('discount');
     sessionStorage.removeItem('total');
+    sessionStorage.removeItem('pesoTotal');
+    sessionStorage.removeItem('transId');
+    sessionStorage.removeItem('paymentUrl');
+    sessionStorage.removeItem('extTransId');
 
     let baseUrl = sessionStorage.getItem('baseUrl');
 

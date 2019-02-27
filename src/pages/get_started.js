@@ -10,6 +10,10 @@ class getStarted extends Component {
       sessionStorage.removeItem('discount');
       sessionStorage.removeItem('total');
       sessionStorage.removeItem('payment');
+      sessionStorage.removeItem('pesoTotal');
+      sessionStorage.removeItem('transId');
+      sessionStorage.removeItem('paymentUrl');
+      sessionStorage.removeItem('extTransId');
     }
   }
   
