@@ -21,7 +21,8 @@ class CheckoutForm extends Component {
     token.subTotal = sessionStorage.getItem('subTotal');
     token.discount = sessionStorage.getItem('discount');
     token.total = sessionStorage.getItem('total');
-
+    token.transId = sessionStorage.getItem('transId');
+console.log(token);
     fetch (`${apiUrl}/charge`, {
       method: 'POST',
       dataType: 'jsonp',

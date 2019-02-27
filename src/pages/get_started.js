@@ -2,8 +2,19 @@ import React, { Component } from 'react';
 import '../styles/get_started.css';
 
 class getStarted extends Component {
+  constructor() {
+    if (sessionStorage.getItem('total')) {
+      sessionStorage.removeItem('cartCount');
+      sessionStorage.removeItem('cart');
+      sessionStorage.removeItem('subTotal');
+      sessionStorage.removeItem('discount');
+      sessionStorage.removeItem('total');
+      sessionStorage.removeItem('payment');
+    }
+  }
   
   gotoMarket = () => {
+        
     const baseUrl = sessionStorage.getItem('baseUrl');
 
     window.location = `${baseUrl}/`;

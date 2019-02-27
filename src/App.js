@@ -55,7 +55,7 @@ class App extends Component {
   login = () => {
     let baseUrl = sessionStorage.getItem('baseUrl');
 
-    window.location = `${baseUrl}/login`;
+    window.location = `${baseUrl}`;
   };
 
   logout = () => {
@@ -134,7 +134,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="header">
             <div className="logo-box">
-              <a href={`${baseUrl}/market-page`}>
+              <a href={`${baseUrl}`}>
                 <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
               </a>
             </div>
@@ -171,13 +171,17 @@ class App extends Component {
 
 
   isLoggedOut = () => {
+    const baseUrl     = sessionStorage.getItem('baseUrl');
+
     return (
       <Provider store={ store }>
         <BrowserRouter>
           <div className="container-fluid">
             <div className="header">
               <div className="logo-box">
-                <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                <a href={`${baseUrl}`}>
+                  <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                </a>
               </div>
               <div className="header-panel">
                 { this.showCart() }
