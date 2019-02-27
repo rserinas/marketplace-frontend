@@ -41,7 +41,7 @@ console.log(token);
           sessionStorage.removeItem('payment');
     
           const baseUrl = sessionStorage.getItem('baseUrl');
-          window.location = `${baseUrl}/get-started`;
+          window.location = `${baseUrl}/get-started/stripe`;
         }
     })
     .catch((err) => { console.log(err); });
