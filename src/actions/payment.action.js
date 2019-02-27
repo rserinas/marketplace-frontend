@@ -41,11 +41,8 @@ export const getPayOption = opt => dispatch => {
         else {
             const fname = sessionStorage.getItem('fname');
             sessionStorage.setItem('transId', data.transId);
-
-            if ( ! sessionStorage.getItem('paymentUrl') && data.paymentUrl) {
-                sessionStorage.setItem('paymentUrl', data.paymentUrl);
-                sessionStorage.setItem('extTransId', data.extTransId);
-            }
+            sessionStorage.setItem('paymentUrl', data.paymentUrl);
+            sessionStorage.setItem('extTransId', data.extTransId);
 
             let client = {
                 name:       data.fname + ' ' + data.lname,

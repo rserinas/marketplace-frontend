@@ -88,7 +88,11 @@ class Payment extends Component {
           sessionStorage.removeItem('discount');
           sessionStorage.removeItem('total');
           sessionStorage.removeItem('payment');
-
+          sessionStorage.removeItem('pesoTotal');
+          sessionStorage.removeItem('transId');
+          sessionStorage.removeItem('paymentUrl');
+          sessionStorage.removeItem('extTransId');
+          
           const baseUrl = sessionStorage.getItem('baseUrl');
           window.location = `${baseUrl}/get-started`;
         }
@@ -110,8 +114,8 @@ class Payment extends Component {
   };
 
   showCoins = () => {
-    const paymentUrl = this.props.user.paymentUrl;
-
+    const paymentUrl = sessionStorage.getItem('paymentUrl');
+    console.log(sessionStorage.getItem('paymentUrl'));
     return (
       <div>
         <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
@@ -192,7 +196,7 @@ class Payment extends Component {
             {this.props.user.email}
           </p>
           <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong><br />
-          {/* <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong> */}
+          <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
         </div>
       );
     }
@@ -254,7 +258,7 @@ class Payment extends Component {
                   </a>
                 </div>
                 <div className="col-xs-2 gateway-solo">
-                  <p>COMING SOON</p>
+                <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('coins')}>
                       <div id="pay-coins" className="gateway-img"></div>
                       <p>Coins.ph</p>
