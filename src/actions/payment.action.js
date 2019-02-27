@@ -15,6 +15,7 @@ export const getPayOption = opt => dispatch => {
         total: sessionStorage.getItem('total'),
         discount: sessionStorage.getItem('discount'),
         subTotal: sessionStorage.getItem('subTotal'),
+        pesoTotal: sessionStorage.getItem('pesoTotal'),
         transId: sessionStorage.getItem('transId'),
         payment: opt,
         userId: sessionStorage.getItem('userId')
@@ -41,6 +42,11 @@ export const getPayOption = opt => dispatch => {
             const fname = sessionStorage.getItem('fname');
             sessionStorage.setItem('transId', data.transId);
 
+            if ( ! sessionStorage.getItem('paymentUrl') && data.paymentUrl) {
+                sessionStorage.setItem('paymentUrl', data.paymentUrl);
+                sessionStorage.setItem('extTransId', data.extTransId);
+            }
+
             let client = {
                 name:       data.fname + ' ' + data.lname,
                 company:    data.company,
@@ -54,10 +60,10 @@ export const getPayOption = opt => dispatch => {
                 subTotal:   sessionStorage.getItem('subTotal'),
                 discount:   sessionStorage.getItem('discount'),
                 total:      sessionStorage.getItem('total'),
-                // pesoTotal:  sessionStorage.getItem('pesoTotal'),
+                pesoTotal:  sessionStorage.getItem('pesoTotal'),
                 transId:    sessionStorage.getItem('transId'),
-                paymentUrl: data.paymentUrl,
-                extTransId: data.extTransId
+                paymentUrl: sessionStorage.getItem('paymentUrl'),
+                extTransId: sessionStorage.getItem('extTransId')
             };
             dispatch({
                 type: 'SHOW_PAY_OPTION',
