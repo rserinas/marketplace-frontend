@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import '../styles/get_started.css';
 
 class getStarted extends Component {
-  constructor() {
-    if (sessionStorage.getItem('total')) {
-      sessionStorage.removeItem('cartCount');
-      sessionStorage.removeItem('cart');
-      sessionStorage.removeItem('subTotal');
-      sessionStorage.removeItem('discount');
-      sessionStorage.removeItem('total');
-      sessionStorage.removeItem('payment');
-      sessionStorage.removeItem('pesoTotal');
-      sessionStorage.removeItem('transId');
-      sessionStorage.removeItem('paymentUrl');
-      sessionStorage.removeItem('extTransId');
-    }
+  
+  constructor (props) {
+    super (props);
+  
+    // if (sessionStorage.getItem('total')) {
+    //   sessionStorage.removeItem('cartCount');
+    //   sessionStorage.removeItem('cart');
+    //   sessionStorage.removeItem('subTotal');
+    //   sessionStorage.removeItem('discount');
+    //   sessionStorage.removeItem('total');
+    //   sessionStorage.removeItem('payment');
+    //   sessionStorage.removeItem('pesoTotal');
+    //   sessionStorage.removeItem('transId');
+    //   sessionStorage.removeItem('paymentUrl');
+    //   sessionStorage.removeItem('extTransId');
+    // }
   }
   
   gotoMarket = () => {
