@@ -8,14 +8,23 @@ export const showAlert = data => dispatch => {
 
 
 export const getPayOption = opt => dispatch => {
+    
     let apiUrl = sessionStorage.getItem('apiUrl');
-    let userId = sessionStorage.getItem('userId');
-    console.log('userId: ', sessionStorage.getItem('userId'));
-    dispatch({
-        type: 'GET_LOADER',
-        payload: true
-    });
-    fetch (`${apiUrl}/user/get/${userId}`)
+    let data = {
+        cart: sessionStorage.getItem('cart'),
+        total: sessionStorage.getItem('total'),
+        discount: sessionStorage.getItem('discount'),
+        subTotal: sessionStorage.getItem('subTotal'),
+        transId: sessionStorage.getItem('transId'),
+        payment: opt,
+        userId: sessionStorage.getItem('userId')
+    };
+    console.log(data);
+    fetch (`${apiUrl}/user/transact`, {
+        method: 'POST',
+        dataType: 'jsonp',
+        body: JSON.stringify(data),
+    })
     .then(res => res.json())
     .then(data => {
         dispatch({
@@ -30,6 +39,7 @@ export const getPayOption = opt => dispatch => {
         }
         else {
             const fname = sessionStorage.getItem('fname');
+            sessionStorage.setItem('transId', data.transId);
 
             let client = {
                 name:       data.fname + ' ' + data.lname,
@@ -45,6 +55,9 @@ export const getPayOption = opt => dispatch => {
                 discount:   sessionStorage.getItem('discount'),
                 total:      sessionStorage.getItem('total'),
                 // pesoTotal:  sessionStorage.getItem('pesoTotal'),
+                transId:    sessionStorage.getItem('transId'),
+                paymentUrl: data.paymentUrl,
+                extTransId: data.extTransId
             };
             dispatch({
                 type: 'SHOW_PAY_OPTION',
@@ -54,3 +67,4 @@ export const getPayOption = opt => dispatch => {
         }
     });
 };
+

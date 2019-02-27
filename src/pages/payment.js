@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../CheckoutForm';
-import { showAlert, getPayOption } from '../actions/payment.action';
+import { showAlert, getPayOption, finishTransaction } from '../actions/payment.action';
 import '../styles/payment.css';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
@@ -60,16 +60,38 @@ class Payment extends Component {
 
   onPPSuccess = (payment) => {
     //console.log("The payment was succeeded!", payment);
-    //this.props.showAlert({ error: 0, msg: 'PayPal Payment was successful.' });
-    sessionStorage.removeItem('cartCount');
-    sessionStorage.removeItem('cart');
-    sessionStorage.removeItem('subTotal');
-    sessionStorage.removeItem('discount');
-    sessionStorage.removeItem('total');
-    sessionStorage.removeItem('payment');
-    
-    const baseUrl = sessionStorage.getItem('baseUrl');
-    window.location = `${baseUrl}/get-started`;
+    let data = {
+      transId:        sessionStorage.getItem('transId'),
+      extTransId:     payment.paymentID,
+      payment_method: 'paypal',
+      status:         'PD',
+      extUserId:      payment.payerID,
+      token:          payment.paymentToken
+    };
+
+    const apiUrl = sessionStorage.getItem('apiUrl');
+    console.log(data);
+    fetch (`${apiUrl}/user/transact/final`, {
+        method: 'POST',
+        dataType: 'jsonp',
+        body: JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.error) {
+          this.props.showAlert(data);
+        } else {
+          sessionStorage.removeItem('cartCount');
+          sessionStorage.removeItem('cart');
+          sessionStorage.removeItem('subTotal');
+          sessionStorage.removeItem('discount');
+          sessionStorage.removeItem('total');
+          sessionStorage.removeItem('payment');
+
+          const baseUrl = sessionStorage.getItem('baseUrl');
+          window.location = `${baseUrl}/get-started`;
+        }
+    });
   };
 
   onPPCancel = (data) => {
