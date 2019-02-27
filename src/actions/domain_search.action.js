@@ -66,6 +66,8 @@ export const submitDomain = data => dispatch => {
             //         payload: data
             //     });
             // });
+            data.pesoPrice = data.price * sessionStorage.getItem('pesoRate');
+
             dispatch({
                 type: 'DOMAIN_SEARCH',
                 payload: data

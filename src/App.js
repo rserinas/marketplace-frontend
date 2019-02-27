@@ -47,7 +47,7 @@ class App extends Component {
     // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
 
     sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
-
+    sessionStorage.setItem('pesoRate', 53);
     // sessionStorage.setItem('fixerUrl', 'http://data.fixer.io/api/');
     // sessionStorage.setItem('fixerApiKey', '4240e4c004e509403492088b44de4356');
   }
@@ -55,7 +55,7 @@ class App extends Component {
   login = () => {
     let baseUrl = sessionStorage.getItem('baseUrl');
 
-    window.location = `${baseUrl}`;
+    window.location = `${baseUrl}/login`;
   };
 
   logout = () => {
@@ -73,7 +73,9 @@ class App extends Component {
     sessionStorage.removeItem('discount');
     sessionStorage.removeItem('total');
 
-    this.login();
+    let baseUrl = sessionStorage.getItem('baseUrl');
+
+    window.location = `${baseUrl}`;
   }
 
   checkLogin = () => {

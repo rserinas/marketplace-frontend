@@ -54,6 +54,7 @@ class Payment extends Component {
         return this.showPayPal();
           break;
         case 'coins':
+        return this.showCoins();
           break;
     }
   }
@@ -106,6 +107,16 @@ class Payment extends Component {
     // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     this.props.showAlert({ error: 1, msg: err });
+  };
+
+  showCoins = () => {
+    const paymentUrl = this.props.user.paymentUrl;
+
+    return (
+      <div>
+        <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
+      </div>
+    );
   };
 
   showPayPal = () => {

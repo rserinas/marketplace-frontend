@@ -39,6 +39,23 @@
     cursor: pointer;
 }
 
+.coins-link {
+    display: inline-block;
+    margin: 20px auto;
+    background-color: green;
+    color:#FFFFFF;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 120%;
+    border-radius: 10px;
+}
+
+.coins-link:hover {
+    text-decoration: none;
+    color:#333333;
+    background-color: greenyellow;
+}
+
 #pay-stripe {
     background: url('/pay-stripe.png') no-repeat center center;
 }

@@ -15,12 +15,13 @@ export const showTotal = data => dispatch => {
     }
     
     let tempTotal = (data.subTotal - disc)
-    
+    let pesoPrice = tempTotal * sessionStorage.getItem('pesoRate');
+    sessionStorage.setItem('pesoTotal', pesoPrice);
     let buff = {
         subTotal: data.subTotal,
         discount: disc,
         total: tempTotal,
-        // pesoTotal: pesoPrice,
+        pesoTotal: pesoPrice,
         cart: data.details
     };
 
