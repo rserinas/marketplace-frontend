@@ -94,7 +94,7 @@ class Payment extends Component {
           sessionStorage.removeItem('extTransId');
           
           const baseUrl = sessionStorage.getItem('baseUrl');
-          window.location = `${baseUrl}/get-started?paypal=123`;
+          window.location = `${baseUrl}/get-started/finished`;
         }
     });
   };

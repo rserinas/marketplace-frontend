@@ -38,14 +38,14 @@ class Checkout extends Component {
     };
 
 
-    submitNewQty = (i, qty) => {
+    // submitNewQty = (i, qty) => {
 
-        const cart  = JSON.parse(sessionStorage.getItem('cart'));
+    //     const cart  = JSON.parse(sessionStorage.getItem('cart'));
 
-        if (cart[i]) {
-            this.props.fetchNewPrice(cart[i], qty, i);
-        }
-    };
+    //     if (cart[i]) {
+    //         this.props.fetchNewPrice(cart[i], qty, i);
+    //     }
+    // };
 
 
     gotoPayment = () => {
@@ -69,13 +69,14 @@ class Checkout extends Component {
             
             return ( 
             <tr key={i}>
-                <td>{a.product}</td>
+                <td>{a.product.toUpperCase()}</td>
                 <td>{a.description}</td>
                 <td>
-                    <select className="form-control col-xs-3" value={a.qty} 
+                    { a.qty + ' year' }
+                    {/* <select className="form-control col-xs-3" value={a.qty} 
                     id="" name="" onChange={(e) => this.submitNewQty(i, e.target.value)}>
                         <option value="1">1 yr</option>
-                    </select>
+                    </select> */}
                 </td>
                 <td align="right">${parseFloat(amt).toFixed(2)}</td>
             </tr>

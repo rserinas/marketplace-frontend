@@ -162,7 +162,7 @@ class App extends Component {
             <Route path="/verify-sms" component={ SmsVerify } exact />
             <Route path="/checkout" component={ Checkout } exact />
             <Route path="/payment" component={ Payment } exact />
-            <Route path="/get-started/:any" component={ GetStarted } />
+            <Route path="/get-started/finished" component={ GetStarted } />
           </Switch>
           <div className="footer">
             <div className="footer-img"></div>
