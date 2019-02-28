@@ -207,7 +207,7 @@ class Checkout extends Component {
                             <strong>$ {total}</strong>
                         </td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td className="col-xs-7"></td><td></td>
                         <td className="col-xs-3" align="right">
                             <strong>PESO TOTAL</strong>
@@ -215,7 +215,7 @@ class Checkout extends Component {
                         <td  className="col-xs-2" align="right">
                             <strong>₱ {pesoTotal}</strong>
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr>
                         <td className="col-xs-7"></td><td></td>
                         <td className="col-xs-5" className="pay-method" colSpan="2">

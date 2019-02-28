@@ -196,7 +196,7 @@ class Payment extends Component {
             {this.props.user.email}
           </p>
           <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong><br />
-          <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
+          {/* <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong> */}
         </div>
       );
     }
