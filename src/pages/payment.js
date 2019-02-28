@@ -65,7 +65,7 @@ class Payment extends Component {
       transId:        sessionStorage.getItem('transId'),
       extTransId:     payment.paymentID,
       payment_method: 'paypal',
-      status:         'PD',
+      status:         'pd',
       extUserId:      payment.payerID,
       token:          payment.paymentToken
     };
