@@ -169,13 +169,13 @@ class Payment extends Component {
     let title = '';
     switch (this.props.trans.option) {
       case 'stripe':
-        title = 'Credit or Debit Card.';
+        title = 'Complete your payment using Stripe.';
         break;
       case 'paypal':
         title = 'Complete your payment using PayPal.';
         break;
       case 'coins':
-        title = 'Coins.ph.';
+        title = 'Complete your payment using Coins.ph.';
         break;
       default:
         title = 'Complete your payment.';
@@ -195,8 +195,11 @@ class Payment extends Component {
             }<br />
             {this.props.user.email}
           </p>
-          <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong><br />
-          {/* <strong>PESO TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong> */}
+          {(this.props.trans.option != 'coins') ? 
+            <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong>
+          : 
+            <strong>PHP TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
+          }
         </div>
       );
     }
