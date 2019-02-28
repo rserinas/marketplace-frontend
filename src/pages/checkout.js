@@ -69,7 +69,7 @@ class Checkout extends Component {
             
             return ( 
             <tr key={i}>
-                <td>{a.product.toUpperCase()}</td>
+                <td>{a.product.charAt(0).toUpperCase() + a.product.slice(1)}</td>
                 <td>{a.description}</td>
                 <td>
                     { a.qty + ' year' }

@@ -50,9 +50,9 @@ console.log(token);
   render() {
     return (
       <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
+        <p>Enter your card details:</p>
         <CardElement />
-        <button className="btn btn-lg btn-primary" onClick={this.submit}>Pay Now</button>
+        <button className="btn btn-lg btn-cart" style={{margin: '30px auto 0px'}} onClick={this.submit}>Pay Now</button>
       </div>
     );
   }
