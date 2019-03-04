@@ -9,6 +9,20 @@ class MarketPage extends Component {
   };
 
 
+  gotoProsperna = () => {
+      window.location = `https://www.prosperna.com`;
+  };
+
+
+  gotoBuilder = () => {
+      window.location = `https://www.prosperna.com/affordable-real-estate-websites/`;
+  };
+
+  gotoLanding = () => {
+      window.location = `https://www.prosperna.com/create-real-estate-landing-pages-in-less-than-5-minutes/`;
+  };
+
+
   gotoNeverBounce = () => {
       window.location = `https://neverbounce.com/`;
   };
@@ -87,10 +101,12 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
                     <h4>CRM</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoProsperna}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,10 +114,12 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="builder"></div>
                     <h4>Website Builder</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Affordable Real Estate Websites Fast.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoBuilder}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,10 +127,12 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
                     <h4>Landing Page Builder</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Convert Social Media Traffic to Leads &amp; Signups</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoLanding}>More Info</button> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,13 +142,13 @@ class MarketPage extends Component {
             <div className="col-xs-4">
                 <div className="page-box">
                     <div className="shop-icon" id="domain"></div>
-                    <h4>Domain Name</h4>
-                    <p className="shop-details">Find your perfect domain name.</p>
+                    <h4>Domain Names</h4>
+                    <p className="shop-details">Find the perfect domain name.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
                             <button onClick={this.gotoDomain} 
-                            className="shop-btn btn btn-default btn-md">Search</button> 
+                            className="shop-btn btn btn-default btn-md">Search Now</button> 
                         </div>
                     </div>
                 </div>
@@ -179,7 +199,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="bounce"></div>
                     <h4>Never Bounce</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Improve Email Deliverability.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
