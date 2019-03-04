@@ -125,7 +125,7 @@ class Payment extends Component {
 
   showPayPal = () => {
     
-    let env = 'sandbox'; // you can set here to 'production' for production
+    let env = 'production'; // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
     let total = this.props.user.total // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
@@ -139,7 +139,7 @@ class Payment extends Component {
 
     const client = {
       sandbox:    'AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f',
-      production: 'YOUR-PRODUCTION-APP-ID',
+      production: 'access_token$production$sb2hxshjfkk3vzhj$66d1736065651c1a4be7768c85c81b04',
     }
     this.showDetails();
     return <PaypalExpressBtn env={env} client={client} currency={currency} total={total} 
