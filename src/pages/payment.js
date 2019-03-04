@@ -139,7 +139,7 @@ class Payment extends Component {
 
     const client = {
       sandbox:    'AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f',
-      production: 'access_token$production$sb2hxshjfkk3vzhj$66d1736065651c1a4be7768c85c81b04',
+      production: 'AXk4e1-HrsJlc6v6T9KAFwL52s__Wx7NJCQMYpPh6n1AAAninwJMhXi0hH9sLAAJFSSnXrlxfRhEo4am',
     }
     this.showDetails();
     return <PaypalExpressBtn env={env} client={client} currency={currency} total={total} 
