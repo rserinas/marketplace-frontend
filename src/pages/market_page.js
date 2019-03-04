@@ -7,6 +7,16 @@ class MarketPage extends Component {
     const baseUrl = sessionStorage.getItem('baseUrl');
     window.location = `${baseUrl}/domain-search`;      
   };
+
+
+  gotoNeverBounce = () => {
+      window.location = `https://neverbounce.com/`;
+  };
+
+
+  gotoContactPage = () => {
+    window.location = `https://www.prosperna.com/contact-us/`;      
+  };
   
     render() {
         const baseUrl = sessionStorage.getItem('baseUrl');
@@ -129,8 +139,10 @@ class MarketPage extends Component {
                     <h4>Facebook Advertising</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,8 +152,10 @@ class MarketPage extends Component {
                     <h4>Google Advertising</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                        <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,11 +165,13 @@ class MarketPage extends Component {
             <div className="col-xs-4">
                 <div className="page-box">
                     <div className="shop-icon" id="campaign"></div>
-                    <h4>Campaign HQ</h4>
+                    <h4>Marketing Automation</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                        <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,8 +181,10 @@ class MarketPage extends Component {
                     <h4>Never Bounce</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                        <button className="shop-btn btn btn-default btn-md" onClick={this.gotoNeverBounce}>More Info</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,8 +194,10 @@ class MarketPage extends Component {
                     <h4>Buyer's &amp; Seller's Portal</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
-                        <div className="more-info"><a href="#" className="info-link">More Info ></a></div>
-                        <div className="add-to-cart"><button className="shop-btn btn btn-default btn-md">Add to Cart</button> </div>                   
+                        <div className="more-info"></div>
+                        <div className="add-to-cart">
+                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
+                        </div>                   
                     </div>
                 </div>
             </div>
