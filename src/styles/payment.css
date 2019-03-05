@@ -40,7 +40,7 @@
 .coins-link {
     display: inline-block;
     margin: 20px auto;
-    background-color: green;
+    background-color: #2ca94f;
     color:#FFFFFF;
     padding: 15px 20px;
     font-weight: bold;
@@ -50,9 +50,10 @@
 
 .coins-link:hover {
     text-decoration: none;
-    color:#333333;
-    background-color: greenyellow;
+    color:#FFFFFF;
+    background-color: #35ca5e;
 }
+
 
 #pay-stripe {
     background: url('/pay-stripe.png') no-repeat center center;

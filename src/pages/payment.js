@@ -170,7 +170,7 @@ class Payment extends Component {
     let title = '';
     switch (this.props.trans.option) {
       case 'stripe':
-        title = 'Complete your payment using Stripe.';
+        title = 'Complete your payment using Credit or Debit Card.';
         break;
       case 'paypal':
         title = 'Complete your payment using PayPal.';
