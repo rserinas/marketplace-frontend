@@ -4,7 +4,11 @@ const initialState = {
     alert: {
         error: 2,
         msg: ''
-    }
+    },
+    country: {
+        isDefault: true,
+        states: [],
+    },
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +22,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 btnEnabled: action.payload
+            };
+        case 'SHOW_STATES':
+            return {
+                ...state,
+                country: action.payload
             };
         case 'CREATE_ACCOUNT':
             return {

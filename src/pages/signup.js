@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitSignup, acceptTOS, showAlert } from '../actions/signup.action';
+import { submitSignup, acceptTOS, showAlert, setState } from '../actions/signup.action';
 import '../styles/signup.css';
 
 
@@ -27,6 +27,7 @@ class Signup extends Component {
 
     this.seeTOS = this.seeTOS.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.checkCountry = this.checkCountry.bind(this);
   }
   
   handleInputChange(event) {
@@ -146,10 +147,27 @@ class Signup extends Component {
     this.props.submitSignup(data);
   };
 
+
+  checkCountry = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.id;
+    
+    this.setState({ [name]: value });
+
+    this.props.setState(value);
+  }
+
+
+  
   
   render() {
     const baseUrl = sessionStorage.getItem('baseUrl');
     
+    const showStates = this.props.country.states.map((e) => {
+      return <option value={e}>{e}</option>
+    });
+
     return (
       <React.Fragment>
         <div className="banner">
@@ -257,21 +275,48 @@ class Signup extends Component {
               <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.address2} id="address2" />
             </div>
+
+            <div className="form-group">
+              <label htmlFor="country">Country:</label>
+              <select className="form-control input-md"
+              id="country" name="country" onChange={this.checkCountry}>
+                <option value="">Select a country</option>
+                <option value="USA">USA</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Australia">Australia</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Myanmar">Myanmar</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Laos">Laos</option>
+                <option value="Brunei">Brunei</option>
+                <option value="Timor Leste">Timor Leste</option>
+                <option value="other">Other Country</option>              
+              </select>
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="state">State / Province:</label>
+              { this.props.country.isDefault ?
+                <input type="text" className="form-control input-md" onChange={this.handleInputChange}
+                value={this.props.record.state} id="state" />
+                :
+                <select className="form-control input-md"
+                id="state" name="state">
+                  {showStates}
+                </select>
+              }
+            </div>
+            
             <div className="form-group">
               <label htmlFor="city">City:</label>
               <input type="text" className="form-control input-md" onChange={this.handleInputChange}
               value={this.props.record.city} id="city" />
             </div>
-            <div className="form-group">
-              <label htmlFor="state">State:</label>
-              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-              value={this.props.record.state} id="state" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="country">Country:</label>
-              <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-              value={this.props.record.country} id="country" />
-            </div>
+
             <div className="form-group">
               <label htmlFor="zip">Zip Code:</label>
               <input type="text" className="form-control input-md" onChange={this.handleInputChange}
@@ -290,7 +335,7 @@ class Signup extends Component {
             </div>
             {this.props.alert.error !== 2 ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
-                <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
+                <strong style={{fontSize:'150%'}}>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
                 {this.props.alert.msg}
               </div>
             : ''
@@ -307,7 +352,8 @@ const mapStateToProps = state =>  {
   return {
     record: state.signup.record,
     tos: state.signup.btnEnabled,
-    alert: state.signup.alert
+    alert: state.signup.alert,
+    country: state.signup.country
   }
 }
 
@@ -315,7 +361,8 @@ const matchDispatchToProps = dispatch => {
   return bindActionCreators({
     submitSignup: submitSignup,
     acceptTOS: acceptTOS,
-    showAlert: showAlert
+    showAlert: showAlert,
+    setState: setState
   },
   dispatch
   )

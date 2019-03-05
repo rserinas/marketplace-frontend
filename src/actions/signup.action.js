@@ -14,6 +14,36 @@ export const acceptTOS = data => dispatch => {
     });
 };
 
+
+export const setState = data => dispatch => {
+
+    let buffer = new Array();
+    buffer.states = new Array();
+
+    if (data === 'USA') {
+        let usa = require('../json/us_states.json');
+
+        let x = Object.keys(usa);
+        x.forEach((element) => {
+            buffer.states.push(usa[element]);
+        });
+        buffer.isDefault = false;
+    } else if (data === 'Philippines') {
+        let phil = require('../json/provinces.json');
+        phil.RECORDS.forEach((element) => {
+            buffer.states.push(element.provDesc);
+        });
+        buffer.isDefault = false;
+    } else {
+        buffer.isDefault = true;
+    }
+    
+    dispatch({
+        type: 'SHOW_STATES',
+        payload: buffer
+    });
+};
+
 export const submitSignup = data => dispatch => {
     
     const apiUrl = sessionStorage.getItem('apiUrl');
