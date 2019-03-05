@@ -5,6 +5,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../CheckoutForm';
 import { showAlert, getPayOption, finishTransaction } from '../actions/payment.action';
 import '../styles/payment.css';
+import { Row, Col } from 'react-styled-flexboxgrid';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 class Payment extends Component {
@@ -213,6 +214,7 @@ class Payment extends Component {
         <div className="banner">
           <h3 className="banner-header">Select Payment Method</h3>
           <div className="step-container">
+            <div className="step-line"></div>
             <div className="step-box">
               <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
@@ -229,65 +231,66 @@ class Payment extends Component {
               <a href={`${baseUrl}/checkout`}>
                 <div className="step-img" id="third-blue"></div>
               </a>
-              <p>Review Your Order</p>
+              <p className="p-blue">Review Your Order</p>
             </div>
             <div className="step-box">
               <a href={`${baseUrl}/payment`}>
                 <div className="step-img" id="fourth-blue"></div>
               </a>
-              <p>Select Payment Method</p>
+              <p className="p-blue">Select Payment Method</p>
             </div>
             <div className="step-box">
               <div className="step-img" id="fifth"></div>
               <p>Get Started</p>
             </div>
-            <div className="step-line"></div>
           </div>
         </div>
         <div className="container">
             <div className="gateway-container">
-                <div className="col-xs-2 gateway-solo">
+              <Row>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                 <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('stripe')}>
-                      <div id="pay-stripe" className="gateway-img"></div>
+                      <img src="/pay-stripe.png" alt="Credit card" className="responsive" />
                       <p>Credit or Debit Card</p>
                   </a>
-                </div>
-                <div className="col-xs-2 gateway-solo">
+                </Col>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('paypal')}>
-                      <div id="pay-paypal" className="gateway-img"></div>
+                      <img src="/pay-paypal.png" alt="Paypal" className="responsive" />
                       <p>Paypal</p>
                   </a>
-                </div>
-                <div className="col-xs-2 gateway-solo">
+                </Col>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                 <p className="available">AVAILABLE</p>
                   <a className="pay-link" onClick={(e) => this.setPaymentOption('coins')}>
-                      <div id="pay-coins" className="gateway-img"></div>
+                      <img src="/pay-coins.png" alt="Coins.ph" className="responsive" />
                       <p>Coins.ph</p>
                   </a>
-                </div>
-                <div className="col-xs-2 gateway-solo">
+                </Col>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p>COMING SOON</p>
                   <a className="pay-link">
-                      <div id="pay-dragon" className="gateway-img"></div>
+                      <img src="/pay-dragon.png" alt="Dragonpay" className="responsive" />
                       <p>OTC via DragonPay</p>
                   </a>
-                </div>
-                <div className="col-xs-2 gateway-solo">
+                </Col>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p>COMING SOON</p>
                   <a className="pay-link">
-                      <div id="pay-gcash" className="gateway-img"></div>
+                      <img src="/pay-gcash.png" alt="Gcash" className="responsive" />
                       <p>GCash</p>
                   </a>
-                </div>
-                <div className="col-xs-2 gateway-solo">
+                </Col>
+                <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p>COMING SOON</p>
                   <a className="pay-link">
-                      <div id="pay-paymaya" className="gateway-img"></div>
+                      <img src="/pay-paymaya.png" alt="PayMaya" className="responsive" />
                       <p>PayMaya</p>
                   </a>
-                </div>
+                </Col>
+              </Row>
             </div>
             <div className="container" style={{clear: 'both'}}>  
             {(this.props.alert.error !== 2) ?

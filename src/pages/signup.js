@@ -156,6 +156,7 @@ class Signup extends Component {
           <h3 className="banner-header">Create Your Account</h3>
           <p className="banner-p">Already have an Account? <a href={`${baseUrl}/login`}>Log in</a></p>
           <div className="step-container">
+            <div className="step-line"></div>
             <div className="step-box">
               <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
@@ -173,7 +174,7 @@ class Signup extends Component {
                 <a href={`${baseUrl}/checkout`}>
                   <div className="step-img" id="third-blue"></div>
                 </a>
-                <p>Review Your Order</p>
+                <p className="p-blue">Review Your Order</p>
               </div>
             :
               <div className="step-box">
@@ -186,7 +187,7 @@ class Signup extends Component {
                 <a href={`${baseUrl}/payment`}>
                   <div className="step-img" id="fourth-blue"></div>
                 </a>
-                <p>Select Payment Method</p>
+                <p className="p-blue">Select Payment Method</p>
               </div>
             :
               <div className="step-box">
@@ -198,9 +199,9 @@ class Signup extends Component {
               <div className="step-img" id="fifth"></div>
               <p>Get Started</p>
             </div>
-            <div className="step-line"></div>
           </div>
         </div>
+
         <div className="container">
           <div style={{ maxWidth: '400px', margin: '20px auto'}}>
             <div className="form-group">

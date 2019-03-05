@@ -80,6 +80,7 @@ body {
 }
 
 .banner {
+  z-index: -1;
   padding: 40px;
   background-color: #f7f7f7;
   color: #333333;
@@ -102,6 +103,11 @@ body {
 .step-box {
   display: inline-block;
   width: 20%;
+  vertical-align: top;
+}
+
+.cl {
+  clear: both;
 }
 
 .step-img {
@@ -122,7 +128,7 @@ body {
 .step-line {
   border-top: 1px solid #BABFBF;
   width: 75%;
-  margin: -60px auto 0px;
+  margin: 60px auto -30px;
 }
 
 #first {

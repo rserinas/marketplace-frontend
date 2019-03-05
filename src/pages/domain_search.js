@@ -164,6 +164,7 @@ class DomainSearch extends Component {
           <h3 className="banner-header">Domain Search</h3>
           <p className="banner-p">Search the availability of your desired domain</p>
           <div className="step-container">
+            <div className="step-line"></div>
             <div className="step-box">
               <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
@@ -190,7 +191,7 @@ class DomainSearch extends Component {
                 <a href={`${baseUrl}/checkout`}>
                   <div className="step-img" id="third-blue"></div>
                 </a>
-                <p>Review Your Order</p>
+                <p className="p-blue">Review Your Order</p>
               </div>
             :
               <div className="step-box">
@@ -203,7 +204,7 @@ class DomainSearch extends Component {
                 <a href={`${baseUrl}/payment`}>
                   <div className="step-img" id="fourth-blue"></div>
                 </a>
-                <p>Select Payment Method</p>
+                <p className="p-blue">Select Payment Method</p>
               </div>
             :
               <div className="step-box">
@@ -215,9 +216,9 @@ class DomainSearch extends Component {
               <div className="step-img" id="fifth"></div>
               <p>Get Started</p>
             </div>
-            <div className="step-line"></div>
           </div>
         </div>
+
         <div className="container">
           <div style={{ maxWidth: '760px', margin: '20px auto'}}>
             <div className="well">
