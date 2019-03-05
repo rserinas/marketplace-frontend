@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/market_page.css';
+import { Row, Col } from 'react-styled-flexboxgrid';
 
 class MarketPage extends Component {
   
@@ -41,6 +42,7 @@ class MarketPage extends Component {
           <p className="banner-p">Everything You Need to Sell Smarter, 
           Faster &amp; Build Better Relationships</p>
           <div className="step-container">
+            <div className="step-line"></div>
             <div className="step-box">
               <a href={`${baseUrl}/`}>
                 <div className="step-img" id="first-blue"></div>
@@ -59,7 +61,7 @@ class MarketPage extends Component {
                 <a href={`${baseUrl}/signup`}>
                     <div className="step-img" id="second"></div>
                 </a>
-                <p className="p-blue">Create Your Account</p>
+                <p>Create Your Account</p>
               </div>
             }
             { sessionStorage.getItem('cart') ?
@@ -67,7 +69,7 @@ class MarketPage extends Component {
                 <a href={`${baseUrl}/checkout`}>
                   <div className="step-img" id="third-blue"></div>
                 </a>
-                <p>Review Your Order</p>
+                <p className="p-blue">Review Your Order</p>
               </div>
             :
               <div className="step-box">
@@ -80,7 +82,7 @@ class MarketPage extends Component {
                 <a href={`${baseUrl}/payment`}>
                   <div className="step-img" id="fourth-blue"></div>
                 </a>
-                <p>Select Payment Method</p>
+                <p className="p-blue">Select Payment Method</p>
               </div>
             :
               <div className="step-box">
@@ -92,12 +94,12 @@ class MarketPage extends Component {
               <div className="step-img" id="fifth"></div>
               <p>Get Started</p>
             </div>
-            <div className="step-line"></div>
           </div>
         </div>
+
         <div className="container">
-          <div className="row">
-            <div className="col-xs-4">
+          <Row>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
                     <h4>CRM</h4>
@@ -109,8 +111,8 @@ class MarketPage extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="builder"></div>
                     <h4>Website Builder</h4>
@@ -122,8 +124,8 @@ class MarketPage extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
                     <h4>Landing Page Builder</h4>
@@ -135,54 +137,56 @@ class MarketPage extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xs-4">
+            </Col>
+          </Row>
+                {/* Coded By Roevie */}
+          <Row >
+            <Col md={4} sm={4} xs={12}> 
                 <div className="page-box">
                     <div className="shop-icon" id="domain"></div>
                     <h4>Domain Names</h4>
                     <p className="shop-details">Find the perfect domain name.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
-                        <div className="add-to-cart">
+                        
+                        <Col className="add-to-cart">
                             <button onClick={this.gotoDomain} 
                             className="shop-btn btn btn-default btn-md">Search Now</button> 
-                        </div>
+                        </Col>
+
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="fb"></div>
                     <h4>Facebook Advertising</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
-                        <div className="add-to-cart">
+                        <Col className="add-to-cart">
                             <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
-                        </div>
+                        </Col>
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="google"></div>
                     <h4>Google Advertising</h4>
                     <p className="shop-details">Coming Soon.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
-                        <div className="add-to-cart">
+                        <Col className="add-to-cart">
                         <button className="shop-btn btn btn-default btn-md" onClick={this.gotoContactPage}>More Info</button>
-                        </div>
+                        </Col>
                     </div>
                 </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xs-4">
+            </Col>
+          </Row>
+             {/* Coded By Roevie */}
+          <Row>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="campaign"></div>
                     <h4>Marketing Automation</h4>
@@ -194,8 +198,8 @@ class MarketPage extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="bounce"></div>
                     <h4>Never Bounce</h4>
@@ -207,8 +211,8 @@ class MarketPage extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-xs-4">
+            </Col>
+            <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="buynsell"></div>
                     <h4>Buyer's &amp; Seller's Portal</h4>
@@ -220,8 +224,8 @@ class MarketPage extends Component {
                         </div>                   
                     </div>
                 </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </React.Fragment>
     );

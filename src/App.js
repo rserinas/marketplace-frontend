@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { Row, Col } from 'react-styled-flexboxgrid';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -143,16 +144,18 @@ class App extends Component {
         <BrowserRouter>
         <div className="container-fluid">
           <div className="header">
-            <div className="logo-box">
-              <a href={`${baseUrl}`}>
-                <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
-              </a>
-            </div>
-            <div className="header-panel">
-              { showSmsVerify }
-              { this.showCart() }
-              <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
-            </div>
+            <Row >
+              <Col md={6} sm={6} xs={12}>
+                <a href={`${baseUrl}`}>
+                  <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                </a>
+              </Col>
+              <Col md={6} sm={6} xs={12} className="header-panel">
+                { showSmsVerify }
+                { this.showCart() }
+                <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
+              </Col>
+            </Row>
           </div>
           <Switch>
             <Route path="/" component={ MarketPage } exact />

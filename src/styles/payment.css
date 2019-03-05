@@ -18,15 +18,13 @@
 .available {
     background-color: green;
     color: #FFFFFF;
-    border-radius: 10px;
-    margin: 0px 25px 10px;
+    border-radius: 18px;
+    margin: 0px 8% 10px;
 }
 
-.gateway-img {
-    width: 160px;
-    height: 160px;
-    border: 1px solid #CCCCCC;
-    border-radius: 10px;
+.responsive {
+    width: 100%;
+    height: auto;
 }
 
 .payment-option-box {
@@ -58,14 +56,19 @@
 
 #pay-stripe {
     background: url('/pay-stripe.png') no-repeat center center;
+    /* background-size:contain;
+    background-position:center; */
 }
 
 #pay-paypal {
     background: url('/pay-paypal.png') no-repeat center center;
+    /* background-size:contain;
+    background-position:center; */
 }
 
 #pay-coins {
     background: url('/pay-coins.png') no-repeat center center;
+    
 }
 
 #pay-dragon {
