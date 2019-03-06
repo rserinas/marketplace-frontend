@@ -208,7 +208,7 @@ class Payment extends Component {
 
   render() {
     let baseUrl = sessionStorage.getItem('baseUrl');
-    
+    console.log(sessionStorage.getItem('cart'));
     return (
       <React.Fragment>
         <div className="banner">
