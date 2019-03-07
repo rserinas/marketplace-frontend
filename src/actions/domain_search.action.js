@@ -49,23 +49,7 @@ export const submitDomain = data => dispatch => {
             });
         }
         else {
-            // const fixerUrl = sessionStorage.getItem('fixerUrl');
-            // const key = sessionStorage.getItem('fixerApiKey');
-            // fetch (`${fixerUrl}/latest?access_key=${key}`)
-            // .then(res => res.json())
-            // .then(subData => {
-            //     let toPush = {};
-            //     if (subData.success) {
-            //         data.pesoPrice = (data.price/subData.rates.USD) * subData.rates.PHP;
-            //     } else {
-            //         console.log(subData);
-            //         data.pesoPrice = 0 ;
-            //     }
-            //     dispatch({
-            //         type: 'DOMAIN_SEARCH',
-            //         payload: data
-            //     });
-            // });
+            
             data.pesoPrice = data.price * sessionStorage.getItem('pesoRate');
 
             dispatch({
