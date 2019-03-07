@@ -26,7 +26,7 @@ class SmsVerify extends Component {
   }
 
   checkEnterKey = (event) => {
-    if (event.charCode == 13) {
+    if (event.charCode === 13) {
       this.submitCode();
     }
   };

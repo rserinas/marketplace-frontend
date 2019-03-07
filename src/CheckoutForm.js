@@ -9,8 +9,6 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     const apiUrl = sessionStorage.getItem('apiUrl');
-    const fname = sessionStorage.getItem('fname');
-    const lname = sessionStorage.getItem('lname');
     const userId = sessionStorage.getItem('userId');
     const emailAdd = sessionStorage.getItem('email');
 

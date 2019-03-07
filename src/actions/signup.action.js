@@ -17,8 +17,8 @@ export const acceptTOS = data => dispatch => {
 
 export const setState = data => dispatch => {
 
-    let buffer = new Array();
-    buffer.states = new Array();
+    let buffer = [];
+    buffer.states = [];
 
     if (data === 'USA') {
         let usa = require('../json/us_states.json');
