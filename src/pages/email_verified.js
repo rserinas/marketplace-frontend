@@ -9,7 +9,7 @@ class EmailVerified extends Component {
   };
 
   render() {
-    const baseUrl = sessionStorage.getItem('baseUrl');
+    
     return (
       <React.Fragment>
         <div className="container">

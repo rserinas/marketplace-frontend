@@ -304,7 +304,7 @@ class Signup extends Component {
                 <input type="text" className="form-control input-md" onChange={this.handleInputChange}
                 value={this.props.record.state} id="state" />
                 :
-                <select className="form-control input-md"
+                <select className="form-control input-md" onChange={this.handleInputChange}
                 id="state" name="state">
                   {showStates}
                 </select>
