@@ -11,14 +11,14 @@ export const getPayOption = opt => dispatch => {
     
     let apiUrl = sessionStorage.getItem('apiUrl');
     let data = {
-        cart: sessionStorage.getItem('cart'),
-        total: sessionStorage.getItem('total'),
-        discount: sessionStorage.getItem('discount'),
-        subTotal: sessionStorage.getItem('subTotal'),
-        pesoTotal: sessionStorage.getItem('pesoTotal'),
-        transId: sessionStorage.getItem('transId'),
-        payment: opt,
-        userId: sessionStorage.getItem('userId')
+        cart:       sessionStorage.getItem('cart'),
+        total:      sessionStorage.getItem('total'),
+        discount:   sessionStorage.getItem('discount'),
+        subTotal:   sessionStorage.getItem('subTotal'),
+        pesoTotal:  sessionStorage.getItem('pesoTotal'),
+        transId:    sessionStorage.getItem('transId'),
+        userId:     sessionStorage.getItem('userId'),
+        payment:    opt
     };
     console.log(data);
     fetch (`${apiUrl}/user/transact`, {

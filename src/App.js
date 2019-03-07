@@ -49,12 +49,11 @@ class App extends Component {
     
     // Stripe Live Key
     sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
+
     // Stripe Test Key
     // sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
 
     sessionStorage.setItem('pesoRate', 53);
-    // sessionStorage.setItem('fixerUrl', 'http://data.fixer.io/api/');
-    // sessionStorage.setItem('fixerApiKey', '4240e4c004e509403492088b44de4356');
   }
 
   login = () => {
