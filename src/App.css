@@ -34,6 +34,12 @@ body {
   text-decoration: none;
 }
 
+.shaded {
+  margin-top: 10px;
+  background-color: #efefef;
+  padding:5px;
+}
+
 .cart-icon {
   font-size: 18px;
   display: inline-block;
@@ -98,11 +104,11 @@ body {
 .step-container {
   max-width: 900px;
   margin: 20px auto;
+  text-align: center;
 }
 
 .step-box {
   display: inline-block;
-  width: 20%;
   vertical-align: top;
 }
 
@@ -127,7 +133,13 @@ body {
 
 .step-line {
   border-top: 1px solid #BABFBF;
-  width: 75%;
+  width: 70%;
+  margin: 60px auto -30px;
+}
+
+.step-line2 {
+  border-top: 1px solid #BABFBF;
+  width: 40%;
   margin: 60px auto -30px;
 }
 

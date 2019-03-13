@@ -28,7 +28,7 @@
 }
 
 .payment-option-box {
-    width: 60%;
+    max-width: 600px;
     margin: 40px auto 30px;
     text-align: center;
 }

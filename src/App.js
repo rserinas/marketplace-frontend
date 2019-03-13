@@ -36,7 +36,7 @@ class App extends Component {
 
     let baseUrl = null; 
     
-    if (window.location.protocol == 'https:') { 
+    if (window.location.protocol === 'https:') { 
       baseUrl = 'https://' + window.location.hostname;
     } else {
       baseUrl = 'http://' + window.location.hostname;
@@ -134,7 +134,7 @@ class App extends Component {
     const phone       = sessionStorage.getItem('phone');
     let showSmsVerify = null;
 
-    if (sms_verify == 0 && phone !== '') {
+    if (sms_verify === 0 && phone !== '') {
       showSmsVerify = <a className="verify-sms" href={`${baseUrl}/verify-sms`}>Verify Phone</a>;
     }
 
@@ -143,18 +143,36 @@ class App extends Component {
         <BrowserRouter>
         <div className="container-fluid">
           <div className="header">
-            <Row >
-              <Col md={6} sm={6} xs={12}>
-                <a href={`${baseUrl}`}>
-                  <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
-                </a>
-              </Col>
-              <Col md={6} sm={6} xs={12} className="header-panel">
-                { showSmsVerify }
-                { this.showCart() }
-                <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
-              </Col>
-            </Row>
+
+            <Col lg={true} md={true} sm={true} xs={false}>
+              <Row >
+                <Col md={6} sm={6} xs={12}>
+                  <a href={`${baseUrl}`}>
+                    <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                  </a>
+                </Col>
+                <Col md={6} sm={6} xs={12} className="header-panel">
+                  { showSmsVerify }
+                  { this.showCart() }
+                  <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
+                </Col>
+              </Row>
+            </Col>
+
+            <Col md={false} lg={false} sm={false} xs={true}>
+              <Row style={{textAlign: 'center'}} >
+                <Col xs={12}>
+                  <a href={`${baseUrl}`}>
+                    <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                  </a>
+                </Col>
+                <Col  xs={12} className="shaded">
+                  { showSmsVerify }
+                  { this.showCart() }
+                  <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
+                </Col>
+              </Row>
+            </Col>
           </div>
           <Switch>
             <Route path="/" component={ MarketPage } exact />
@@ -190,15 +208,35 @@ class App extends Component {
         <BrowserRouter>
           <div className="container-fluid">
             <div className="header">
-              <div className="logo-box">
-                <a href={`${baseUrl}`}>
-                  <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
-                </a>
-              </div>
-              <div className="header-panel">
-                { this.showCart() }
-                <button onClick={this.login} className="btn btn-default btn-lg">Login</button>
-              </div>
+
+              <Col lg={true} md={true} sm={true} xs={false}>
+                <Row >
+                  <Col md={6} sm={6} xs={12}>
+                    <a href={`${baseUrl}`}>
+                      <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                    </a>
+                  </Col>
+                  <Col md={6} sm={6} xs={12} className="header-panel">
+                    { this.showCart() }
+                    <button onClick={this.login} className="btn btn-default btn-md">Login</button>
+                  </Col>
+                </Row>
+              </Col>
+
+              <Col md={false} lg={false} sm={false} xs={true}>
+                <Row style={{textAlign: 'center'}} >
+                  <Col xs={12}>
+                    <a href={`${baseUrl}`}>
+                      <img src={'../prosperna-logo.png'} alt="Prosperna Logo" />
+                    </a>
+                  </Col>
+                  <Col  xs={12} className="shaded">
+                    { this.showCart() }
+                    <button onClick={this.login} className="btn btn-default btn-md">Login</button>
+                  </Col>
+                </Row>
+              </Col>
+
             </div>
             <Switch>
               <Route path="/" component={ MarketPage } exact />
