@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitDomain, showAlert, goCheckout } from '../actions/domain_search.action';
 import '../styles/domain_search.css';
+import { Row, Col } from 'react-styled-flexboxgrid';
 
 class DomainSearch extends Component {
   constructor (props) {
@@ -163,60 +164,126 @@ class DomainSearch extends Component {
         <div className="banner">
           <h3 className="banner-header">Domain Search</h3>
           <p className="banner-p">Search the availability of your desired domain</p>
-          <div className="step-container">
-            <div className="step-line"></div>
-            <div className="step-box">
-              <a href={`${baseUrl}/`}>
-                <div className="step-img" id="first-blue"></div>
-              </a>
-              <p className="p-blue">Select Your Apps</p>
-            </div>
-            { sessionStorage.getItem('userId') ? 
-              <div className="step-box">
-                <a href={`${baseUrl}/signup`}>
-                    <div className="step-img" id="second-blue"></div>
-                </a>
-                <p className="p-blue">Create Your Account</p>
+          
+          <Col lg={true} md={true} sm={true} xs={false}>
+            <Row >
+              <div className="step-container">
+                <div className="step-line"></div>
+                <Col sm={2} className="step-box">
+                  <a href={`${baseUrl}/`}>
+                    <div className="step-img" id="first-blue"></div>
+                  </a>
+                  <p className="p-blue">Select Your Apps</p>
+                </Col>
+                { sessionStorage.getItem('userId') ? 
+                  <Col sm={2} className="step-box">
+                    <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second-blue"></div>
+                    </a>
+                    <p className="p-blue">Create Your Account</p>
+                  </Col>
+                :
+                  <Col sm={2} className="step-box">
+                    <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second"></div>
+                    </a>
+                    <p>Create Your Account</p>
+                  </Col>
+                }
+                { sessionStorage.getItem('cart') ?
+                  <Col sm={2} className="step-box">
+                    <a href={`${baseUrl}/checkout`}>
+                      <div className="step-img" id="third-blue"></div>
+                    </a>
+                    <p className="p-blue">Review Your Order</p>
+                  </Col>
+                :
+                  <Col sm={2} className="step-box">
+                    <div className="step-img" id="third"></div>
+                    <p>Review Your Order</p>
+                  </Col>
+                }
+                { sessionStorage.getItem('payment') ?
+                  <Col sm={2} className="step-box">
+                    <a href={`${baseUrl}/payment`}>
+                      <div className="step-img" id="fourth-blue"></div>
+                    </a>
+                    <p className="p-blue">Select Payment Method</p>
+                  </Col>
+                :
+                  <Col sm={2} className="step-box">
+                    <div className="step-img" id="fourth"></div>
+                    <p>Select Payment Method</p>
+                  </Col>
+                }
+                <Col sm={2} className="step-box">
+                  <div className="step-img" id="fifth"></div>
+                  <p>Get Started</p>
+                </Col>
               </div>
-            :
-              <div className="step-box">
-                <a href={`${baseUrl}/signup`}>
-                    <div className="step-img" id="second"></div>
-                </a>
-                <p className="p-blue">Create Your Account</p>
+            </Row>
+          </Col>
+
+          <Col lg={false} md={false} sm={false} xs={true}>
+            <Row >
+              <div className="step-container">
+                <div className="step-line"></div>
+                <Col xs={4} className="step-box">
+                  <a href={`${baseUrl}/`}>
+                    <div className="step-img" id="first-blue"></div>
+                  </a>
+                  <p className="p-blue">Select Your Apps</p>
+                </Col>
+                { sessionStorage.getItem('userId') ? 
+                  <Col xs={4} className="step-box">
+                    <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second-blue"></div>
+                    </a>
+                    <p className="p-blue">Create Your Account</p>
+                  </Col>
+                :
+                  <Col xs={4} className="step-box">
+                    <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second"></div>
+                    </a>
+                    <p>Create Your Account</p>
+                  </Col>
+                }
+                { sessionStorage.getItem('cart')  && sessionStorage.getItem('userId') ?
+                  <Col xs={4} className="step-box">
+                    <a href={`${baseUrl}/checkout`}>
+                      <div className="step-img" id="third-blue"></div>
+                    </a>
+                    <p className="p-blue">Review Your Order</p>
+                  </Col>
+                :
+                  <Col xs={4} className="step-box">
+                    <div className="step-img" id="third"></div>
+                    <p>Review Your Order</p>
+                  </Col>
+                }
+                <div className="step-line2"></div>
+                { sessionStorage.getItem('payment') ?
+                  <Col xs={4} className="step-box">
+                    <a href={`${baseUrl}/payment`}>
+                      <div className="step-img" id="fourth-blue"></div>
+                    </a>
+                    <p className="p-blue">Select Payment Method</p>
+                  </Col>
+                :
+                  <Col xs={4} className="step-box">
+                    <div className="step-img" id="fourth"></div>
+                    <p>Select Payment Method</p>
+                  </Col>
+                }
+                <Col xs={4} className="step-box">
+                  <div className="step-img" id="fifth"></div>
+                  <p>Get Started</p>
+                </Col>
               </div>
-            }
-            { sessionStorage.getItem('cart') && sessionStorage.getItem('userId') ?
-              <div className="step-box">
-                <a href={`${baseUrl}/checkout`}>
-                  <div className="step-img" id="third-blue"></div>
-                </a>
-                <p className="p-blue">Review Your Order</p>
-              </div>
-            :
-              <div className="step-box">
-                <div className="step-img" id="third"></div>
-                <p>Review Your Order</p>
-              </div>
-            }
-            { sessionStorage.getItem('payment') ?
-              <div className="step-box">
-                <a href={`${baseUrl}/payment`}>
-                  <div className="step-img" id="fourth-blue"></div>
-                </a>
-                <p className="p-blue">Select Payment Method</p>
-              </div>
-            :
-              <div className="step-box">
-                <div className="step-img" id="fourth"></div>
-                <p>Select Payment Method</p>
-              </div>
-            }
-            <div className="step-box">
-              <div className="step-img" id="fifth"></div>
-              <p>Get Started</p>
-            </div>
-          </div>
+            </Row>
+          </Col>
+
         </div>
 
         <div className="container">
@@ -252,7 +319,7 @@ class DomainSearch extends Component {
                 </button>
               </div>
               {this.props.result.has_result ? 
-                <div className="domain-banner" >
+                <div className="domain-banner dont-break-out" >
                   <h3>THIS DOMAIN {' '}
                   {this.props.result.domainName.toUpperCase()}{this.props.result.domainExt.toUpperCase()} 
                   {' '}IS {this.props.result.availability.toUpperCase()}</h3>
