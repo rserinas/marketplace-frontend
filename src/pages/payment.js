@@ -127,7 +127,7 @@ class Payment extends Component {
 
   showPayPal = () => {
     
-    let env = 'sandbox'; // you can set here to 'production' for production
+    let env = 'production'; // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
     let total = this.props.user.total // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
@@ -215,7 +215,7 @@ class Payment extends Component {
         <div className="banner">
           <h3 className="banner-header">Select Payment Method</h3>
           
-          <Col lg={true} md={true} sm={true} xs={false}>
+          {/* <Col lg={true} md={true} sm={true} xs={false}>
             <Row >
               <div className="step-container">
                 <div className="step-line"></div>
@@ -286,7 +286,39 @@ class Payment extends Component {
                 </Col>
               </div>
             </Row>
-          </Col>
+          </Col> */}
+
+          <div className="step-container">
+            <div className="step-line"></div>
+            <div className="step-box">
+              <a href={`${baseUrl}/`}>
+                <div className="step-img" id="first-blue"></div>
+              </a>
+              <p className="p-blue">Select Your Apps</p>
+            </div>
+            <div className="step-box">
+              <a href={`${baseUrl}/signup`}>
+                  <div className="step-img" id="second-blue"></div>
+              </a>
+              <p className="p-blue">Create Your Account</p>
+            </div>
+            <div className="step-box">
+              <a href={`${baseUrl}/checkout`}>
+                <div className="step-img" id="third-blue"></div>
+              </a>
+              <p className="p-blue">Review Your Order</p>
+            </div>
+            <div className="step-box">
+              <a href={`${baseUrl}/payment`}>
+                <div className="step-img" id="fourth-blue"></div>
+              </a>
+              <p className="p-blue">Select Payment Method</p>
+            </div>
+            <div className="step-box">
+              <div className="step-img" id="fifth"></div>
+              <p>Get Started</p>
+            </div>
+          </div>
 
         </div>
         

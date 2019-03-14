@@ -109,7 +109,7 @@ body {
 
 .step-box {
   display: inline-block;
-  width:auto;
+  width:20%;
   vertical-align: top;
 }
 
@@ -134,7 +134,7 @@ body {
 
 .step-line {
   border-top: 1px solid #BABFBF;
-  width: 70%;
+  width: 75%;
   margin: 60px auto -30px;
 }
 

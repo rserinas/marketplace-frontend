@@ -42,187 +42,60 @@ class MarketPage extends Component {
           <p className="banner-p">Everything You Need to Sell Smarter, 
           Faster &amp; Build Better Relationships</p>
 
-
-          <Row>
-            <Col lg={12} md={12} sm={12} xs={false}>
-              <Row center="xs">
-                <Col style={{maxWidth: '900', margin: '20px auto', textAlign: 'center'}}>
-                  <div className="step-line"></div>
-                  <Col lg={2} md={2} sm={2} className="step-box">
-                    <a href={`${baseUrl}/`}>
-                      <div className="step-img" id="first-blue"></div>
-                    </a>
-                    <p className="p-blue">Select Your Apps</p>
-                  </Col>
-                  {sessionStorage.getItem('userId') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second-blue"></div>
-                      </a>
-                      <p className="p-blue">Create Your Account</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second"></div>
-                      </a>
-                      <p>Create Your Account</p>
-                    </Col>
-                  }
-                  {sessionStorage.getItem('cart') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/checkout`}>
-                        <div className="step-img" id="third-blue"></div>
-                      </a>
-                      <p className="p-blue">Review Your Order</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <div className="step-img" id="third"></div>
-                      <p>Review Your Order</p>
-                    </Col>
-                  }
-                  {sessionStorage.getItem('payment') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/payment`}>
-                        <div className="step-img" id="fourth-blue"></div>
-                      </a>
-                      <p className="p-blue">Select Payment Method</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <div className="step-img" id="fourth"></div>
-                      <p>Select Payment Method</p>
-                    </Col>
-                  }
-                  <Col lg={2} md={2} sm={2} className="step-box">
-                    <div className="step-img" id="fifth"></div>
-                    <p>Get Started</p>
-                  </Col>
-
-                </Col>
-
-                {/* <div className="step-container">
-                  <div className="step-line"></div>
-                  <Col lg={2} md={2} sm={2} className="step-box">
-                    <a href={`${baseUrl}/`}>
-                      <div className="step-img" id="first-blue"></div>
-                    </a>
-                    <p className="p-blue">Select Your Apps</p>
-                  </Col>
-
-                  {sessionStorage.getItem('userId') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second-blue"></div>
-                      </a>
-                      <p className="p-blue">Create Your Account</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second"></div>
-                      </a>
-                      <p>Create Your Account</p>
-                    </Col>
-                  }
-                  {sessionStorage.getItem('cart') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/checkout`}>
-                        <div className="step-img" id="third-blue"></div>
-                      </a>
-                      <p className="p-blue">Review Your Order</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <div className="step-img" id="third"></div>
-                      <p>Review Your Order</p>
-                    </Col>
-                  }
-                  {sessionStorage.getItem('payment') ?
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <a href={`${baseUrl}/payment`}>
-                        <div className="step-img" id="fourth-blue"></div>
-                      </a>
-                      <p className="p-blue">Select Payment Method</p>
-                    </Col>
-                    :
-                    <Col lg={2} md={2} sm={2} className="step-box">
-                      <div className="step-img" id="fourth"></div>
-                      <p>Select Payment Method</p>
-                    </Col>
-                  }
-                  <Col lg={2} md={2} sm={2} className="step-box">
-                    <div className="step-img" id="fifth"></div>
-                    <p>Get Started</p>
-                  </Col>
-                </div> */}
-              </Row>
-            </Col>
-          </Row>
-          
-          <Row>
-            <Col lg={false} md={false} sm={false} xs={12} >
-              <Row center="xs">
-                <div className="step-container">
-                  <div className="step-line"></div>
-                  <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                    <a href={`${baseUrl}/`}>
-                      <div className="step-img" id="first-blue"></div>
-                    </a>
-                    <p className="p-blue">Select Your Apps</p>
-                  </Col>
-                  {sessionStorage.getItem('userId') ?
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second-blue"></div>
-                      </a>
-                      <p className="p-blue">Create Your Account</p>
-                    </Col>
-                    :
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <a href={`${baseUrl}/signup`}>
-                        <div className="step-img" id="second"></div>
-                      </a>
-                      <p>Create Your Account</p>
-                    </Col>
-                  }
-                  {sessionStorage.getItem('cart') && sessionStorage.getItem('userId') ?
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <a href={`${baseUrl}/checkout`}>
-                        <div className="step-img" id="third-blue"></div>
-                      </a>
-                      <p className="p-blue">Review Your Order</p>
-                    </Col>
-                    :
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <div className="step-img" id="third"></div>
-                      <p>Review Your Order</p>
-                    </Col>
-                  }
-                  <div className="step-line2"></div>
-                  {sessionStorage.getItem('payment') ?
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <a href={`${baseUrl}/payment`}>
-                        <div className="step-img" id="fourth-blue"></div>
-                      </a>
-                      <p className="p-blue">Select Payment Method</p>
-                    </Col>
-                    :
-                    <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                      <div className="step-img" id="fourth"></div>
-                      <p>Select Payment Method</p>
-                    </Col>
-                  }
-                  <Col lg={4} md={4} sm={4} xs={4} className="step-box">
-                    <div className="step-img" id="fifth"></div>
-                    <p>Get Started</p>
-                  </Col>
-                </div>
-              </Row>
-            </Col>
-          </Row>
-
+          <div className="step-container">
+            <div className="step-line"></div>
+            <div className="step-box">
+              <a href={`${baseUrl}/`}>
+                <div className="step-img" id="first-blue"></div>
+              </a>
+              <p className="p-blue">Select Your Apps</p>
+            </div>
+            { sessionStorage.getItem('userId') ? 
+              <div className="step-box">
+                <a href={`${baseUrl}/signup`}>
+                    <div className="step-img" id="second-blue"></div>
+                </a>
+                <p className="p-blue">Create Your Account</p>
+              </div>
+            :
+              <div className="step-box">
+                <a href={`${baseUrl}/signup`}>
+                    <div className="step-img" id="second"></div>
+                </a>
+                <p>Create Your Account</p>
+              </div>
+            }
+            { sessionStorage.getItem('cart') ?
+              <div className="step-box">
+                <a href={`${baseUrl}/checkout`}>
+                  <div className="step-img" id="third-blue"></div>
+                </a>
+                <p className="p-blue">Review Your Order</p>
+              </div>
+            :
+              <div className="step-box">
+                <div className="step-img" id="third"></div>
+                <p>Review Your Order</p>
+              </div>
+            }
+            { sessionStorage.getItem('payment') ?
+              <div className="step-box">
+                <a href={`${baseUrl}/payment`}>
+                  <div className="step-img" id="fourth-blue"></div>
+                </a>
+                <p className="p-blue">Select Payment Method</p>
+              </div>
+            :
+              <div className="step-box">
+                <div className="step-img" id="fourth"></div>
+                <p>Select Payment Method</p>
+              </div>
+            }
+            <div className="step-box">
+              <div className="step-img" id="fifth"></div>
+              <p>Get Started</p>
+            </div>
+          </div>
         </div>
 
         <div className="container">

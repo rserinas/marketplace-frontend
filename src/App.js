@@ -42,16 +42,16 @@ class App extends Component {
       baseUrl = 'http://' + window.location.hostname;
     }
 
-    // sessionStorage.setItem('baseUrl', baseUrl);
-    // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
-    sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-    sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+    sessionStorage.setItem('baseUrl', baseUrl);
+    sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+    // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+    // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
     
     // Stripe Live Key
-    // sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
+    sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
 
     // Stripe Test Key
-    sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
+    // sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
 
     sessionStorage.setItem('pesoRate', 53);
   }
