@@ -46,7 +46,7 @@ class MarketPage extends Component {
           <Row>
             <Col lg={true} md={true} sm={true} xs={false}>
               <Row center="xs">
-                <div className="step-container">
+                <Col style={{maxWidth: '900', margin: '20px auto', textAlign: 'center'}}>
                   <div className="step-line"></div>
                   <Col lg={2} md={2} sm={2} className="step-box">
                     <a href={`${baseUrl}/`}>
@@ -99,12 +99,69 @@ class MarketPage extends Component {
                     <div className="step-img" id="fifth"></div>
                     <p>Get Started</p>
                   </Col>
-                </div>
+
+                </Col>
+
+                {/* <div className="step-container">
+                  <div className="step-line"></div>
+                  <Col lg={2} md={2} sm={2} className="step-box">
+                    <a href={`${baseUrl}/`}>
+                      <div className="step-img" id="first-blue"></div>
+                    </a>
+                    <p className="p-blue">Select Your Apps</p>
+                  </Col>
+
+                  {sessionStorage.getItem('userId') ?
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second-blue"></div>
+                      </a>
+                      <p className="p-blue">Create Your Account</p>
+                    </Col>
+                    :
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <a href={`${baseUrl}/signup`}>
+                        <div className="step-img" id="second"></div>
+                      </a>
+                      <p>Create Your Account</p>
+                    </Col>
+                  }
+                  {sessionStorage.getItem('cart') ?
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <a href={`${baseUrl}/checkout`}>
+                        <div className="step-img" id="third-blue"></div>
+                      </a>
+                      <p className="p-blue">Review Your Order</p>
+                    </Col>
+                    :
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <div className="step-img" id="third"></div>
+                      <p>Review Your Order</p>
+                    </Col>
+                  }
+                  {sessionStorage.getItem('payment') ?
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <a href={`${baseUrl}/payment`}>
+                        <div className="step-img" id="fourth-blue"></div>
+                      </a>
+                      <p className="p-blue">Select Payment Method</p>
+                    </Col>
+                    :
+                    <Col lg={2} md={2} sm={2} className="step-box">
+                      <div className="step-img" id="fourth"></div>
+                      <p>Select Payment Method</p>
+                    </Col>
+                  }
+                  <Col lg={2} md={2} sm={2} className="step-box">
+                    <div className="step-img" id="fifth"></div>
+                    <p>Get Started</p>
+                  </Col>
+                </div> */}
               </Row>
             </Col>
           </Row>
           
-          {/* <Row>
+          <Row>
             <Col lg={false} md={false} sm={false} xs={12} >
               <Row center="xs">
                 <div className="step-container">
@@ -164,8 +221,8 @@ class MarketPage extends Component {
                 </div>
               </Row>
             </Col>
-          </Row> */}
-          
+          </Row>
+
         </div>
 
         <div className="container">
