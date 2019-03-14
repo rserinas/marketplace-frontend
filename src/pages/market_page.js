@@ -104,7 +104,7 @@ class MarketPage extends Component {
             </Col>
           </Row>
           
-          <Row>
+          {/* <Row>
             <Col lg={false} md={false} sm={false} xs={12} >
               <Row center="xs">
                 <div className="step-container">
@@ -164,7 +164,8 @@ class MarketPage extends Component {
                 </div>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
+          
         </div>
 
         <div className="container">
