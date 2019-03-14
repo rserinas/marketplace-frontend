@@ -289,7 +289,7 @@ class Payment extends Component {
           </Col>
 
         </div>
-
+        
         <div className="container">
             <div className="gateway-container">
               <Row>
