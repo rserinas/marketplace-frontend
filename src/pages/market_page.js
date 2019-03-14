@@ -41,6 +41,7 @@ class MarketPage extends Component {
           <h3 className="banner-header">Prosperna Marketplace</h3>
           <p className="banner-p">Everything You Need to Sell Smarter, 
           Faster &amp; Build Better Relationships</p>
+          
           <Col lg={true} md={true} sm={true} xs={false}>
             <Row >
               <div className="step-container">
