@@ -109,6 +109,7 @@ body {
 
 .step-box {
   display: inline-block;
+  width:auto;
   vertical-align: top;
 }
 
