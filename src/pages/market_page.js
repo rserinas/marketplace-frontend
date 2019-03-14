@@ -44,7 +44,7 @@ class MarketPage extends Component {
 
 
           <Row>
-            <Col lg={true} md={true} sm={true} xs={false}>
+            <Col lg={12} md={12} sm={12} xs={false}>
               <Row center="xs">
                 <Col style={{maxWidth: '900', margin: '20px auto', textAlign: 'center'}}>
                   <div className="step-line"></div>
