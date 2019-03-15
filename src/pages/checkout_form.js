@@ -4,6 +4,12 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      alert: { 
+        error: 2,
+        msg: ''
+      }
+    };
     this.submit = this.submit.bind(this);
   }
 
@@ -30,7 +36,7 @@ class CheckoutForm extends Component {
     .then(res => res.json())
     .then(data => {
         if (data.error === 1) {
-          this.props.showAlert(data);
+          this.setState({alert: { error: data.error, msg: data.msg }});
         } else {
           sessionStorage.removeItem('cartCount');
           sessionStorage.removeItem('cart');
@@ -48,14 +54,22 @@ class CheckoutForm extends Component {
 
   render() {
     return (
-      <div className="checkout">
-        <p>Enter your card details:</p>
-        <CardElement />
-        <button className="btn btn-lg btn-cart" style={{margin: '30px auto 0px'}} onClick={this.submit}>Pay Now</button>
+      <div>
+        {(this.state.alert.error !== 2) ?
+          <div className={"alert "+(this.state.alert.error===1 ? 'alert-warning' : 'alert-success')}>
+            <strong>{(this.state.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong> 
+            {this.state.alert.msg}
+          </div>
+        : ''
+        }
+        <div className="checkout">
+          <p>Enter your card details:</p>
+          <CardElement />
+          <button className="btn btn-lg btn-cart" style={{margin: '30px auto 0px'}} onClick={this.submit}>Pay Now</button>
+        </div>
       </div>
     );
   }
 }
-
 
 export default injectStripe(CheckoutForm);

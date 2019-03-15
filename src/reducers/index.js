@@ -10,5 +10,5 @@ export default combineReducers({
     login: loginReducers,
     domain: domainReducers,
     checkout: checkoutReducers,
-    pay: paymentReducers
+    pay: paymentReducers,
 });

@@ -20,7 +20,7 @@ export const getPayOption = opt => dispatch => {
         userId:     sessionStorage.getItem('userId'),
         payment:    opt
     };
-    console.log(data);
+    
     fetch (`${apiUrl}/user/transact`, {
         method: 'POST',
         dataType: 'jsonp',
