@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from '../CheckoutForm';
+import CheckoutForm from './checkout_form';
 import { showAlert, getPayOption, finishTransaction } from '../actions/payment.action';
 import '../styles/payment.css';
 import { Row, Col } from 'react-styled-flexboxgrid';
@@ -127,7 +127,7 @@ class Payment extends Component {
 
   showPayPal = () => {
     
-    let env = 'production'; // you can set here to 'production' for production
+    let env = sessionStorage.getItem('ppEnv'); // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
     let total = this.props.user.total // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/

@@ -42,17 +42,27 @@ class App extends Component {
       baseUrl = 'http://' + window.location.hostname;
     }
 
-    sessionStorage.setItem('baseUrl', baseUrl);
-    sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
-    // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-    // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+    //************************** */
+    const is_live = true;
+    //************************** */
+
+    if (is_live) {
+      sessionStorage.setItem('baseUrl', baseUrl);
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+      // Stripe Live Key
+      sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
+      // Paypal sandbox
+      sessionStorage.setItem('ppEnv', 'production');
+    } else {
+      // This is a test environment
+      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      // Stripe Test Key
+      sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
+      // Paypal sandbox
+      sessionStorage.setItem('ppEnv', 'sandbox');
+    }
     
-    // Stripe Live Key
-    sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
-
-    // Stripe Test Key
-    // sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
-
     sessionStorage.setItem('pesoRate', 53);
   }
 
