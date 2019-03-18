@@ -41,13 +41,14 @@ class App extends Component {
     } else {
       baseUrl = 'http://' + window.location.hostname;
     }
-
+    
     //************************** */
     const is_live = true;
     //************************** */
 
     if (is_live) {
       sessionStorage.setItem('baseUrl', baseUrl);
+      // THEA, edit also the .ph to .com
       sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
       // Stripe Live Key
       sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
