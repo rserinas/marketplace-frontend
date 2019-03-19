@@ -27,6 +27,7 @@ export const submitLogin = data => dispatch => {
             sessionStorage.setItem('phone', data.phone);
             sessionStorage.setItem('status', data.status);
             sessionStorage.setItem('sms_verify', data.sms_verify);
+            sessionStorage.setItem('domains', data.domain);
             window.location = `${baseUrl}/checkout`;
         }
         dispatch({

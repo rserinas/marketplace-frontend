@@ -71,6 +71,23 @@ body {
   color: #FFFFFF;
 }
 
+.nav-bar {
+  background-color: #5ACBF1;
+}
+
+.main-link {
+  padding: 15px 20px;
+  text-decoration: none;
+  display: inline-block;
+  color: #FFFFFF;
+}
+
+.main-link:hover {
+  background-color: #efefef;
+  color: #5ACBF1;
+  text-decoration: none;
+}
+
 .footer {
   margin: 40px 0px;
   color:#666666;
@@ -86,7 +103,6 @@ body {
 }
 
 .banner {
-  z-index: -1;
   padding: 40px;
   background-color: #f7f7f7;
   color: #333333;
@@ -146,6 +162,23 @@ body {
 
 .borderless td, .borderless th {
   border: none;
+}
+
+.dont-break-out {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 #first {
