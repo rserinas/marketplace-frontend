@@ -24,6 +24,7 @@ import GetStarted from './pages/get_started';
 import SmsVerify from './pages/sms_verify';
 import Tos from './pages/tos';
 import PrivacyPolicy from './pages/privacy';
+import DomainPanel from './pages/domain_panel';
 
 
 
@@ -43,21 +44,24 @@ class App extends Component {
     }
     
     //************************** */
-    const is_live = true;
+    const is_live = false;
     //************************** */
 
     if (is_live) {
       sessionStorage.setItem('baseUrl', baseUrl);
       // THEA, edit also the .ph to .com
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.com/');
       // Stripe Live Key
       sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
       // Paypal sandbox
       sessionStorage.setItem('ppEnv', 'production');
     } else {
-      // This is a test environment
-      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      // This is the dev environment
+      sessionStorage.setItem('baseUrl', baseUrl);
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+      // This is a local environment
+      // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
       // Stripe Test Key
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
       // Paypal sandbox
@@ -91,6 +95,7 @@ class App extends Component {
     sessionStorage.removeItem('transId');
     sessionStorage.removeItem('paymentUrl');
     sessionStorage.removeItem('extTransId');
+    sessionStorage.removeItem('domains');
 
     let baseUrl = sessionStorage.getItem('baseUrl');
 
@@ -143,6 +148,8 @@ class App extends Component {
     const baseUrl     = sessionStorage.getItem('baseUrl');
     const sms_verify  = sessionStorage.getItem('sms_verify');
     const phone       = sessionStorage.getItem('phone');
+    let domains       = sessionStorage.getItem('domains');
+    // console.log(domains);
     let showSmsVerify = null;
 
     if (sms_verify === 0 && phone !== '') {
@@ -185,6 +192,14 @@ class App extends Component {
               </Row>
             </Col>
           </div>
+          <div className="nav-bar">
+            <a href={`${baseUrl}/profile`} className="main-link">User Profile</a>
+            { (domains) ?
+              <a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a>
+            :
+              null
+            }
+          </div>
           <Switch>
             <Route path="/" component={ MarketPage } exact />
             <Route path="/domain-search" component={ DomainSearch } exact />
@@ -198,6 +213,8 @@ class App extends Component {
             <Route path="/checkout" component={ Checkout } exact />
             <Route path="/payment" component={ Payment } exact />
             <Route path="/get-started/finished" component={ GetStarted } />
+            {/* <Route path="/profile" component={ Profile } exact /> */}
+            <Route path="/domain-panel" component={ DomainPanel } exact />
           </Switch>
           <div className="footer">
             <div className="footer-img"></div>

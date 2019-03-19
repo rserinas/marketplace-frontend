@@ -374,7 +374,7 @@ class DomainSearch extends Component {
                 </button>
               </div>
               {this.props.result.has_result ? 
-                <div className="domain-banner dont-break-out" >
+                <div className="domain-banner dont-break-out">
                   <h3>THIS DOMAIN {' '}
                   {this.props.result.domainName.toUpperCase()}{this.props.result.domainExt.toUpperCase()} 
                   {' '}IS {this.props.result.availability.toUpperCase()}</h3>

@@ -1,0 +1,28 @@
+.nav-domains {
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 10px;
+}
+
+.domain-link {
+    display:inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.domain-link-active {
+    text-decoration: underline;
+}
+
+.side-link {
+    display: block;
+    padding: 10px 20px;
+    background-color: #999999;
+    border-bottom: 1px solid #ffffff;
+    color:#ffffff;
+}
+
+.side-link:hover {
+    text-decoration: none;
+    background-color: #5ACBF1;
+    color:#ffffff;
+}
