@@ -32,7 +32,17 @@ class MarketPage extends Component {
   gotoContactPage = () => {
     window.location = `https://www.prosperna.com/contact-us/`;      
   };
-  
+
+  gotoSignUp = () => {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/signup`;      
+  };
+
+  gotoWebBuilder = () => {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `marketplace-api.prosperna.ph/web-builder`;      
+  };
+
     render() {
         const baseUrl = sessionStorage.getItem('baseUrl');
     return (
@@ -113,19 +123,40 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}>
-                <div className="page-box">
-                    <div className="shop-icon" id="builder"></div>
-                    <h4>Website Builder</h4>
-                    <p className="shop-details">Affordable Real Estate Websites Fast.</p>
-                    <div className="shop-box">
-                        <div className="more-info"></div>
-                        <div className="add-to-cart">
-                            <button className="shop-btn btn btn-default btn-md" onClick={this.gotoBuilder}>More Info</button>
-                        </div>
-                    </div>
-                </div>
-            </Col>
+            { sessionStorage.getItem('userId') ? 
+              <Col md={4} sm={4} xs={12}>
+              <div className="page-box">
+                  <div className="shop-icon" id="builder"></div>
+                  <h4>Website Builder</h4>
+                  <p className="shop-details">Affordable Real Estate Websites Fast.</p>
+                  <div className="shop-box">
+                      <div className="more-info">
+                        <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
+                      </div>
+                      <div className="add-to-cart">
+                      /login
+                          <button className="shop-btn btn btn-default btn-md" onClick={this.gotoWebBuilder}>Create Dev Site</button>
+                      </div>
+                  </div>
+              </div>
+              </Col>
+              :
+              <Col md={4} sm={4} xs={12}>
+              <div className="page-box">
+                  <div className="shop-icon" id="builder"></div>
+                  <h4>Website Builder</h4>
+                  <p className="shop-details">Affordable Real Estate Websites Fast.</p>
+                  <div className="shop-box">
+                      <div className="more-info">
+                          <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
+                      </div>
+                      <div className="add-to-cart">
+                          <button className="shop-btn btn btn-default btn-md" onClick={this.gotoSignUp}>Create Dev Site</button>
+                      </div>
+                  </div>
+              </div>
+              </Col>
+            }
             <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
