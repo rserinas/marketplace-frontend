@@ -40,7 +40,7 @@ class MarketPage extends Component {
 
   gotoWebBuilder = () => {
     const baseUrl = sessionStorage.getItem('baseUrl');
-    window.location = `marketplace-api.prosperna.ph/web-builder`;      
+    window.location = `https://marketplace-api.prosperna.ph/web-builder`;      
   };
 
     render() {
@@ -134,7 +134,6 @@ class MarketPage extends Component {
                         <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
                       </div>
                       <div className="add-to-cart">
-                      /login
                           <button className="shop-btn btn btn-default btn-md" onClick={this.gotoWebBuilder}>Create Dev Site</button>
                       </div>
                   </div>
