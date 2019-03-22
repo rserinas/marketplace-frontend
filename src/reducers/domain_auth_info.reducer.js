@@ -3,9 +3,6 @@ const initialState = {
         error: 2,
         msg: ''
     },
-    dom: {
-        server: []
-    }
 };
 
 export default function(state = initialState, action) {
@@ -15,11 +12,6 @@ export default function(state = initialState, action) {
                 ...state,
                 alert: action.payload
             };
-        case 'SHOW_DETAILS':
-            return {
-                ...state,
-                dom: action.payload
-            }
         default:
             return state;
     }

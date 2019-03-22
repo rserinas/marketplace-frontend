@@ -5,6 +5,8 @@ import domainReducers from './domain.reducer';
 import checkoutReducers from './checkout.reducer';
 import paymentReducers from './payment.reducer';
 import domainPanelReducers from './domain_panel.reducer';
+import domainContactInfoReducer from './domain_contact_info.reducer';
+import domainAuthInfoReducer from './domain_auth_info.reducer';
 
 export default combineReducers({
     signup: signupReducers,
@@ -13,4 +15,6 @@ export default combineReducers({
     checkout: checkoutReducers,
     pay: paymentReducers,
     domain_view: domainPanelReducers,
+    domain_contact: domainContactInfoReducer,
+    domain_auth: domainAuthInfoReducer,
 });
