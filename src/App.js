@@ -25,6 +25,8 @@ import SmsVerify from './pages/sms_verify';
 import Tos from './pages/tos';
 import PrivacyPolicy from './pages/privacy';
 import DomainPanel from './pages/domain_panel';
+import DomainContactInfo from './pages/domain_contact_info';
+import DomainAuthInfo from './pages/domain_auth_info';
 
 
 
@@ -215,6 +217,8 @@ class App extends Component {
             <Route path="/get-started/finished" component={ GetStarted } />
             {/* <Route path="/profile" component={ Profile } exact /> */}
             <Route path="/domain-panel" component={ DomainPanel } exact />
+            <Route path="/domain/contact-info" component={ DomainContactInfo } exact />
+            <Route path="/domain/auth-info" component={ DomainAuthInfo } exact />
           </Switch>
           <div className="footer">
             <div className="footer-img"></div>
