@@ -196,7 +196,7 @@ class App extends Component {
           </div>
           <div className="nav-bar">
             <a href={`${baseUrl}/profile`} className="main-link">User Profile</a>
-            { (domains) ?
+            { (domains != 'false') ?
               <a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a>
             :
               null
