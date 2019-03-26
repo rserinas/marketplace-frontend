@@ -6,21 +6,28 @@ export const showAlert = data => dispatch => {
     });
 };
 
-export const sendAuthInfo = data => dispatch => {
+export const sendDomainRenew = data => dispatch => {
 
     const apiUrl = sessionStorage.getItem('apiUrl');
-
-    fetch (`${apiUrl}/domain/modify-auth-info`, {
+    // console.log(data);
+    fetch (`${apiUrl}/domain/renew`, {
         method: 'POST',
         dataType: 'jsonp',
         body: JSON.stringify(data),
     })
     .then(res => res.json())
     .then(data => {
-        dispatch({
-            type: 'SHOW_ALERT',
-            payload: data
-        });
+        if (data.error == 1) {
+            dispatch({
+                type: 'SHOW_ALERT',
+                payload: data
+            });
+        } else {
+            dispatch({
+                type: 'SHOW_ORDER',
+                payload: data
+            });
+        }
     })
     .catch((error)=>{
         console.log(error);

@@ -6,11 +6,11 @@ export const showAlert = data => dispatch => {
     });
 };
 
-export const sendAuthInfo = data => dispatch => {
+export const sendPrivacyState = data => dispatch => {
 
     const apiUrl = sessionStorage.getItem('apiUrl');
 
-    fetch (`${apiUrl}/domain/modify-auth-info`, {
+    fetch (`${apiUrl}/domain/modify-whois-privacy`, {
         method: 'POST',
         dataType: 'jsonp',
         body: JSON.stringify(data),

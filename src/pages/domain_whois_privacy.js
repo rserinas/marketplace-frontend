@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { showAlert, sendAuthInfo } from '../actions/domain_auth_info.action';
+import { showAlert, sendPrivacyState } from '../actions/domain_whois_privacy.action';
 
-class DomainAuthInfo extends Component {
+
+class DomainWhoisPrivacy extends Component {
   constructor (props) {
     super (props);
     const baseUrl = sessionStorage.getItem('baseUrl');
     if ( ! sessionStorage.getItem('domains')) window.location = `${baseUrl}`;
     this.handleInputChange = this.handleInputChange.bind(this);
     this.state = {
-      auth_info: ''
+      privacy_state: ''
     };
   }
 
@@ -32,34 +33,27 @@ class DomainAuthInfo extends Component {
     }
   }
 
-  sendAuthInfo = () => {
+  sendWhois = () => {
 
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
     }
 
-    if ( ! this.state.auth_info) {
-      alert = {
-        error: 1,
-        msg: 'Domain Auth Info Password is required.',
-      };
-      return this.props.showAlert(alert);
-    } else {
-
-      if (this.state.auth_info.indexOf('&') !== -1) {
-        alert = {
-          error: 1,
-          msg: 'Character & is not allowed.',
-        };
-        return this.props.showAlert(alert);
-      }
-
+    if (this.state.privacy_state === 'enable' || this.state.privacy_state === 'disable') {
       const data = {
         domain: sessionStorage.getItem('domain_select'),
-        auth_info: this.state.auth_info
+        privacy_state: this.state.privacy_state
       };
       
-      this.props.sendAuthInfo(data);
+      this.props.sendPrivacyState(data);
+
+    } else {
+      alert = {
+        error: 1,
+        msg: 'Whois Privacy State is required.',
+      };
+
+      return this.props.showAlert(alert);
     }
   };
   
@@ -84,13 +78,13 @@ class DomainAuthInfo extends Component {
               <div className="nav-side">
                 <a href={`${baseUrl}/domain-panel`} className="side-link">View Domain Details</a>
                 <a href={`${baseUrl}/domain/contact-info`} className="side-link">Manage Contact Info</a>
-                <a href={`${baseUrl}/domain/auth-info`} className="side-link side-link-active">
-                  Manage Domain Auth Code
-                </a>
+                <a href={`${baseUrl}/domain/auth-info`} className="side-link">Manage Domain Auth Code</a>
                 <a href={`${baseUrl}/domain/auto-renew`} className="side-link">Manage Auto Renew Settings</a>
                 <a href={`${baseUrl}/domain/parkpage`} className="side-link">Manage Parkpage Domain</a>
                 <a href={`${baseUrl}/domain/lock-state`} className="side-link">Manage Domain Lock State</a>
-                <a href={`${baseUrl}/domain/whois-privacy`} className="side-link">Manage Whois Privacy</a>
+                <a href={`${baseUrl}/domain/whois-privacy`} className="side-link side-link-active">
+                  Manage Whois Privacy
+                </a>
                 {/* <a href={`${baseUrl}/domain/renew`} className="side-link">Manage Domain Renewal</a> */}
               </div>
             </div>
@@ -102,19 +96,20 @@ class DomainAuthInfo extends Component {
                 </div>
               : ''
               }
-              <h1 className="dont-break-out">Domain Auth Info for {ds}</h1>
-              <div className="well">
-                <p>Password must be 1 to 32 characters long.</p>
-                <p>Must contain at least one number, one letter and one special character.</p>
-                <p>Simple phrases and words will be rejected by the registry. </p>
+              <h1 className="dont-break-out">Domain Whois Privacy for {ds}</h1>
+              <div className="well col-sm-8">
                 <div className="form-group" style={{marginTop: '25px'}}>
-                  <label htmlFor="auth_info">Domain Auth Info Password</label>
-                  <input type="text" id="auth_info" name="auth_info" onChange={this.handleInputChange} 
-                  className="form-control input-md" />
+                  <label htmlFor="privacy_state">Domain Whois Privacy State</label>
+                  <select className="form-control input-md" onChange={this.handleInputChange}
+                  id="privacy_state" name="privacy_state">
+                    <option value="null">Select value</option>
+                    <option value="enable">Enable</option>
+                    <option value="disable">Disable</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <button className="btn btn-md btn-primary" 
-                  onClick={this.sendAuthInfo}>Save Password</button>
+                  onClick={this.sendWhois}>Update Changes</button>
                 </div>
               </div>
             </div>
@@ -128,17 +123,17 @@ class DomainAuthInfo extends Component {
 
 const mapStateToProps = state =>  {
   return {
-    alert: state.domain_auth.alert,
+    alert: state.domain_whois.alert,
   }
 }
 
 const matchDispatchToProps = dispatch => {
   return bindActionCreators({
     showAlert: showAlert,
-    sendAuthInfo: sendAuthInfo,
+    sendPrivacyState: sendPrivacyState,
   },
   dispatch
   )
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(DomainAuthInfo);
+export default connect(mapStateToProps, matchDispatchToProps)(DomainWhoisPrivacy);

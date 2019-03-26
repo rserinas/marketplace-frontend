@@ -32,8 +32,9 @@ class CheckoutForm extends Component {
         if (data.error === 1) {
           this.props.showAlert(data);
         } else {
+          // sessionStorage.setItem('domains', JSON.stringify(data.domains));
           sessionStorage.removeItem('cartCount');
-          sessionStorage.removeItem('cart');
+          //sessionStorage.removeItem('cart');
           sessionStorage.removeItem('subTotal');
           sessionStorage.removeItem('discount');
           sessionStorage.removeItem('total');      
