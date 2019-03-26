@@ -157,13 +157,12 @@ console.log(data);
                 <a href={`${baseUrl}/domain/contact-info`} className="side-link side-link-active">
                   Manage Contact Info
                 </a>
-                <a href={`${baseUrl}/domain/auth-info`} className="side-link">Manage Domain Auth Info</a>
-                <a href={`${baseUrl}/domain/auto-renew`} className="side-link">Manage Auto Renew Setting</a>
-                <a href={`${baseUrl}/domain/forward-email`} className="side-link">Manage Email Forwarding</a>
+                <a href={`${baseUrl}/domain/auth-info`} className="side-link">Manage Domain Auth Code</a>
+                <a href={`${baseUrl}/domain/auto-renew`} className="side-link">Manage Auto Renew Settings</a>
                 <a href={`${baseUrl}/domain/parkpage`} className="side-link">Manage Parkpage Domain</a>
-                <a href={`${baseUrl}/domain/auth-info`} className="side-link">Manage Domain Lock State</a>
-                <a href={`${baseUrl}/domain/whois-display`} className="side-link">Manage Whois Display</a>
+                <a href={`${baseUrl}/domain/lock-state`} className="side-link">Manage Domain Lock State</a>
                 <a href={`${baseUrl}/domain/whois-privacy`} className="side-link">Manage Whois Privacy</a>
+                {/* <a href={`${baseUrl}/domain/renew`} className="side-link">Manage Domain Renewal</a> */}
               </div>
             </div>
             <div className="col-sm-9">

@@ -27,7 +27,11 @@ import PrivacyPolicy from './pages/privacy';
 import DomainPanel from './pages/domain_panel';
 import DomainContactInfo from './pages/domain_contact_info';
 import DomainAuthInfo from './pages/domain_auth_info';
-
+import DomainAutoRenew from './pages/domain_auto_renew';
+import DomainParkPage from './pages/domain_parkpage';
+import DomainLockState from './pages/domain_lock_state';
+import DomainWhoisPrivacy from './pages/domain_whois_privacy';
+// import DomainRenew from './pages/domain_renew';
 
 
 library.add(faShoppingCart)
@@ -151,7 +155,7 @@ class App extends Component {
     const sms_verify  = sessionStorage.getItem('sms_verify');
     const phone       = sessionStorage.getItem('phone');
     let domains       = sessionStorage.getItem('domains');
-    // console.log(domains);
+    
     let showSmsVerify = null;
 
     if (sms_verify === 0 && phone !== '') {
@@ -219,6 +223,11 @@ class App extends Component {
             <Route path="/domain-panel" component={ DomainPanel } exact />
             <Route path="/domain/contact-info" component={ DomainContactInfo } exact />
             <Route path="/domain/auth-info" component={ DomainAuthInfo } exact />
+            <Route path="/domain/auto-renew" component={ DomainAutoRenew } exact />
+            <Route path="/domain/parkpage" component={ DomainParkPage } exact />
+            <Route path="/domain/lock-state" component={ DomainLockState } exact />
+            <Route path="/domain/whois-privacy" component={ DomainWhoisPrivacy } exact />
+            {/* <Route path="/domain/renew" component={ DomainRenew } exact /> */}
           </Switch>
           <div className="footer">
             <div className="footer-img"></div>

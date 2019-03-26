@@ -6,11 +6,11 @@ export const showAlert = data => dispatch => {
     });
 };
 
-export const sendAuthInfo = data => dispatch => {
+export const sendLockState = data => dispatch => {
 
     const apiUrl = sessionStorage.getItem('apiUrl');
 
-    fetch (`${apiUrl}/domain/modify-auth-info`, {
+    fetch (`${apiUrl}/domain/modify-lock-state`, {
         method: 'POST',
         dataType: 'jsonp',
         body: JSON.stringify(data),

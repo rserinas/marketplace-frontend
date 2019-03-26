@@ -1,24 +1,43 @@
 import React, { Component } from 'react';
 import '../styles/get_started.css';
 
+
 class getStarted extends Component {
   
   constructor (props) {
     super (props);
-  
-    // if (sessionStorage.getItem('total')) {
-    //   sessionStorage.removeItem('cartCount');
-    //   sessionStorage.removeItem('cart');
-    //   sessionStorage.removeItem('subTotal');
-    //   sessionStorage.removeItem('discount');
-    //   sessionStorage.removeItem('total');
-    //   sessionStorage.removeItem('payment');
-    //   sessionStorage.removeItem('pesoTotal');
-    //   sessionStorage.removeItem('transId');
-    //   sessionStorage.removeItem('paymentUrl');
-    //   sessionStorage.removeItem('extTransId');
-    // }
   }
+
+ 
+  componentDidMount = () => {
+    const apiUrl = sessionStorage.getItem('apiUrl');
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    const userId = sessionStorage.getItem('userId');
+    fetch (`${apiUrl}/domain/list/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+        sessionStorage.setItem('domains', data.domain);
+        // window.location = `${baseUrl}/get-started/finished`;
+    });
+    // let cart = JSON.parse(sessionStorage.getItem('cart'));
+    // console.log('cart:', cart);
+    // let hasDomain = false 
+    // if (cart != null) {
+    //   console.log('inside cart');
+    //   hasDomain = cart.map((a, i) => {
+    //     console.log('a.product: ', a.product);
+    //     if (a.product == 'domain') return true;
+    //   });
+    //   console.log('hasDomain: ', hasDomain);
+    //   if (hasDomain) {
+    //     //sessionStorage.removeItem('cart');
+    //     let x = 'It may take 24 - 48 hours for your website namesaver to complete propogation.';
+    //     alert(x);
+    //   }
+    // }
+    let x = 'It may take 24 - 48 hours for your website namesaver to complete propogation.';
+    alert(x);
+  };
   
   gotoMarket = () => {
         
