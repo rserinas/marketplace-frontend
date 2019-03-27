@@ -4,6 +4,9 @@ import loginReducers from './login.reducer';
 import domainReducers from './domain.reducer';
 import checkoutReducers from './checkout.reducer';
 import paymentReducers from './payment.reducer';
+import userProfileReducer from './user_profile.reducer';
+import userEditReducer from './user_edit.reducer';
+import userPasswordReducer from './user_password.reducer'
 import domainPanelReducers from './domain_panel.reducer';
 import domainContactInfoReducer from './domain_contact_info.reducer';
 import domainAuthInfoReducer from './domain_auth_info.reducer';
@@ -20,6 +23,9 @@ export default combineReducers({
     domain: domainReducers,
     checkout: checkoutReducers,
     pay: paymentReducers,
+    profile: userProfileReducer,
+    edit: userEditReducer,
+    pass: userPasswordReducer,
     domain_view: domainPanelReducers,
     domain_contact: domainContactInfoReducer,
     domain_auth: domainAuthInfoReducer,

@@ -24,6 +24,9 @@ import GetStarted from './pages/get_started';
 import SmsVerify from './pages/sms_verify';
 import Tos from './pages/tos';
 import PrivacyPolicy from './pages/privacy';
+import UserProfile from './pages/user_profile';
+import UserEdit from './pages/user_edit';
+import UserPassword from './pages/user_password';
 import DomainPanel from './pages/domain_panel';
 import DomainContactInfo from './pages/domain_contact_info';
 import DomainAuthInfo from './pages/domain_auth_info';
@@ -199,7 +202,7 @@ class App extends Component {
             </Col>
           </div>
           <div className="nav-bar">
-            <a href={`${baseUrl}/profile`} className="main-link">User Profile</a>
+            <a href={`${baseUrl}/user-profile`} className="main-link">User Profile</a>
             { (domains != 'false') ?
               <a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a>
             :
@@ -219,7 +222,9 @@ class App extends Component {
             <Route path="/checkout" component={ Checkout } exact />
             <Route path="/payment" component={ Payment } exact />
             <Route path="/get-started/finished" component={ GetStarted } />
-            {/* <Route path="/profile" component={ Profile } exact /> */}
+            <Route path="/user-profile" component={ UserProfile } exact />
+            <Route path="/user-edit" component={ UserEdit } exact />
+            <Route path="/user-password" component={ UserPassword } exact />
             <Route path="/domain-panel" component={ DomainPanel } exact />
             <Route path="/domain/contact-info" component={ DomainContactInfo } exact />
             <Route path="/domain/auth-info" component={ DomainAuthInfo } exact />

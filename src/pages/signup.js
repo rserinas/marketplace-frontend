@@ -147,7 +147,6 @@ class Signup extends Component {
     this.props.submitSignup(data);
   };
 
-
   checkCountry = (event) => {
     const target = event.target;
     const value = target.value;
@@ -157,8 +156,6 @@ class Signup extends Component {
 
     this.props.setState(value);
   }
-
-
   
   
   render() {
