@@ -1,5 +1,5 @@
 #crm {
-    background-image: url('/CRM.png');
+    background-image: url('/prosperna-dots-logo.png');
 }
 
 #builder {
@@ -51,6 +51,9 @@
     width: 60px;
     height: 60px;
     margin: 10px auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .shop-details {

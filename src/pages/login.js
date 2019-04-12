@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitLogin, showAlert } from '../actions/login.action';
 import '../styles/login.css';
-
+import Recaptcha from 'react-recaptcha';
 class Login extends Component {
   constructor (props) {
     super (props);
-    
+    this.state = {
+      isVerified: false
+    }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
   }
   
   handleInputChange(event) {
@@ -25,6 +29,18 @@ class Login extends Component {
     }
   }
 
+  recaptchaLoaded() {
+    console.log('capcha successfully loaded');
+  }
+
+  verifyCallback(response) {
+    if (response) {
+      this.setState({
+        isVerified: true
+      })
+    }
+  }
+
   checkEnterKey = (event) => {
     if (event.charCode === 13) {
       this.submitRecord();
@@ -32,41 +48,46 @@ class Login extends Component {
   };
 
   submitRecord = () => {
-    
-    if (this.props.alert.error !== 2) {
-      this.props.showAlert({ error: 2, msg: '' });
-    }
-    
-    let alert = {};
-    let re = null;
-
-    const data = {
-      email:    this.state.email,
-      pwd:      this.state.pwd
-    };
-    
-    if ( ! data.email || ! data.pwd) {
-      alert = {
-        error: 1,
-        msg: 'Login credentials are required.',
+    if (this.state.isVerified){
+      if (this.props.alert.error !== 2) {
+        this.props.showAlert({ error: 2, msg: '' });
+      }
+      
+      let alert = {};
+      let re = null;
+  
+      const data = {
+        email:    this.state.email,
+        pwd:      this.state.pwd
       };
-      return this.props.showAlert(alert);
+      
+      if ( ! data.email || ! data.pwd) {
+        alert = {
+          error: 1,
+          msg: 'Login credentials are required.',
+        };
+        return this.props.showAlert(alert);
+      }
+  
+      let email = data.email;
+      // eslint-disable-next-line
+      re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      
+      if ( ! re.test(String(email).toLowerCase())) {
+        alert = {
+          error: 1,
+          msg: 'You need to supply a valid email address.'
+        };
+  
+        return this.props.showAlert(alert);
+      }
+      
+      this.props.submitLogin(data);
     }
-
-    let email = data.email;
-    // eslint-disable-next-line
-    re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
-    if ( ! re.test(String(email).toLowerCase())) {
-      alert = {
-        error: 1,
-        msg: 'You need to supply a valid email address.'
-      };
-
-      return this.props.showAlert(alert);
+    else {
+      alert('Please verify that you are a human!');
     }
     
-    this.props.submitLogin(data);
   };
 
   
@@ -94,6 +115,12 @@ class Login extends Component {
                 <input type="password" className="form-control input-lg" onKeyPress={this.checkEnterKey} 
                 onChange={ this.handleInputChange } id="pwd"/>
               </div>
+              <Recaptcha
+                sitekey="6Ldzy50UAAAAAPS_UR1yGAHoAPsqovIRr8KmiaGN"
+                render="explicit"
+                onloadCallback={this.recaptchaLoaded}
+                verifyCallback={this.verifyCallback}
+              />
               <button id="btn-submit" className="btn btn-primary btn-lg" 
               onClick={ this.submitRecord }>
                   Login

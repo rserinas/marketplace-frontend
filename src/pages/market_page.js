@@ -113,7 +113,7 @@ class MarketPage extends Component {
             <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
-                    <h4>CRM</h4>
+                    <h4>Prosperna CRM Website Builder</h4>
                     <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
@@ -123,11 +123,28 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
+            <Col md={4} sm={4} xs={12}> 
+                <div className="page-box">
+                    <div className="shop-icon" id="domain"></div>
+                    <h4>Domain Names</h4>
+                    <p className="shop-details">Find the perfect domain name.</p>
+                    <div className="shop-box">
+                        <div className="more-info"></div>
+                        
+                        <Col className="add-to-cart">
+                            <button onClick={this.gotoDomain} 
+                            className="shop-btn btn btn-default btn-md">Search Now</button> 
+                        </Col>
+
+                    </div>
+                </div>
+            </Col>
+            
             { sessionStorage.getItem('userId') ? 
               <Col md={4} sm={4} xs={12}>
               <div className="page-box">
-                  <div className="shop-icon" id="builder"></div>
-                  <h4>Website Builder</h4>
+                  <div className="shop-icon" id="crm"></div>
+                  <h4>Prosperna Sites</h4>
                   <p className="shop-details">Affordable Real Estate Websites Fast.</p>
                   <div className="shop-box">
                       <div className="more-info">
@@ -142,20 +159,24 @@ class MarketPage extends Component {
               :
               <Col md={4} sm={4} xs={12}>
               <div className="page-box">
-                  <div className="shop-icon" id="builder"></div>
-                  <h4>Website Builder</h4>
+                  <div className="shop-icon" id="crm"></div>
+                  <h4>Prosperna Sites</h4>
                   <p className="shop-details">Affordable Real Estate Websites Fast.</p>
                   <div className="shop-box">
                       <div className="more-info">
                           <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
                       </div>
                       <div className="add-to-cart">
-                          <button className="shop-btn btn btn-default btn-md" onClick={this.gotoSignUp}>Create Dev Site</button>
+                          <button className="shop-btn btn btn-default btn-md" onClick={this.gotoSignUp}>Buy Now</button>
                       </div>
                   </div>
               </div>
               </Col>
             }
+            
+          </Row>
+                {/* Coded By Roevie */}
+          <Row >
             <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
@@ -166,25 +187,6 @@ class MarketPage extends Component {
                         <div className="add-to-cart">
                             <button className="shop-btn btn btn-default btn-md" onClick={this.gotoLanding}>More Info</button> 
                         </div>
-                    </div>
-                </div>
-            </Col>
-          </Row>
-                {/* Coded By Roevie */}
-          <Row >
-            <Col md={4} sm={4} xs={12}> 
-                <div className="page-box">
-                    <div className="shop-icon" id="domain"></div>
-                    <h4>Domain Names</h4>
-                    <p className="shop-details">Find the perfect domain name.</p>
-                    <div className="shop-box">
-                        <div className="more-info"></div>
-                        
-                        <Col className="add-to-cart">
-                            <button onClick={this.gotoDomain} 
-                            className="shop-btn btn btn-default btn-md">Search Now</button> 
-                        </Col>
-
                     </div>
                 </div>
             </Col>
