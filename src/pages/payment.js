@@ -13,10 +13,6 @@ class Payment extends Component {
   constructor (props) {
     super (props);
 
-    this.state = {
-      paymentOption: ''
-    }
-
     if ( ! sessionStorage.getItem('total')) {
       //sessionStorage.removeItem('cart');
       sessionStorage.removeItem('payment');
@@ -174,21 +170,7 @@ class Payment extends Component {
     }
 
     let title = '';
-    switch (this.props.trans.option ) {
-      case 'stripe':
-        title = 'Complete your payment using Credit or Debit Card.';
-        break;
-      case 'paypal':
-        title = 'Complete your payment using PayPal.';
-        break;
-      case 'coins':
-        title = 'Complete your payment using Coins.ph.';
-        break;
-      default:
-        title = 'Complete your payment.';
-    }
-
-    switch (this.state.paymentOption) {
+    switch (this.props.trans.option) {
       case 'stripe':
         title = 'Complete your payment using Credit or Debit Card.';
         break;
@@ -224,38 +206,13 @@ class Payment extends Component {
         </div>
       );
     }
-    else{
-      return (
-        <div style={{marginBottom: '30px', textAlign:"center"}}>
-          <h1>{title}</h1>
-          <p>
-            {this.props.user.name}<br />
-            {
-                this.props.user.address1 + ', ' 
-              + this.props.user.city + ', '
-              + this.props.user.state + ', '
-              + this.props.user.country
-            }<br />
-            {this.props.user.email}
-          </p>
-          {(this.state.paymentOption != 'coins') ? 
-            <strong>TOTAL: ${parseFloat(this.props.user.total).toFixed(2)}</strong>
-          : 
-            <strong>PHP TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
-          }
-        </div>
-      );
-    }
   };
 
   render() {
     let baseUrl = sessionStorage.getItem('baseUrl');
-
+    const selectedProduct = '';
     const cart  = JSON.parse(sessionStorage.getItem('cart'));
-    let selectedProduct = '';
-    cart.map((a, i) => {
-      selectedProduct = a.product;
-    });
+    console.log("bobo"+cart.product);
     return (
       <React.Fragment>
         <div className="banner">
@@ -307,7 +264,7 @@ class Payment extends Component {
                 </Col>
                 <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p className="available">AVAILABLE</p>
-                  <a className="pay-link" onClick={ selectedProduct !== 'domain' ? this.setState({ paymentOption: 'paypal' }) : (e) => this.setPaymentOption('paypal')}>
+                  <a className="pay-link" onClick={(e) => this.setPaymentOption('paypal')}>
                       <img src="/pay-paypal.png" alt="Paypal" className="responsive" />
                       <p>Paypal</p>
                   </a>
