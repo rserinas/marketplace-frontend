@@ -204,7 +204,6 @@ class Payment extends Component {
             <strong>PHP TOTAL: ₱{parseFloat(this.props.user.pesoTotal).toFixed(2)}</strong>
           }
         </div>
-        //a
       );
     }
   };
