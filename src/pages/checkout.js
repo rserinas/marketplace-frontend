@@ -65,6 +65,8 @@ class Checkout extends Component {
         const phone = sessionStorage.getItem('phone');
         const cart  = JSON.parse(sessionStorage.getItem('cart'));
 
+        
+
         const viewCart = cart.map((a, i) => {
             let amt = a.price;
             
@@ -73,7 +75,7 @@ class Checkout extends Component {
                 <td>{a.product.charAt(0).toUpperCase() + a.product.slice(1)}</td>
                 <td>{a.description}</td>
                 <td>
-                    { a.qty + ' year' }
+                    { a.product === 'Property Listy Website' ? a.qty + ' month' : a.qty + ' year' }
                     {/* <select className="form-control col-xs-3" value={a.qty} 
                     id="" name="" onChange={(e) => this.submitNewQty(i, e.target.value)}>
                         <option value="1">1 yr</option>
