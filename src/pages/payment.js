@@ -127,6 +127,7 @@ class Payment extends Component {
   };
 
   showPayPal = () => {
+    
     let env = sessionStorage.getItem('ppEnv'); // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
     let total = this.props.user.total // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
