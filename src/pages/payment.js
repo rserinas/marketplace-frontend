@@ -13,10 +13,6 @@ class Payment extends Component {
   constructor (props) {
     super (props);
 
-    this.state = {
-      selectedPayment: ''
-    }
-
     if ( ! sessionStorage.getItem('total')) {
       //sessionStorage.removeItem('cart');
       sessionStorage.removeItem('payment');
@@ -188,20 +184,6 @@ class Payment extends Component {
         title = 'Complete your payment.';
     }
 
-    switch (this.state.selectedPayment) {
-      case 'stripe':
-        title = 'Complete your payment using Credit or Debit Card.1';
-        break;
-      case 'paypal':
-        title = 'Complete your payment using PayPal.1';
-        break;
-      case 'coins':
-        title = 'Complete your payment using Coins.ph.1';
-        break;
-      default:
-        title = 'Complete your payment.1';
-    }
-
     if (this.props.trans.has_option) {
       return (
         <div style={{marginBottom: '30px', textAlign:"center"}}>
@@ -228,11 +210,7 @@ class Payment extends Component {
 
   render() {
     let baseUrl = sessionStorage.getItem('baseUrl');
-    const cart  = JSON.parse(sessionStorage.getItem('cart'));
-        let product = '';
-        cart.map((a, i) => {
-            product = a.product;
-        });
+    
     return (
       <React.Fragment>
         <div className="banner">
@@ -284,7 +262,7 @@ class Payment extends Component {
                 </Col>
                 <Col md={2} sm={2} xs={4} className="gateway-solo">
                   <p className="available">AVAILABLE</p>
-                  <a className="pay-link" onClick={product !== 'domain' ? this.setState({selectedPayment:'paypal'}) : (e) => this.setPaymentOption('paypal')}>
+                  <a className="pay-link" onClick={(e) => this.setPaymentOption('paypal')}>
                       <img src="/pay-paypal.png" alt="Paypal" className="responsive" />
                       <p>Paypal</p>
                   </a>
