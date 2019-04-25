@@ -40,7 +40,47 @@ class MarketPage extends Component {
 
   gotoWebBuilder = () => {
     const baseUrl = sessionStorage.getItem('baseUrl');
-    window.location = `https://marketplace-api.prosperna.ph/web-builder`;      
+    window.location = `https://mpwb-api.prosperna.ph/`;      
+  };
+
+  addToCart = () => {
+    let data = {
+      product: 'Property Listy Website',
+      description: '',
+      qty: 1,
+      price: 100
+    };
+
+    let cart = [];
+    let totalCount = 1;
+    
+    // eslint-disable-next-line
+    if (sessionStorage.getItem('cartCount') != null) {
+      // let buff = JSON.parse(sessionStorage.getItem('cart'));
+      // cart = buff.slice();
+      // totalCount = cart.push(data);
+      
+      alert = {
+        error: 1,
+        msg: 'You can only purchase 1 website at a time for now.'
+      };
+
+
+    } else {
+      
+      cart[0] = data;
+
+      sessionStorage.setItem('cartCount', totalCount);
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      
+      const baseUrl = sessionStorage.getItem('baseUrl');
+
+      if (sessionStorage.getItem('userId')) {
+        window.location = `${baseUrl}/checkout`;
+      } else {
+        window.location = `${baseUrl}/signup`;
+      }
+    } 
   };
 
     render() {
@@ -151,7 +191,7 @@ class MarketPage extends Component {
                         <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
                       </div>
                       <div className="add-to-cart">
-                          <button className="shop-btn btn btn-default btn-md" onClick={this.gotoWebBuilder}>Create Dev Site</button>
+                          <button className="shop-btn btn btn-default btn-md" onClick={this.addToCart}>Create Now</button>
                       </div>
                   </div>
               </div>
@@ -259,6 +299,7 @@ class MarketPage extends Component {
                 </div>
             </Col>
           </Row>
+          <div id="paypal-button"></div>
         </div>
       </React.Fragment>
     );
