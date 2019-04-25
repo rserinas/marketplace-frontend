@@ -252,7 +252,7 @@ class Payment extends Component {
     let baseUrl = sessionStorage.getItem('baseUrl');
 
     const cart  = JSON.parse(sessionStorage.getItem('cart'));
-    const selectedProduct = '';
+    let selectedProduct = '';
     cart.map((a, i) => {
       selectedProduct = a.product;
     });
