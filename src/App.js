@@ -67,7 +67,7 @@ class App extends Component {
       sessionStorage.setItem('ppEnv', 'production');
     } else {
       // This is the dev environment
-      sessionStorage.setItem('baseUrl', baseUrl);
+      sessionStorage.setItem('baseUrl', baseUrl+':3000');
       sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
       // This is a local environment
       // sessionStorage.setItem('baseUrl', 'http://localhost:3000');

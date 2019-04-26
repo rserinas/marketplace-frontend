@@ -73,7 +73,7 @@ class Checkout extends Component {
                 <td>{a.product.charAt(0).toUpperCase() + a.product.slice(1)}</td>
                 <td>{a.description}</td>
                 <td>
-                    { a.qty + ' year' }
+                    { a.product === 'Property Listing Website' ? a.qty + ' month' : a.qty + ' year' }
                     {/* <select className="form-control col-xs-3" value={a.qty} 
                     id="" name="" onChange={(e) => this.submitNewQty(i, e.target.value)}>
                         <option value="1">1 yr</option>
