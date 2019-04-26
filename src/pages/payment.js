@@ -62,7 +62,8 @@ class Payment extends Component {
   }
 
   onPPSuccess = (payment) => {
-    //console.log("The payment was succeeded!", payment);
+    console.log("The payment was succeeded!", payment);
+    window.location = `https://mpwb-api.prosperna.ph/`;      
     let data = {
       transId:        sessionStorage.getItem('transId'),
       extTransId:     payment.paymentID,
@@ -139,14 +140,21 @@ class Payment extends Component {
     //   => https://developer.paypal.com/docs/classic/lifecycle/goingLive/
 
     // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
-
+    
+    //me-sandbox-- Af33CDnj2h85O5QvEEpEb2b84WtYBFf-phRbMUrBDbAKRSnmKJhRNXIe-U247M5AV2_ltJX8PJvUXcK0
+    //me-production-- AZ-W6HzrYjv4RT73SuIcJ8gz9HKalcvceRHM4Azd2qzsJg8Iqi_5K4k5rlauOXlnsRd3JjtLiukMUbee
+    
+    //boss-sandbox-- AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f
+    //boss-production-- AXk4e1-HrsJlc6v6T9KAFwL52s__Wx7NJCQMYpPh6n1AAAninwJMhXi0hH9sLAAJFSSnXrlxfRhEo4am
+    
     const client = {
-      sandbox:    'AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f',
-      production: 'AXk4e1-HrsJlc6v6T9KAFwL52s__Wx7NJCQMYpPh6n1AAAninwJMhXi0hH9sLAAJFSSnXrlxfRhEo4am',
+      sandbox:    'Af33CDnj2h85O5QvEEpEb2b84WtYBFf-phRbMUrBDbAKRSnmKJhRNXIe-U247M5AV2_ltJX8PJvUXcK0',
+      production: 'AZ-W6HzrYjv4RT73SuIcJ8gz9HKalcvceRHM4Azd2qzsJg8Iqi_5K4k5rlauOXlnsRd3JjtLiukMUbee',
     }
     this.showDetails();
-    return <PaypalExpressBtn env={env} client={client} currency={currency} total={total} 
+    return <PaypalExpressBtn env={env} client={client} currency={currency} total={total}
     onError={this.onPPError} onSuccess={this.onPPSuccess} onCancel={this.onPPCancel} />;
+
   };
 
   showStripe = () => {

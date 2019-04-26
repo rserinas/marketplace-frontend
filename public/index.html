@@ -50,7 +50,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.6/postscribe.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
     
     <!-- <script src="https://www.paypalobjects.com/api/checkout.js"></script>
@@ -58,7 +58,7 @@
       paypal.Button.render({
         env: 'sandbox', // Or 'production'
         style: {
-          size: 'large',
+          size: 'small',
           color: 'gold',
           shape: 'pill',
         },
@@ -87,7 +87,7 @@
               // 3. Show the buyer a confirmation message.
             });
         }
-      }, '#paypal-button');
+      }, '#ppButton');
     </script> -->
   </body>
 </html>

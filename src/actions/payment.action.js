@@ -8,7 +8,7 @@ export const showAlert = data => dispatch => {
 
 
 export const getPayOption = opt => dispatch => {
-    
+    console.log(sessionStorage.getItem('transId'));
     let apiUrl = sessionStorage.getItem('apiUrl');
     let data = {
         cart:       sessionStorage.getItem('cart'),
@@ -16,7 +16,6 @@ export const getPayOption = opt => dispatch => {
         discount:   sessionStorage.getItem('discount'),
         subTotal:   sessionStorage.getItem('subTotal'),
         pesoTotal:  sessionStorage.getItem('pesoTotal'),
-        transId:    sessionStorage.getItem('transId'),
         userId:     sessionStorage.getItem('userId'),
         payment:    opt
     };
