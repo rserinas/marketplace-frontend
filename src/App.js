@@ -67,11 +67,11 @@ class App extends Component {
       sessionStorage.setItem('ppEnv', 'production');
     } else {
       // This is the dev environment
-      // sessionStorage.setItem('baseUrl', baseUrl);
-      // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
+      sessionStorage.setItem('baseUrl', baseUrl);
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
       // This is a local environment
-      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
       // Stripe Test Key
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');
       // Paypal sandbox
