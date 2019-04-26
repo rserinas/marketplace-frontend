@@ -62,7 +62,7 @@ class Payment extends Component {
   }
 
   onPPSuccess = (payment) => {
-    console.log("The payment was succeeded!", payment);
+    window.alert("The payment was succeeded!");
     window.location = `https://mpwb-api.prosperna.ph/`;      
     let data = {
       transId:        sessionStorage.getItem('transId'),
