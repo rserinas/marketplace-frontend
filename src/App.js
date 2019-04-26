@@ -60,7 +60,7 @@ class App extends Component {
     if (is_live) {
       sessionStorage.setItem('baseUrl', baseUrl);
       // THEA, edit also the .ph to .com
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.com/');
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.com');
       // Stripe Live Key
       sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
       // Paypal sandbox
@@ -68,7 +68,7 @@ class App extends Component {
     } else {
       // This is the dev environment
       sessionStorage.setItem('baseUrl', baseUrl+':3000');
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph/');
+      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
       // This is a local environment
       // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
       // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
