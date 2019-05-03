@@ -46,11 +46,11 @@ class MarketPage extends Component {
   addToCart = () => {
     let data = {
       description: '',
-      price: 100,
+      price: 0.10,
       product: 'Property Listing Website',
       qty: 1,
       supplierPrice: 100,
-      ext: '.net'
+      ext: 'website_builder'
     };
 
     let cart = [];

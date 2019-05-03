@@ -28,6 +28,7 @@ class CheckoutForm extends Component {
     token.pesoTotal = sessionStorage.getItem('pesoTotal');
     token.transId = sessionStorage.getItem('transId');
 
+    console.log("token: "+JSON.stringify(token));
     fetch (`${apiUrl}/charge`, {
       method: 'POST',
       dataType: 'jsonp',

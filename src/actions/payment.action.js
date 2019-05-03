@@ -11,6 +11,7 @@ export const getPayOption = opt => dispatch => {
     console.log(sessionStorage.getItem('transId'));
     let apiUrl = sessionStorage.getItem('apiUrl');
     let data = {
+        transId:    sessionStorage.getItem('transId'),
         cart:       sessionStorage.getItem('cart'),
         total:      sessionStorage.getItem('total'),
         discount:   sessionStorage.getItem('discount'),

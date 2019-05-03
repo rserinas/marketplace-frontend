@@ -62,45 +62,55 @@ class Payment extends Component {
   }
 
   onPPSuccess = (payment) => {
-    window.alert("The payment was succeeded!");
-    window.location = `https://mpwb-api.prosperna.ph/`;      
-    let data = {
-      transId:        sessionStorage.getItem('transId'),
-      extTransId:     payment.paymentID,
-      payment_method: 'paypal',
-      status:         'pd',
-      extUserId:      payment.payerID,
-      token:          payment.paymentToken
-    };
-
-    const apiUrl = sessionStorage.getItem('apiUrl');
-    
-    fetch (`${apiUrl}/user/transact/final`, {
-        method: 'POST',
-        dataType: 'jsonp',
-        body: JSON.stringify(data),
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.error) {
-          this.props.showAlert(data);
-        } else {
-          
-          sessionStorage.removeItem('cartCount');
-          //sessionStorage.removeItem('cart');
-          sessionStorage.removeItem('subTotal');
-          sessionStorage.removeItem('discount');
-          sessionStorage.removeItem('total');
-          sessionStorage.removeItem('payment');
-          sessionStorage.removeItem('pesoTotal');
-          sessionStorage.removeItem('transId');
-          sessionStorage.removeItem('paymentUrl');
-          sessionStorage.removeItem('extTransId');
-          
-          const baseUrl = sessionStorage.getItem('baseUrl');
-          window.location = `${baseUrl}/get-started/finished`;
-        }
+    const cart  = JSON.parse(sessionStorage.getItem('cart'));
+    let product = '';
+    cart.map((a, i) => {
+      product = a.product;
     });
+    if(product === "Property Listing Website"){
+      this.props.showAlert({ error: 1, msg: '' });
+      window.location = `https://mpwb-api.prosperna.ph/`;
+    }   
+    else{
+      let data = {
+        transId:        sessionStorage.getItem('transId'),
+        extTransId:     payment.paymentID,
+        payment_method: 'paypal',
+        status:         'pd',
+        extUserId:      payment.payerID,
+        token:          payment.paymentToken
+      };
+  
+      const apiUrl = sessionStorage.getItem('apiUrl');
+      
+      fetch (`${apiUrl}/user/transact/final`, {
+          method: 'POST',
+          dataType: 'jsonp',
+          body: JSON.stringify(data),
+      })
+      .then(res => res.json())
+      .then(data => {
+          if (data.error) {
+            this.props.showAlert(data);
+          } else {
+            
+            sessionStorage.removeItem('cartCount');
+            //sessionStorage.removeItem('cart');
+            sessionStorage.removeItem('subTotal');
+            sessionStorage.removeItem('discount');
+            sessionStorage.removeItem('total');
+            sessionStorage.removeItem('payment');
+            sessionStorage.removeItem('pesoTotal');
+            sessionStorage.removeItem('transId');
+            sessionStorage.removeItem('paymentUrl');
+            sessionStorage.removeItem('extTransId');
+            
+            const baseUrl = sessionStorage.getItem('baseUrl');
+            window.location = `${baseUrl}/get-started/finished`;
+          }
+      });
+    }
+    
   };
 
   onPPCancel = (data) => {

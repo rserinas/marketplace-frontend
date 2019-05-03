@@ -8,7 +8,6 @@ class getStarted extends Component {
     super (props);
   }
 
- 
   componentDidMount = () => {
     const apiUrl = sessionStorage.getItem('apiUrl');
     const baseUrl = sessionStorage.getItem('baseUrl');
@@ -40,9 +39,7 @@ class getStarted extends Component {
   };
   
   gotoMarket = () => {
-        
     const baseUrl = sessionStorage.getItem('baseUrl');
-
     window.location = `${baseUrl}/`;
   };
 
