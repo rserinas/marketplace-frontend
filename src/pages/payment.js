@@ -129,7 +129,6 @@ class Payment extends Component {
 
   showCoins = () => {
     const paymentUrl = sessionStorage.getItem('paymentUrl');
-    console.log(sessionStorage.getItem('paymentUrl'));
     return (
       <div>
         <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
@@ -141,7 +140,7 @@ class Payment extends Component {
     
     let env = sessionStorage.getItem('ppEnv'); // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
-    let total = this.props.user.total // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+    let total = sessionStorage.getItem('ppEnv') // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
