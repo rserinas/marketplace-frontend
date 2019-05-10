@@ -39,15 +39,22 @@ class CheckoutForm extends Component {
         if (data.error === 1) {
           this.setState({alert: { error: data.error, msg: data.msg }});
         } else {
-          sessionStorage.removeItem('cartCount');
-          sessionStorage.removeItem('cart');
-          sessionStorage.removeItem('subTotal');
-          sessionStorage.removeItem('discount');
-          sessionStorage.removeItem('total');      
-          sessionStorage.removeItem('payment');
-    
-          const baseUrl = sessionStorage.getItem('baseUrl');
-          window.location = `${baseUrl}/get-started/finished`;
+          console.log("stripe test");
+          if(data.product === 'website_builder')
+          {
+            window.location = `http://mpwb-api.prosperna.ph`;
+          }
+          else
+          {
+            sessionStorage.removeItem('cartCount');
+            sessionStorage.removeItem('cart');
+            sessionStorage.removeItem('subTotal');
+            sessionStorage.removeItem('discount');
+            sessionStorage.removeItem('total');      
+            sessionStorage.removeItem('payment');
+            const baseUrl = sessionStorage.getItem('baseUrl');
+            window.location = `${baseUrl}/get-started/finished`;
+          }
         }
     })
     .catch((err) => { console.log(err); });

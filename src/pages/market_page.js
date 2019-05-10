@@ -49,8 +49,10 @@ class MarketPage extends Component {
       description: 'property listing website',
       ext: 'website_builder',
       qty: 1,
-      supplierPrice: 0.0944,
-      price: 0.0944
+      supplierPrice: 100,
+      price: 100
+      // supplierPrice: 0.0944,
+      // price: 0.0944
     };
 
     let cart = [];
