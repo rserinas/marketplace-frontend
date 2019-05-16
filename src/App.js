@@ -54,7 +54,7 @@ class App extends Component {
     }
     
     //************************** */
-    const is_live = false;
+    const is_live = true;
     //************************** */
 
     if (is_live) {
