@@ -183,7 +183,14 @@ class App extends Component {
                 <Col md={6} sm={6} xs={12} className="header-panel">
                   { showSmsVerify }
                   { this.showCart() }
-                  <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
+                  <div class="dropdown">
+                    <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
+                    <ul class="dropdown-menu">
+                      <li><a href="/user-profile">User Profile</a></li>
+                      { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
+                      <li><a onClick={this.logout}>Logout</a></li>
+                    </ul>
+                  </div>
                 </Col>
               </Row>
             </Col>
@@ -198,19 +205,19 @@ class App extends Component {
                 <Col  xs={12} className="shaded">
                   { showSmsVerify }
                   { this.showCart() }
-                  <button onClick={this.logout} className="btn btn-default btn-md">Logout</button>
+                  <div class="dropdown">
+                    <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
+                    <ul class="dropdown-menu">
+                      <li><a href="/user-profile">User Profile</a></li>
+                      { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
+                      <li><a onClick={this.logout}>Logout</a></li>
+                    </ul>
+                  </div>
                 </Col>
               </Row>
             </Col>
           </div>
-          <div className="nav-bar">
-            <a href={`${baseUrl}/user-profile`} className="main-link">User Profile</a>
-            { (domains != 'false') ?
-              <a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a>
-            :
-              null
-            }
-          </div>
+         
           <Switch>
             <Route path="/" component={ MarketPage } exact />
             <Route path="/domain-search" component={ DomainSearch } exact />

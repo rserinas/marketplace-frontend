@@ -49,49 +49,26 @@ class MarketPage extends Component {
       description: 'property listing website',
       ext: 'website_builder',
       qty: 1,
-      supplierPrice: 100,
-      price: 100
+      supplierPrice: 1,
+      price: 1
       // supplierPrice: 0.0944,
       // price: 0.0944
     };
 
     let cart = [];
     let totalCount = 1;
+    cart[0] = data;
+
+    sessionStorage.setItem('cartCount', totalCount);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
     
-    // eslint-disable-next-line
-    if (sessionStorage.getItem('cartCount') != null) {
-      // let buff = JSON.parse(sessionStorage.getItem('cart'));
-      // cart = buff.slice();
-      // totalCount = cart.push(data);
-      
-      alert = {
-        error: 1,
-        msg: 'You can only purchase 1 website at a time for now.'
-      };
+    const baseUrl = sessionStorage.getItem('baseUrl');
 
-      return this.props.showAlert(alert);
-
+    if (sessionStorage.getItem('userId')) {
+      window.location = `${baseUrl}/checkout`;
     } else {
-      
-      cart[0] = data;
-
-      sessionStorage.setItem('cartCount', totalCount);
-      sessionStorage.setItem('cart', JSON.stringify(cart));
-      
-      const baseUrl = sessionStorage.getItem('baseUrl');
-
-      if (sessionStorage.getItem('userId')) {
-        window.location = `${baseUrl}/checkout`;
-      } else {
-        window.location = `${baseUrl}/signup`;
-      }
-      // this.props.goCheckout(true);
-    } 
-    
-    // sessionStorage.setItem('cartCount', totalCount);
-    // sessionStorage.setItem('cart', JSON.stringify(cart));
-    
-    // this.props.goCheckout(true);
+      window.location = `${baseUrl}/signup`;
+    }
   };
 
     render() {
@@ -164,7 +141,7 @@ class MarketPage extends Component {
             <Col md={4} sm={4} xs={12}>
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
-                    <h4>Prosperna CRM Website Builder</h4>
+                    <h4>Prosperna CRM</h4>
                     <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
@@ -195,14 +172,14 @@ class MarketPage extends Component {
               <Col md={4} sm={4} xs={12}>
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
-                  <h4>Prosperna Sites</h4>
+                  <h4>Prosperna Website Builder</h4>
                   <p className="shop-details">Affordable Real Estate Websites Fast.</p>
                   <div className="shop-box">
                       <div className="more-info">
                         <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
                       </div>
                       <div className="add-to-cart">
-                          <button className="shop-btn btn btn-default btn-md" onClick={this.addToCart}>Create Now</button>
+                          <button className="shop-btn btn btn-default btn-md" onClick={this.addToCart}>Buy Now</button>
                       </div>
                   </div>
               </div>
@@ -211,7 +188,7 @@ class MarketPage extends Component {
               <Col md={4} sm={4} xs={12}>
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
-                  <h4>Prosperna Sites</h4>
+                  <h4>Prosperna Website Builder</h4>
                   <p className="shop-details">Affordable Real Estate Websites Fast.</p>
                   <div className="shop-box">
                       <div className="more-info">

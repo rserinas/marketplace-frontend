@@ -7,7 +7,8 @@ import { showAlert, getPayOption, finishTransaction } from '../actions/payment.a
 import '../styles/payment.css';
 import { Row, Col } from 'react-styled-flexboxgrid';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-
+import $ from 'jquery';
+import ReactDOM from 'react-dom';
 
 class Payment extends Component {
   constructor (props) {
@@ -24,7 +25,6 @@ class Payment extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-
 
   handleInputChange(event) {
     
@@ -53,10 +53,10 @@ class Payment extends Component {
           return this.showStripe();
           break;
         case 'paypal':
-        return this.showPayPal();
+          return this.showPayPal();
           break;
         case 'coins':
-        return this.showCoins();
+          return this.showCoins();
           break;
     }
   }
@@ -67,8 +67,7 @@ class Payment extends Component {
     cart.map((a, i) => {
       product = a.product;
     });
-    if(product === "Property Listing Website"){
-      this.props.showAlert({ error: 1, msg: '' });
+    if(product === "website builder"){
       window.location = `https://mpwb-api.prosperna.ph/`;
     }   
     else{
@@ -117,6 +116,7 @@ class Payment extends Component {
     // User pressed "cancel" or close Paypal's popup!
     console.log('The payment was cancelled!', data);
     this.props.showAlert({ error: 1, msg: 'PayPal Payment was cancelled.' });
+    window.location.reload();
   };
 
   onPPError = (err) => {
@@ -129,18 +129,46 @@ class Payment extends Component {
 
   showCoins = () => {
     const paymentUrl = sessionStorage.getItem('paymentUrl');
-    return (
-      <div>
-        <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
-      </div>
+
+    const element = (
+      <React.Fragment>
+        <button id="showModal" style={{display:'none'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#paypalModal"></button>
+        <div className="modal fade" id="paypalModal" tabIndex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                {this.showDetails()}
+                <div>
+                  <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
+                </div>
+              </div>
+              <div className="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
+    ReactDOM.render(element, document.getElementById('gateway'),() => {
+      $( "#showModal" ).click()
+    });
+    // return (
+      // <div>
+      //   <a className="coins-link" href={paymentUrl}>Pay with Coins.ph</a>
+      // </div>
+    // );
   };
 
   showPayPal = () => {
     
     let env = sessionStorage.getItem('ppEnv'); // you can set here to 'production' for production
     let currency = 'USD'; // or you can set this value from your props or state
-    let total = sessionStorage.getItem('ppEnv') // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+    var total = parseInt(sessionStorage.getItem("total"), 10); // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
     // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
@@ -150,34 +178,96 @@ class Payment extends Component {
 
     // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
     
-    //me-sandbox-- Af33CDnj2h85O5QvEEpEb2b84WtYBFf-phRbMUrBDbAKRSnmKJhRNXIe-U247M5AV2_ltJX8PJvUXcK0
-    //me-production-- AZ-W6HzrYjv4RT73SuIcJ8gz9HKalcvceRHM4Azd2qzsJg8Iqi_5K4k5rlauOXlnsRd3JjtLiukMUbee
+    let iansandbox = 'Af33CDnj2h85O5QvEEpEb2b84WtYBFf-phRbMUrBDbAKRSnmKJhRNXIe-U247M5AV2_ltJX8PJvUXcK0';
+    let ianproduction = 'AZ-W6HzrYjv4RT73SuIcJ8gz9HKalcvceRHM4Azd2qzsJg8Iqi_5K4k5rlauOXlnsRd3JjtLiukMUbee';
     
-    //boss-sandbox-- AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f
-    //boss-production-- AXk4e1-HrsJlc6v6T9KAFwL52s__Wx7NJCQMYpPh6n1AAAninwJMhXi0hH9sLAAJFSSnXrlxfRhEo4am
+    let bosssandbox = 'AUgRoZ7vXCXqOrZqnohQlC-L0cF9W-Fzr-eEhRbX94_xZx4zPhepTx0KLEDvLpM4K_TfhzDQmfbf0G4f';
+    let bossproduction = 'AXk4e1-HrsJlc6v6T9KAFwL52s__Wx7NJCQMYpPh6n1AAAninwJMhXi0hH9sLAAJFSSnXrlxfRhEo4am';
     
     const client = {
-      sandbox:    'Af33CDnj2h85O5QvEEpEb2b84WtYBFf-phRbMUrBDbAKRSnmKJhRNXIe-U247M5AV2_ltJX8PJvUXcK0',
-      production: 'AZ-W6HzrYjv4RT73SuIcJ8gz9HKalcvceRHM4Azd2qzsJg8Iqi_5K4k5rlauOXlnsRd3JjtLiukMUbee',
+      sandbox:    bosssandbox,
+      production: bossproduction,
     }
-    this.showDetails();
-    return <PaypalExpressBtn env={env} client={client} currency={currency} total={total}
-    onError={this.onPPError} onSuccess={this.onPPSuccess} onCancel={this.onPPCancel} />;
+
+    
+    const element = (
+      <React.Fragment>
+        <button id="showModal" style={{display:'none'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#paypalModal"></button>
+        <div className="modal fade" id="paypalModal" tabIndex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                {this.showDetails()}
+                <PaypalExpressBtn env={env} client={client} currency={currency} total={total}
+                onError={this.onPPError} onSuccess={this.onPPSuccess} onCancel={this.onPPCancel} />
+              </div>
+              <div className="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+    ReactDOM.render(element, document.getElementById('gateway'),() => {
+      $( "#showModal" ).click()
+    });
+    
+    // return <PaypalExpressBtn env={env} client={client} currency={currency} total={total}
+    // onError={this.onPPError} onSuccess={this.onPPSuccess} onCancel={this.onPPCancel} />;
 
   };
 
   showStripe = () => {
     const apiKey = sessionStorage.getItem('stripeApiKey')
 
-    return (
-        <StripeProvider apiKey={apiKey}>
-        <div className="well">
-          <Elements>
-            <CheckoutForm />
-          </Elements>
+    const element = (
+      <React.Fragment>
+        <button id="showModal" style={{display:'none'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#paypalModal"></button>
+        <div className="modal fade" id="paypalModal" tabIndex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                { this.showDetails() }
+                <StripeProvider apiKey={apiKey}>
+                  <div className="well">
+                    <Elements>
+                      <CheckoutForm />
+                    </Elements>
+                  </div>
+                </StripeProvider>
+              </div>
+              <div className="modal-footer">
+              </div>
+            </div>
+          </div>
         </div>
-      </StripeProvider>
+      </React.Fragment>
     );
+    ReactDOM.render(element, document.getElementById('gateway'),() => {
+      $( "#showModal" ).click()
+    });
+    // return (
+    //   <React.Fragment>
+    //     { this.showDetails() }
+    //     <StripeProvider apiKey={apiKey}>
+    //       <div className="well">
+    //         <Elements>
+    //           <CheckoutForm />
+    //         </Elements>
+    //       </div>
+    //     </StripeProvider>
+    //   </React.Fragment>
+    // );
   };
 
   showDetails = () => {
@@ -187,23 +277,29 @@ class Payment extends Component {
     }
 
     let title = '';
+    let paymentMethod = '';
+
     switch (this.props.trans.option) {
       case 'stripe':
         title = 'Complete your payment using Credit or Debit Card.';
+        paymentMethod = 'stripe';
         break;
       case 'paypal':
         title = 'Complete your payment using PayPal.';
+        paymentMethod = 'paypal';
         break;
       case 'coins':
         title = 'Complete your payment using Coins.ph.';
+        paymentMethod = 'coins';
         break;
       default:
         title = 'Complete your payment.';
     }
 
     if (this.props.trans.has_option) {
+      
       return (
-        <div style={{marginBottom: '30px', textAlign:"center"}}>
+        <div id={paymentMethod} style={{marginBottom: '30px', textAlign:"center"}}>
           <h1>{title}</h1>
           <p>
             {this.props.user.name}<br />
@@ -222,6 +318,7 @@ class Payment extends Component {
           }
         </div>
       );
+      
     }
   };
 
@@ -314,6 +411,7 @@ class Payment extends Component {
                 </Col>
               </Row>
             </div>
+            
             <div className="container" style={{clear: 'both'}}>  
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
@@ -323,8 +421,8 @@ class Payment extends Component {
             : ''
             }
             </div>
-            <div className="payment-option-box">
-              { this.showDetails() }
+            <div id="gateway" className="payment-option-box">
+              {/* { this.showDetails() } */}
               { this.props.trans.has_option == true ? this.showPaymentOption() : null }
             </div>
         </div>

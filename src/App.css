@@ -21,7 +21,39 @@ body {
   text-align: right;
   vertical-align: middle;
 }
+.header .header-panel .dropdown{
+  display: inline-block;
+  margin-left: 10px;
+}
 
+.header .header-panel .dropdown img{
+  height: 35px;
+  cursor: pointer;
+}
+.header .header-panel .dropdown .dropdown-menu {
+  left: -120px;
+  margin: 10px 0 0;
+  border-top: 4px solid #3F71D7!important;
+}
+.header .header-panel .dropdown .dropdown-menu li{
+  margin: 10px 0px;
+}
+.header .header-panel .dropdown .dropdown-menu li a{
+  cursor: pointer;
+}
+.header .header-panel .dropdown .dropdown-menu :before {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #3F71D7;
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 115px;
+  right: 0px;
+  margin: auto;
+}
 .verify-sms {
   color: #5ACBF1;
   display: inline-block;
