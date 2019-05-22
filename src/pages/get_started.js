@@ -35,8 +35,12 @@ class getStarted extends Component {
     //   }
     // }
     sessionStorage.removeItem('cart');
-    let x = 'It may take 24 - 48 hours for your website namesaver to complete propogation.';
-    alert(x);
+    // let paymentMethod = sessionStorage.getItem('paymentMethod');
+    // let x = 'It may take 24 - 48 hours for your website namesaver to complete propogation.';
+    // if(paymentMethod != 'dragonpay')
+    // {
+    //   alert(x);
+    // } 
   };
   
   gotoMarket = () => {
@@ -45,13 +49,29 @@ class getStarted extends Component {
   };
 
   render() {
+    let paymentMethod = sessionStorage.getItem('paymentMethod');
     return (
+      paymentMethod === 'dragonpay' ?
       <React.Fragment>
         <div className="container">
           <div className="container-md">
             <div className="ellipse-icon"></div>
             <h1>Thank you for your business!</h1>
-            <p>Our Prosperna Team Tech Support will email you once your domain has been activated.</p>
+            <p>Our Prosperna Team Tech Support will email you once your payment is completed together with your official receipt.</p>
+            <button className="btn btn-primary btn-lg" 
+            onClick={ this.gotoMarket }>
+                Go Back to Marketplace
+            </button>
+          </div>
+        </div>
+      </React.Fragment>
+      :
+      <React.Fragment>
+        <div className="container">
+          <div className="container-md">
+            <div className="ellipse-icon"></div>
+            <h1>Thank you for your business!</h1>
+            <p>Our Prosperna Team Tech Support will email your official receipt</p>
             <button className="btn btn-primary btn-lg" 
             onClick={ this.gotoMarket }>
                 Go Back to Marketplace

@@ -9,6 +9,7 @@ export const showAlert = data => dispatch => {
 
 export const getPayOption = opt => dispatch => {
     console.log(sessionStorage.getItem('transId'));
+    sessionStorage.setItem('paymentMethod', opt);
     let apiUrl = sessionStorage.getItem('apiUrl');
     let data = {
         transId:    sessionStorage.getItem('transId'),

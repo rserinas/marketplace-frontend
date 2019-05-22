@@ -71,7 +71,21 @@ class Payment extends Component {
       product = a.product;
     });
     if(product === "website builder"){
-      window.location = `https://mpwb-api.prosperna.ph/`;
+      sessionStorage.removeItem('cartCount');
+      //sessionStorage.removeItem('cart');
+      sessionStorage.removeItem('subTotal');
+      sessionStorage.removeItem('discount');
+      sessionStorage.removeItem('total');
+      sessionStorage.removeItem('payment');
+      sessionStorage.removeItem('pesoTotal');
+      sessionStorage.removeItem('transId');
+      sessionStorage.removeItem('paymentUrl');
+      sessionStorage.removeItem('extTransId');
+  
+      window.open(`https://mpwb-api.prosperna.ph/`, '_blank');
+  
+      const baseUrl = sessionStorage.getItem('baseUrl');
+      window.location = `${baseUrl}/get-started/finished`;
     }   
     else{
       let data = {
@@ -133,8 +147,8 @@ class Payment extends Component {
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
     this.props.showAlert({ error: 1, msg: err });
   };
-
-  showDragonpay = () => {
+  gotoGetStarted = (e) => {
+    e.preventDefault();
     let transId = sessionStorage.getItem('transId');
     let fname = sessionStorage.getItem('fname');
     let lname = sessionStorage.getItem('lname');
@@ -149,7 +163,24 @@ class Payment extends Component {
 
     let gbURL = sessionStorage.getItem('gbURL')+"&invoiceno="+transId+"&name="+fullname.replace(/ /g, "+")+"&email="+email.replace(/@/g, "%40")+"&amount="+total+"&remarks="+product.replace(/ /g, "+");
     console.log("dragonpay url: "+gbURL);
-    
+
+    sessionStorage.removeItem('cartCount');
+    //sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('subTotal');
+    sessionStorage.removeItem('discount');
+    sessionStorage.removeItem('total');
+    sessionStorage.removeItem('payment');
+    sessionStorage.removeItem('pesoTotal');
+    sessionStorage.removeItem('transId');
+    sessionStorage.removeItem('paymentUrl');
+    sessionStorage.removeItem('extTransId');
+
+    window.open(`${gbURL}`, '_blank');
+
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/get-started/finished`;
+  }
+  showDragonpay = () => {
     const element = (
       <React.Fragment>
         <button id="showModal" style={{display:'none'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#paypalModal"></button>
@@ -164,7 +195,7 @@ class Payment extends Component {
               <div className="modal-body">
                 {this.showDetails()}
                 <div>
-                  <a className="dragonpay-link" href={gbURL}>Pay with Dragonpay</a>
+                  <a className="dragonpay-link" href="/" onClick={this.gotoGetStarted.bind(this)}>Pay with Dragonpay</a>
                 </div>
               </div>
               <div className="modal-footer">
