@@ -34,6 +34,7 @@ class getStarted extends Component {
     //     alert(x);
     //   }
     // }
+    sessionStorage.removeItem('cart');
     let x = 'It may take 24 - 48 hours for your website namesaver to complete propogation.';
     alert(x);
   };

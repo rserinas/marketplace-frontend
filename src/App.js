@@ -54,7 +54,7 @@ class App extends Component {
     }
     
     //************************** */
-    const is_live = true;
+    const is_live = false;
     //************************** */
 
     if (is_live) {
@@ -65,18 +65,22 @@ class App extends Component {
       sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
       // Paypal sandbox
       sessionStorage.setItem('ppEnv', 'production');
+      // Dragonpay Live URL
+      sessionStorage.setItem('gbURL', 'https://gw.dragonpay.ph/GenPay.aspx?merchantid=DPLPROSPERNA');
     } else {
       // This is the dev environment
-      sessionStorage.setItem('baseUrl', baseUrl);
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
+      // sessionStorage.setItem('baseUrl', baseUrl);
+      // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
       // This is a local environment
-      // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-      // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
       // Stripe Test Key
       //sessionStorage.setItem('stripeApiKey', 'pk_test_Cd9VXBfXltI5QWfAUv6X4uRM00VGxxTg7E');// ian test keys
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');// prosperna stripeApiKey - pk_test_YbL8a2pBYQTqqexvbZvZCFJJ
       // Paypal sandbox
       sessionStorage.setItem('ppEnv', 'sandbox');
+      // Dragonpay Test URL
+      sessionStorage.setItem('gbURL', 'https://test.dragonpay.ph/GenPay.aspx?merchantid=DPLPROSPERNA');
     }
     
     sessionStorage.setItem('pesoRate', 53);
@@ -183,9 +187,9 @@ class App extends Component {
                 <Col md={6} sm={6} xs={12} className="header-panel">
                   { showSmsVerify }
                   { this.showCart() }
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
-                    <ul class="dropdown-menu">
+                    <ul className="dropdown-menu">
                       <li><a href="/user-profile">User Profile</a></li>
                       { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
                       <li><a onClick={this.logout}>Logout</a></li>
@@ -205,9 +209,9 @@ class App extends Component {
                 <Col  xs={12} className="shaded">
                   { showSmsVerify }
                   { this.showCart() }
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
-                    <ul class="dropdown-menu">
+                    <ul className="dropdown-menu">
                       <li><a href="/user-profile">User Profile</a></li>
                       { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
                       <li><a onClick={this.logout}>Logout</a></li>

@@ -154,7 +154,7 @@ class DomainSearch extends Component {
     const baseUrl = sessionStorage.getItem('baseUrl');
     // eslint-disable-next-line
     const showResults = this.props.result.suggest.map((a, i) => {
-      if (this.props.result.count) {
+      if (this.props.result.count && a.status === 'available') {
         return <tr key={i}><td>{a.domain}</td><td>{a.status}</td></tr>;
       }
     }); 
@@ -378,6 +378,7 @@ class DomainSearch extends Component {
                   <h3>THIS DOMAIN {' '}
                   {this.props.result.domainName.toUpperCase()}{this.props.result.domainExt.toUpperCase()} 
                   {' '}IS {this.props.result.availability.toUpperCase()}</h3>
+                  {console.log(this.props.result.availability)}
                   {this.props.result.availability === 'available' ? 
                     <React.Fragment>
                       <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
