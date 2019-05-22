@@ -36,15 +36,16 @@ import DomainParkPage from './pages/domain_parkpage';
 import DomainLockState from './pages/domain_lock_state';
 import DomainWhoisPrivacy from './pages/domain_whois_privacy';
 // import DomainRenew from './pages/domain_renew';
-
-
+import $ from 'jquery'; 
+import jQuery from 'jquery'; 
 library.add(faShoppingCart)
 
 
 class App extends Component {
-
+  componentWillMount() {
+    this.smoothScrollEffect();
+  }
   componentDidMount = () => {
-
     let baseUrl = null; 
     
     if (window.location.protocol === 'https:') { 
@@ -69,11 +70,11 @@ class App extends Component {
       sessionStorage.setItem('gbURL', 'https://gw.dragonpay.ph/GenPay.aspx?merchantid=DPLPROSPERNA');
     } else {
       // This is the dev environment
-      sessionStorage.setItem('baseUrl', baseUrl);
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
+      // sessionStorage.setItem('baseUrl', baseUrl);
+      // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
       // This is a local environment
-      // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-      // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
       // Stripe Test Key
       //sessionStorage.setItem('stripeApiKey', 'pk_test_Cd9VXBfXltI5QWfAUv6X4uRM00VGxxTg7E');// ian test keys
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');// prosperna stripeApiKey - pk_test_YbL8a2pBYQTqqexvbZvZCFJJ
@@ -116,7 +117,67 @@ class App extends Component {
 
     window.location = `${baseUrl}`;
   }
-
+  smoothScrollEffect = () => {
+    $(document).ready(function(){
+			jQuery.scrollSpeed(200, 800);
+    });
+    (function($) {
+        jQuery.scrollSpeed = function(step, speed, easing) {
+            var $document = $(document),
+                $window = $(window),
+                $body = $('html, body'),
+                option = easing || 'default',
+                root = 0,
+                scroll = false,
+                scrollY,
+                scrollX,
+                view;
+            if (window.navigator.msPointerEnabled)
+                return false;
+            $window.on('mousewheel DOMMouseScroll', function(e) {
+                var deltaY = e.originalEvent.wheelDeltaY,
+                    detail = e.originalEvent.detail;
+                    scrollY = $document.height() > $window.height();
+                    scrollX = $document.width() > $window.width();
+                    scroll = true;
+                if (scrollY) {
+                    view = $window.height();
+                    if (deltaY < 0 || detail > 0)
+                        root = (root + view) >= $document.height() ? root : root += step;
+                    if (deltaY > 0 || detail < 0)
+                        root = root <= 0 ? 0 : root -= step;
+                    $body.stop().animate({
+                        scrollTop: root
+                    }, speed, option, function() {
+                        scroll = false;
+                    });
+                }
+                if (scrollX) {
+                    view = $window.width();
+                    if (deltaY < 0 || detail > 0)
+                        root = (root + view) >= $document.width() ? root : root += step;
+                    if (deltaY > 0 || detail < 0)
+                        root = root <= 0 ? 0 : root -= step;
+                    $body.stop().animate({
+                        scrollLeft: root
+                    }, speed, option, function() {
+                        scroll = false;
+                    });
+                }
+                return false;
+            }).on('scroll', function() {
+                if (scrollY && !scroll) root = $window.scrollTop();
+                if (scrollX && !scroll) root = $window.scrollLeft();
+            }).on('resize', function() {
+                if (scrollY && !scroll) view = $window.height();
+                if (scrollX && !scroll) view = $window.width();
+            });       
+        };
+        jQuery.easing.default = function (x,t,b,c,d) {
+            return -c * ((t=t/d-1)*t*t*t - 1) + b;
+        };
+    })(jQuery);
+  }
   checkLogin = () => {
     
     let userId = sessionStorage.getItem('userId');
