@@ -22,3 +22,14 @@
 .checkout-link {
     margin-bottom: 20px;
 }
+@media (min-width: 980px){
+    .well.domain-search{
+        width: 800px;
+        margin: auto;
+    }
+}
+@media (max-width: 981px){
+    input#domainName {
+        margin-bottom: 20px;
+    }
+}

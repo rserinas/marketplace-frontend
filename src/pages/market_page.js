@@ -138,7 +138,7 @@ class MarketPage extends Component {
 
         <div className="container">
           <Row>
-            <Col md={4} sm={4} xs={12}>
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
                     <h4>Prosperna CRM</h4>
@@ -151,7 +151,7 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}> 
+            <Col xs={12} sm={6} md={6} lg={4} > 
                 <div className="page-box">
                     <div className="shop-icon" id="domain"></div>
                     <h4>Domain Names</h4>
@@ -169,7 +169,7 @@ class MarketPage extends Component {
             </Col>
             
             { sessionStorage.getItem('userId') ? 
-              <Col md={4} sm={4} xs={12}>
+              <Col xs={12} sm={6} md={6} lg={4} >
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
@@ -185,7 +185,7 @@ class MarketPage extends Component {
               </div>
               </Col>
               :
-              <Col md={4} sm={4} xs={12}>
+              <Col xs={12} sm={6} md={6} lg={4} >
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
@@ -202,10 +202,10 @@ class MarketPage extends Component {
               </Col>
             }
             
-          </Row>
+
                 {/* Coded By Roevie */}
-          <Row >
-            <Col md={4} sm={4} xs={12}>
+ 
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
                     <h4>Landing Page Builder</h4>
@@ -218,7 +218,7 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}>
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="fb"></div>
                     <h4>Facebook Advertising</h4>
@@ -231,7 +231,7 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}>
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="google"></div>
                     <h4>Google Advertising</h4>
@@ -244,10 +244,10 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-          </Row>
+
              {/* Coded By Roevie */}
-          <Row>
-            <Col md={4} sm={4} xs={12}>
+
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="campaign"></div>
                     <h4>Marketing Automation</h4>
@@ -260,7 +260,7 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}>
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="bounce"></div>
                     <h4>Never Bounce</h4>
@@ -273,7 +273,7 @@ class MarketPage extends Component {
                     </div>
                 </div>
             </Col>
-            <Col md={4} sm={4} xs={12}>
+            <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="buynsell"></div>
                     <h4>Buyer's &amp; Seller's Portal</h4>
