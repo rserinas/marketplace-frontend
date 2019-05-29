@@ -86,3 +86,12 @@
     background-color: #5ACBF0;
     color:#FFFFFF;
 }
+
+@media  (max-width: 480px){
+    .step-line, .step-line2{
+        display: none;
+    }
+    .step-box {
+        width: 32%;
+    }
+}

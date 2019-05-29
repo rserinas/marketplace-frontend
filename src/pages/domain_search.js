@@ -338,110 +338,107 @@ class DomainSearch extends Component {
               <p>Get Started</p>
             </div>
           </div>
-
         </div>
-
-        <div className="container">
-          <div style={{ maxWidth: '760px', margin: '20px auto'}}>
-            <div className="well">
-              <div className="container">
+        <div className="search-wrap" >
+          <div className="container">
+              <div className="well row domain-search">
                 <h2 style={{marginBottom: '20px'}}>Domain Search:</h2>
-              </div>
-              <div className="form-group" style={{marginBottom: '20px'}}>
-                <div className="col-md-9">
-                  <input type="text" className="form-control col-md-9" onKeyPress={ this.checkEnterKey } 
-                  onInput={ this.handleInputChange } id="domainName" name="domainName"/>
+                <div className="form-group" style={{marginBottom: '20px'}}>
+                  <div className="col-md-9">
+                    <input type="text" className="form-control col-md-9" onKeyPress={ this.checkEnterKey } 
+                    onInput={ this.handleInputChange } id="domainName" name="domainName"/>
+                  </div>
+                  <div className="col-md-3">
+                    <select className="form-control col-md-3"
+                      id="domainExt" name="domainExt" onChange={this.handleInputChange}>
+                      <option value=".com">.com</option>
+                      <option value=".net">.net</option>
+                      <option value=".org">.org</option>
+                      <option value=".biz">.biz</option>
+                      <option value=".info">.info</option>
+                      <option value=".ph">.ph</option>
+                      <option value=".com.ph">.com.ph</option>
+                      <option value=".co">.co</option>
+                      <option value=".us">.us</option>
+                    </select>
+                  </div>
                 </div>
-                <div className="col-md-3">
-                  <select className="form-control col-md-3"
-                    id="domainExt" name="domainExt" onChange={this.handleInputChange}>
-                    <option value=".com">.com</option>
-                    <option value=".net">.net</option>
-                    <option value=".org">.org</option>
-                    <option value=".biz">.biz</option>
-                    <option value=".info">.info</option>
-                    <option value=".ph">.ph</option>
-                    <option value=".com.ph">.com.ph</option>
-                    <option value=".co">.co</option>
-                    <option value=".us">.us</option>
-                  </select>
+                <div className="form-group" style={{textAlign:'center'}}>
+                  <button id="btn-submit" className="btn btn-primary btn-color btn-md" 
+                  style={{ margin: '20px auto 0px' }} onClick={ this.submitSearch }>
+                      Check Availability
+                  </button>
                 </div>
+                {this.props.result.has_result ? 
+                  <div className="domain-banner dont-break-out">
+                    <h3>THIS DOMAIN {' '}
+                    {this.props.result.domainName.toUpperCase()}{this.props.result.domainExt.toUpperCase()} 
+                    {' '}IS {this.props.result.availability.toUpperCase()}</h3>
+                    {console.log(this.props.result.availability)}
+                    {this.props.result.availability === 'available' ? 
+                      <React.Fragment>
+                        <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
+                        {/* - or - 
+                        <p>
+                          <strong>
+                            {this.props.result.pesoPrice ? 
+                            '₱ ' + this.props.result.pesoPrice.toFixed(2) + ' / year' : 'No Peso result.' }
+                          </strong>
+                        </p> */}
+                        <button onClick={this.addToCart} className="btn btn-cart btn-md">
+                          Proceed
+                        </button>
+                      </React.Fragment>
+                    : 
+                      null
+                    } 
+                  </div>
+                : 
+                  null 
+                }
+                {(this.props.loader) ? 
+                  <div className="preloader"></div>
+                :
+                  null
+                }
+                {/* {(this.props.checkout) ?
+                  <div className="checkout-box">
+                    <button onClick={this.gotoReview} className="btn btn-cart btn-md"
+                    style={{margin:'0px auto 20px'}}>
+                      Review Your Order
+                    </button>
+                    <br />
+                    <p>Or Continue Searching.</p>
+                  </div>
+                : 
+                  ''
+                } */}
               </div>
-              <div className="form-group" style={{textAlign:'center'}}>
-                <button id="btn-submit" className="btn btn-primary btn-color btn-md" 
-                style={{ margin: '20px auto 0px' }} onClick={ this.submitSearch }>
-                    Check Availability
-                </button>
-              </div>
-              {this.props.result.has_result ? 
-                <div className="domain-banner dont-break-out">
-                  <h3>THIS DOMAIN {' '}
-                  {this.props.result.domainName.toUpperCase()}{this.props.result.domainExt.toUpperCase()} 
-                  {' '}IS {this.props.result.availability.toUpperCase()}</h3>
-                  {console.log(this.props.result.availability)}
-                  {this.props.result.availability === 'available' ? 
-                    <React.Fragment>
-                      <p>Promo Price: ${this.props.result.price.toFixed(2)} / year</p>
-                      {/* - or - 
-                      <p>
-                        <strong>
-                          {this.props.result.pesoPrice ? 
-                          '₱ ' + this.props.result.pesoPrice.toFixed(2) + ' / year' : 'No Peso result.' }
-                        </strong>
-                      </p> */}
-                      <button onClick={this.addToCart} className="btn btn-cart btn-md">
-                        Proceed
-                      </button>
-                    </React.Fragment>
-                  : 
-                    null
-                  } 
+              {(this.props.alert.error !== 2) ?
+                <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
+                  <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
+                  {this.props.alert.msg}
                 </div>
-              : 
-                null 
+              : ''
               }
-              {(this.props.loader) ? 
-                <div className="preloader"></div>
+              {this.props.result.has_result ? 
+                <div>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Suggestions</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      { showResults }
+                    </tbody>
+                  </table>
+                </div>
               :
                 null
               }
-              {/* {(this.props.checkout) ?
-                <div className="checkout-box">
-                  <button onClick={this.gotoReview} className="btn btn-cart btn-md"
-                  style={{margin:'0px auto 20px'}}>
-                    Review Your Order
-                  </button>
-                  <br />
-                  <p>Or Continue Searching.</p>
-                </div>
-              : 
-                ''
-              } */}
-            </div>
-            {(this.props.alert.error !== 2) ?
-              <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
-                <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
-                {this.props.alert.msg}
-              </div>
-            : ''
-            }
-            {this.props.result.has_result ? 
-              <div>
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Suggestions</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    { showResults }
-                  </tbody>
-                </table>
-              </div>
-            :
-              null
-            }
+
           </div>
         </div>
       </React.Fragment>
