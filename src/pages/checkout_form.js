@@ -53,7 +53,7 @@ class CheckoutForm extends Component {
             sessionStorage.removeItem('paymentUrl');
             sessionStorage.removeItem('extTransId');
         
-            window.open(`https://mpwb-api.prosperna.ph/`, '_blank');
+            // window.open(`https://mpwb-api.prosperna.ph/`, '_blank');
         
             const baseUrl = sessionStorage.getItem('baseUrl');
             window.location = `${baseUrl}/get-started/finished`;

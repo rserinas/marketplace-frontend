@@ -16,7 +16,10 @@ class myProducts extends Component {
     const baseUrl = sessionStorage.getItem('baseUrl');
     window.location = `${baseUrl}/`;
   };
-
+  gotoWebBuilder = () => {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.open(`https://mpwb-api.prosperna.ph/`, '_blank');    
+  };
   render() {
     let paymentMethod = sessionStorage.getItem('paymentMethod');
     return (
@@ -56,9 +59,16 @@ class myProducts extends Component {
                                         <td className="date-purchased">05-22-2019</td>
                                         <td className="date-expire">05-22-2020</td>
                                         <td className="amount">$100</td>
-                                        <td className="actions"><strong>...</strong></td>
+                                        <td className="actions">
+                                            <div className="dropdown">
+                                                <strong data-toggle="dropdown">...</strong>
+                                                <ul className="dropdown-menu">
+                                                    <li onClick={this.gotoWebBuilder}><a>Create Now</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td className="product-name"><img src={process.env.PUBLIC_URL + '/product-web-builder.png'} alt="product-web-builder"></img>{'\u00A0'}{'\u00A0'}<p>Prosperna Website Builder</p></td>
                                         <td className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu.</td>
                                         <td className="date-purchased">05-22-2019</td>
@@ -81,7 +91,7 @@ class myProducts extends Component {
                                         <td className="date-expire">05-22-2020</td>
                                         <td className="amount">$100</td>
                                         <td className="actions"><strong>...</strong></td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

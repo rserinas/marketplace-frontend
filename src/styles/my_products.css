@@ -77,6 +77,9 @@ td.amount {
 td.actions {
     width: 75px;
 }
+td.actions .dropdown-menu :before {
+    left: 90px!important;
+}
 @media (max-width: 498px){
     #my_products .header-border h2
     {

@@ -47,6 +47,10 @@ class getStarted extends Component {
     const baseUrl = sessionStorage.getItem('baseUrl');
     window.location = `${baseUrl}/`;
   };
+  gotoMyProducts = () => {
+    const baseUrl = sessionStorage.getItem('baseUrl');
+    window.location = `${baseUrl}/my-products`;
+  };
 
   render() {
     let paymentMethod = sessionStorage.getItem('paymentMethod');
@@ -72,7 +76,8 @@ class getStarted extends Component {
             <div className="ellipse-icon"></div>
             <h1>Thank you for your business!</h1>
             <p>Our Prosperna Team Tech Support will email your official receipt</p>
-            <button className="btn btn-primary btn-lg" 
+            <h5>Click <span><a href="/my-products">here</a></span> to view your purchased products.</h5>
+            <button className="btn btn-primary btn-lg m-1" 
             onClick={ this.gotoMarket }>
                 Go Back to Marketplace
             </button>
