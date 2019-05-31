@@ -276,6 +276,7 @@ class App extends Component {
                     <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
                     <ul className="dropdown-menu">
                       <li><a href="/user-profile">User Profile</a></li>
+                      <li><a href="/my-products">My Products</a></li>
                       { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
                       <li><a onClick={this.logout}>Logout</a></li>
                     </ul>
