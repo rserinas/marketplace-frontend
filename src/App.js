@@ -35,6 +35,7 @@ import DomainAutoRenew from './pages/domain_auto_renew';
 import DomainParkPage from './pages/domain_parkpage';
 import DomainLockState from './pages/domain_lock_state';
 import DomainWhoisPrivacy from './pages/domain_whois_privacy';
+import MyProducts from './pages/my_products';
 // import DomainRenew from './pages/domain_renew';
 import $ from 'jquery'; 
 import jQuery from 'jquery'; 
@@ -70,11 +71,11 @@ class App extends Component {
       sessionStorage.setItem('gbURL', 'https://gw.dragonpay.ph/GenPay.aspx?merchantid=DPLPROSPERNA');
     } else {
       // This is the dev environment
-      sessionStorage.setItem('baseUrl', baseUrl);
-      sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
+      // sessionStorage.setItem('baseUrl', baseUrl);
+      // sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
       // This is a local environment
-      // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
-      // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      sessionStorage.setItem('baseUrl', 'http://localhost:3000');
+      sessionStorage.setItem('apiUrl', 'http://localhost:8000');
       // Stripe Test Key
       //sessionStorage.setItem('stripeApiKey', 'pk_test_Cd9VXBfXltI5QWfAUv6X4uRM00VGxxTg7E');// ian test keys
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');// prosperna stripeApiKey - pk_test_YbL8a2pBYQTqqexvbZvZCFJJ
@@ -207,7 +208,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div style={{display:'inline-block'}}> 
+        <div style={{display:'inline-block', margin: '0px 15px'}}> 
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon"  />
           <span className="badge">0</span>
         </div>
@@ -248,10 +249,11 @@ class App extends Component {
                 <Col md={6} sm={6} xs={12} className="header-panel">
                   { showSmsVerify }
                   { this.showCart() }
-                  <div className="dropdown">
+                  <div className="dropdown" style={{display:'inline-block'}}>
                     <img src={process.env.PUBLIC_URL + '/account.png'} data-toggle="dropdown"></img>
                     <ul className="dropdown-menu">
                       <li><a href="/user-profile">User Profile</a></li>
+                      <li><a href="/my-products">My Products</a></li>
                       { (domains != 'false') ? <li><a href={`${baseUrl}/domain-panel`} className="main-link">Domain Panel</a></li> : null}
                       <li><a onClick={this.logout}>Logout</a></li>
                     </ul>
@@ -306,6 +308,7 @@ class App extends Component {
             <Route path="/domain/parkpage" component={ DomainParkPage } exact />
             <Route path="/domain/lock-state" component={ DomainLockState } exact />
             <Route path="/domain/whois-privacy" component={ DomainWhoisPrivacy } exact />
+            <Route path="/my-products" component={ MyProducts } exact />
             {/* <Route path="/domain/renew" component={ DomainRenew } exact /> */}
           </Switch>
           <div className="footer">

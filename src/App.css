@@ -252,3 +252,14 @@ body {
 #fifth-blue {
   background: url('/startblue.png') no-repeat center center;
 }
+
+.dropdown{
+  display: inline-block;
+}
+@media (max-width: 767px){
+  .dropdown img{
+    height: auto;
+    width:50px;
+    margin: 0px 15px;
+  }
+}
