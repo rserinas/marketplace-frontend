@@ -90,7 +90,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
                     <h4>Prosperna CRM</h4>
-                    <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships.</p>
+                    <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships. <br/><br/></p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
@@ -103,7 +103,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="domain"></div>
                     <h4>Domain Names</h4>
-                    <p className="shop-details">Find the perfect domain name.</p>
+                    <p className="shop-details">Find the perfect domain name to promote your brand online.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         
@@ -121,7 +121,7 @@ class MarketPage extends Component {
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
-                  <p className="shop-details">Affordable Real Estate Websites Fast.</p>
+                  <p className="shop-details">Affordable Real Estate Websites Fast with unlimited support. <br/><br/></p>
                   <div className="shop-box">
                       <div className="more-info">
                         <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
@@ -137,7 +137,7 @@ class MarketPage extends Component {
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
-                  <p className="shop-details">Affordable Real Estate Websites Fast.</p>
+                  <p className="shop-details">Affordable Real Estate Websites Fast.<br/><br/></p>
                   <div className="shop-box">
                       <div className="more-info">
                           <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
@@ -157,7 +157,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="landing"></div>
                     <h4>Landing Page Builder</h4>
-                    <p className="shop-details">Convert Social Media Traffic to Leads &amp; Signups</p>
+                    <p className="shop-details">Convert Social Media Traffic to Leads <br/>&amp; Signups</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
@@ -170,7 +170,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="fb"></div>
                     <h4>Facebook Advertising</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Grow your audience and generate leads with full-service Facebook advertising.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <Col className="add-to-cart">
@@ -183,7 +183,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="google"></div>
                     <h4>Google Advertising</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Get 1st page Google page rankings, increase traffic and generate leads.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <Col className="add-to-cart">
@@ -199,7 +199,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="campaign"></div>
                     <h4>Marketing Automation</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Coming Soon.<br/><br/></p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
@@ -211,8 +211,8 @@ class MarketPage extends Component {
             <Col xs={12} sm={6} md={6} lg={4} >
                 <div className="page-box">
                     <div className="shop-icon" id="bounce"></div>
-                    <h4>Never Bounce</h4>
-                    <p className="shop-details">Improve Email Deliverability.</p>
+                    <h4>Email Verification Services.</h4>
+                    <p className="shop-details">Improve your Email Reputation and Deliverability.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
@@ -225,7 +225,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="buynsell"></div>
                     <h4>Buyer's &amp; Seller's Portal</h4>
-                    <p className="shop-details">Coming Soon.</p>
+                    <p className="shop-details">Coming Soon.<br/><br/></p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
