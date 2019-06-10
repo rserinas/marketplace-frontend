@@ -90,7 +90,7 @@ class MarketPage extends Component {
                 <div className="page-box">
                     <div className="shop-icon" id="crm"></div>
                     <h4>Prosperna CRM</h4>
-                    <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships. <br/><br/></p>
+                    <p className="shop-details">Sell Smarter, Faster &amp; Build Better Relationships.</p>
                     <div className="shop-box">
                         <div className="more-info"></div>
                         <div className="add-to-cart">
@@ -121,7 +121,7 @@ class MarketPage extends Component {
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
-                  <p className="shop-details">Affordable Real Estate Websites Fast with unlimited support.<br/><br/></p>
+                  <p className="shop-details">Affordable Real Estate Websites Fast with unlimited support.</p>
                   <div className="shop-box">
                       <div className="more-info">
                         <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>
@@ -137,7 +137,7 @@ class MarketPage extends Component {
               <div className="page-box">
                   <div className="shop-icon" id="crm"></div>
                   <h4>Prosperna Website Builder</h4>
-                  <p className="shop-details">Affordable Real Estate Websites Fast with unlimited support.<br/><br/></p>
+                  <p className="shop-details">Affordable Real Estate Websites Fast with unlimited support.</p>
                   <div className="shop-box">
                       <div className="more-info">
                           <button className="btn btn-link" onClick={this.gotoBuilder}>More Info >>></button>

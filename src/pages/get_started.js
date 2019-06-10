@@ -16,7 +16,12 @@ class getStarted extends Component {
     .then(res => res.json())
     .then(data => {
         sessionStorage.setItem('domains', data.domain);
-        // window.location = `${baseUrl}/get-started/finished`;
+        sessionStorage.setItem('domains_list', JSON.stringify(data.domain_list));
+    });
+    fetch (`${apiUrl}/websites/list/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+        sessionStorage.setItem('dev_sites_list',  JSON.stringify(data.dev_site_list));
     });
     // let cart = JSON.parse(sessionStorage.getItem('cart'));
     // console.log('cart:', cart);

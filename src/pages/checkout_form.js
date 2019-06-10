@@ -39,7 +39,6 @@ class CheckoutForm extends Component {
         if (data.error === 1) {
           this.setState({alert: { error: data.error, msg: data.msg }});
         } else {
-          console.log("stripe test");
           if(data.product === 'website_builder')
           {
             sessionStorage.removeItem('cartCount');
@@ -52,10 +51,9 @@ class CheckoutForm extends Component {
             sessionStorage.removeItem('transId');
             sessionStorage.removeItem('paymentUrl');
             sessionStorage.removeItem('extTransId');
-        
-            // window.open(`https://mpwb-api.prosperna.ph/`, '_blank');
-        
+
             const baseUrl = sessionStorage.getItem('baseUrl');
+            
             window.location = `${baseUrl}/get-started/finished`;
           }
           else

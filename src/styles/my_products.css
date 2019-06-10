@@ -5,6 +5,19 @@
     border: 1px solid #eaeaea;
     padding: 25px 30px;
 }
+#my_products .header-border .select-category {
+    display: inline-block;
+    float: right;
+}
+#my_products .header-border .select-category h4, #my_products .header-border .select-category select{
+    display: inline-block;
+}
+#my_products .header-border .select-category select{
+    font-size: 14px;
+    width: 150px;
+    height: 30px;
+    margin: 0px 10px;
+}
 
 #my_products .header-border div h2 {
     margin: 0;
@@ -79,6 +92,9 @@ td.actions {
 }
 td.actions .dropdown-menu :before {
     left: 90px!important;
+}
+td.actions .dropdown-menu li {
+    cursor: pointer;
 }
 @media (max-width: 498px){
     #my_products .header-border h2

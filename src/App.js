@@ -63,6 +63,7 @@ class App extends Component {
       sessionStorage.setItem('baseUrl', baseUrl);
       // THEA, edit also the .ph to .com
       sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.com');
+      sessionStorage.setItem('webBuilderApiUrl', 'https://mpwb-api.prosperna.ph/');
       // Stripe Live Key
       sessionStorage.setItem('stripeApiKey', 'pk_live_OKhCnhs83dWPNluclknbJBDG');
       // Paypal sandbox
@@ -73,9 +74,11 @@ class App extends Component {
       // This is the dev environment
       sessionStorage.setItem('baseUrl', baseUrl);
       sessionStorage.setItem('apiUrl', 'https://marketplace-api.prosperna.ph');
+      sessionStorage.setItem('webBuilderApiUrl', 'https://mpwb-api.prosperna.ph/');
       // This is a local environment
       // sessionStorage.setItem('baseUrl', 'http://localhost:3000');
       // sessionStorage.setItem('apiUrl', 'http://localhost:8000');
+      // sessionStorage.setItem('webBuilderApiUrl', 'http://localhost:1000');
       // Stripe Test Key
       //sessionStorage.setItem('stripeApiKey', 'pk_test_Cd9VXBfXltI5QWfAUv6X4uRM00VGxxTg7E');// ian test keys
       sessionStorage.setItem('stripeApiKey', 'pk_test_YbL8a2pBYQTqqexvbZvZCFJJ');// prosperna stripeApiKey - pk_test_YbL8a2pBYQTqqexvbZvZCFJJ

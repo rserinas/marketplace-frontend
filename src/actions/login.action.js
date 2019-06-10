@@ -28,6 +28,8 @@ export const submitLogin = data => dispatch => {
             sessionStorage.setItem('status', data.status);
             sessionStorage.setItem('sms_verify', data.sms_verify);
             sessionStorage.setItem('domains', data.domain);
+            sessionStorage.setItem('domains_list', JSON.stringify(data.domain_list));
+            sessionStorage.setItem('dev_sites_list', JSON.stringify(data.dev_site_list));
             window.location = `${baseUrl}/checkout`;
         }
         dispatch({
