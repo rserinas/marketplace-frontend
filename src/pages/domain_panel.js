@@ -32,8 +32,8 @@ class DomainPanel extends Component {
     const ds = sessionStorage.getItem('domain_select');
     
     const showDomainLinks = domains.map((a, i) => {
-      return <a key={i} className={(ds === a ? 'domain-link-active ' : '') +'domain-link'} 
-      onClick={(e) => {this.setDomain(a)}}>{a}</a>
+      return <div className={(ds === a ? 'domain-link-active ' : '')}><a key={i} className='domain-link' 
+      onClick={(e) => {this.setDomain(a)}}>{a}</a></div> 
     });
 
     const showServerList = this.props.dom.server == null ? null : this.props.dom.server.map((a, i) => {

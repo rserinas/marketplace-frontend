@@ -27,8 +27,8 @@ class UserPassword extends Component {
     }
   }
 
-  submitRecord = () => {
-    
+  submitRecord = (e) => {
+    e.preventDefault();
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
     }
@@ -44,6 +44,7 @@ class UserPassword extends Component {
     };
 
     if ( data.oldpword == null || data.newpword == null || data.confpword == null) {
+      document.documentElement.scrollTop = 0;
       alert = {
         error: 1,
         msg: 'Password details are required.',
@@ -54,6 +55,7 @@ class UserPassword extends Component {
     let pwd = data.newpword;
 
     if (pwd.length < 8 || pwd.length > 14) {
+      document.documentElement.scrollTop = 0;
       alert = {
         error: 1,
         msg: 'Passwords need to be between 8 to 14 characters long only.'
@@ -65,6 +67,7 @@ class UserPassword extends Component {
     re = /[a-z]+([0-9]|[!@#$%^&*])+/; 
     
     if ( ! re.test(pwd)) {
+      document.documentElement.scrollTop = 0;
       alert = {
         error: 1,
         msg: 'You need to supply a valid password.'
@@ -74,6 +77,7 @@ class UserPassword extends Component {
     }
 
     if (data.newpword != data.confpword) {
+      document.documentElement.scrollTop = 0;
         alert = {
             error: 1,
             msg: 'New Password does not match the confirmation.',
@@ -147,7 +151,7 @@ class UserPassword extends Component {
                 </Form.Row>
                 <Form.Row>
                   <Form.Group as={Col} md="6" controlId="validationCustom01">
-                    <button className="btn btn-primary green" onClick={ this.submitRecord }>
+                    <button className="btn btn-primary green" onClick={ this.submitRecord.bind(this) }>
                     Update Password
                     </button>
                   </Form.Group>

@@ -64,6 +64,7 @@ class UserEdit extends Component {
 
     if ( data.fname == '' || data.lname == '' || data.phone == '' || data.address1 == '' 
       || data.city == '' || data.state == '' || data.country == '' || data.zip_code == '' || data.company_name == '') {
+        document.documentElement.scrollTop = 0;
       alert = {
         error: 1,
         msg: 'Customer details are required.',
