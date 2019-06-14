@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showAlert, updatePassword } from '../actions/user_password.action';
-
+import { Form ,Col } from 'react-bootstrap';
 
 class UserPassword extends Component {
   constructor (props) {
@@ -91,12 +91,18 @@ class UserPassword extends Component {
       <React.Fragment>
         <div className="container">
           <div className="nav-domains">
-            <a href={`${baseUrl}/user-profile`} className="domain-link">View User Profile</a>
-            <a href={`${baseUrl}/user-edit`} className="domain-link ">Edit User Profile</a>
-            <a href={`${baseUrl}/user-password`} className="domain-link domain-link-active">Change Password</a>
+            <div>
+              <a href={`${baseUrl}/user-profile`} className="domain-link">View User Profile</a>
+            </div>
+            <div>
+              <a href={`${baseUrl}/user-edit`} className="domain-link ">Edit User Profile</a>
+            </div>
+            <div className="domain-link-active">
+              <a href={`${baseUrl}/user-password`} className="domain-link">Change Password</a>
+            </div>
           </div>
-          <div style={{clear: 'both'}}>
-            <h1 className="dont-break-out">Change User Password</h1>
+          <div className="user-content" style={{clear: 'both'}}>
+            <h4 className="dont-break-out">Change User Password</h4>
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
                 <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong> 
@@ -104,8 +110,50 @@ class UserPassword extends Component {
               </div>
             : ''
             }
-            <div className="container">
-              <div className="well col-sm-6">
+            <div className="edit-form">
+              <Form>
+                <Form.Row>
+                  <Form.Group as={Col} md="2" controlId="validationCustom01">
+                    <label className="light">Old Password:</label>
+                  </Form.Group>
+                  <Form.Group as={Col} md="10" controlId="validationCustom02">
+                    <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
+                    id="oldpword" />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="2" controlId="validationCustom01">
+                    <label className="light">New Password:</label>
+                  </Form.Group>
+                  <Form.Group as={Col} md="10" controlId="validationCustom02">
+                    <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
+                    id="newpword" />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="2" controlId="validationCustom01">
+                    <label className="light">Re-enter Password:</label>
+                  </Form.Group>
+                  <Form.Group as={Col} md="10" controlId="validationCustom02">
+                    <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
+                    id="newpword" />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="12" controlId="validationCustom01">
+                    <label className="light" style={{width: "500px"}}>Note: Passwords must be 8-14 characters, contain one letter
+                    and at least one number or special character (!@#$%^&amp;*)</label>
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} md="6" controlId="validationCustom01">
+                    <button className="btn btn-primary green" onClick={ this.submitRecord }>
+                    Update Password
+                    </button>
+                  </Form.Group>
+                </Form.Row>
+              </Form>
+              {/* <div className="well col-sm-6">
               <div className="form-group">
                   <label htmlFor="oldpword">Old Password:</label>
                   <input type="password" className="form-control input-md" onChange={this.handleInputChange} 
@@ -130,7 +178,7 @@ class UserPassword extends Component {
                   Update Password
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

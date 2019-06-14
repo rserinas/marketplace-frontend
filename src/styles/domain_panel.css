@@ -63,7 +63,7 @@
 .user-content .edit-form .light{
     margin: 5px 0px;
 }
-.user-content .edit-form input{
+.user-content .edit-form input, .user-content .edit-form select{
     width: 300px;
 }
 .user-content .edit-form .green {

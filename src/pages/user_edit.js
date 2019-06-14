@@ -177,7 +177,24 @@ class UserEdit extends Component {
                       <label className="light">Country</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="country" />
+                      <select className="form-control input-md" id="country" name="country" onChange={this.handleInputChange}>
+                        <option value="">Select a country</option>
+                        <option value="US">USA</option>
+                        <option value="PH">Philippines</option>
+                        <option value="AU">Australia</option>
+                        <option value="ID">Indonesia</option>
+                        <option value="TH">Thailand</option>
+                        <option value="MY">Malaysia</option>
+                        <option value="SG">Singapore</option>
+                        <option value="VN">Vietnam</option>
+                        <option value="MM">Myanmar</option>
+                        <option value="KH">Cambodia</option>
+                        <option value="LA">Laos</option>
+                        <option value="BN">Brunei</option>
+                        <option value="TL">Timor Leste</option>
+                        {/* <option value="other">Other Country</option>               */}
+                      </select>
+                      {/* <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="country" /> */}
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>

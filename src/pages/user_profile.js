@@ -50,7 +50,7 @@ class UserProfile extends Component {
                       <label className="light">First Name</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.fname}</label>
+                      <label className="dark">{this.props.rec.fname === "" ? 'None' : this.props.rec.fname}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -58,7 +58,7 @@ class UserProfile extends Component {
                       <label className="light">Last Name</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.lname}</label>
+                      <label className="dark">{this.props.rec.lname === "" ? 'None' : this.props.rec.lname}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -66,7 +66,7 @@ class UserProfile extends Component {
                       <label className="light">User Status</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.status_name}</label>
+                      <label className="dark">{this.props.rec.status_name === "" ? 'None' :this.props.rec.status_name}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -79,7 +79,7 @@ class UserProfile extends Component {
                       <label className="light">Email</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.email}</label>
+                      <label className="dark">{this.props.rec.email === "" ? 'None' : this.props.rec.email}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -87,7 +87,7 @@ class UserProfile extends Component {
                       <label className="light">Phone</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.phone}</label>
+                      <label className="dark">{this.props.rec.phone === "" ? 'None' : this.props.rec.phone}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -100,7 +100,7 @@ class UserProfile extends Component {
                       <label className="light">Address 1</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.address1}</label>
+                      <label className="dark">{this.props.rec.address1 === "" ? 'None' : this.props.rec.address1}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -116,7 +116,7 @@ class UserProfile extends Component {
                       <label className="light">City</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.city}</label>
+                      <label className="dark">{this.props.rec.city === "" ? 'None' : this.props.rec.city}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -124,7 +124,7 @@ class UserProfile extends Component {
                       <label className="light">State</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.state}</label>
+                      <label className="dark">{this.props.rec.state === "" ? 'None' : this.props.rec.state}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -132,7 +132,7 @@ class UserProfile extends Component {
                       <label className="light">Country</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.country}</label>
+                      <label className="dark">{this.props.rec.country === "" ? 'None' : this.props.rec.country}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -140,7 +140,7 @@ class UserProfile extends Component {
                       <label className="light">Postal Code</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.zip_code}</label>
+                      <label className="dark">{this.props.rec.zip_code === "" ? 'None' : this.props.rec.zip_code}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -153,7 +153,7 @@ class UserProfile extends Component {
                       <label className="light">Company Name</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.company_name}</label>
+                      <label className="dark">{this.props.rec.company_name === "" ? 'None' : this.props.rec.company_name}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -166,7 +166,7 @@ class UserProfile extends Component {
                       <label className="light">Date Created</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.created_at}</label>
+                      <label className="dark">{this.props.rec.created_at === "" ? 'None' : this.props.rec.created_at}</label>
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -174,7 +174,7 @@ class UserProfile extends Component {
                       <label className="light">Date Updated</label>
                     </Form.Group>
                     <Form.Group as={Col} md="10" controlId="validationCustom02">
-                      <label className="dark">{this.props.rec.updated_at}</label>
+                      <label className="dark">{this.props.rec.updated_at === "" ? 'None' : this.props.rec.updated_at}</label>
                     </Form.Group>
                   </Form.Row>
                 </Form>
