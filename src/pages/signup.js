@@ -236,20 +236,20 @@ class Signup extends Component {
               <select className="form-control input-md"
               id="country" name="country" onChange={this.checkCountry}>
                 <option value="">Select a country</option>
-                <option value="USA">USA</option>
-                <option value="Philippines">Philippines</option>
-                <option value="Australia">Australia</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Thailand">Thailand</option>
-                <option value="Malaysia">Malaysia</option>
-                <option value="Singapore">Singapore</option>
-                <option value="Vietnam">Vietnam</option>
-                <option value="Myanmar">Myanmar</option>
-                <option value="Cambodia">Cambodia</option>
-                <option value="Laos">Laos</option>
-                <option value="Brunei">Brunei</option>
-                <option value="Timor Leste">Timor Leste</option>
-                <option value="other">Other Country</option>              
+                <option value="US">USA</option>
+                <option value="PH">Philippines</option>
+                <option value="AU">Australia</option>
+                <option value="ID">Indonesia</option>
+                <option value="TH">Thailand</option>
+                <option value="MY">Malaysia</option>
+                <option value="SG">Singapore</option>
+                <option value="VN">Vietnam</option>
+                <option value="MM">Myanmar</option>
+                <option value="KH">Cambodia</option>
+                <option value="LA">Laos</option>
+                <option value="BN">Brunei</option>
+                <option value="TL">Timor Leste</option>
+                {/* <option value="other">Other Country</option>               */}
               </select>
             </div>
             

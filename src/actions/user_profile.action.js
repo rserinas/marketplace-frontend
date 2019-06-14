@@ -14,7 +14,7 @@ export const fetchProfile = data => dispatch => {
     fetch (`${apiUrl}/user/get/${userId}`)
     .then(res => res.json())
     .then(data => {
-      if (data.error == 1) {
+      if (data.error === 1) {
         dispatch({
           type: 'SHOW_ALERT',
           payload: data

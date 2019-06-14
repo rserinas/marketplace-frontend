@@ -68,7 +68,7 @@ class myProducts extends Component {
         const userId = sessionStorage.getItem('userId');
         const baseUrl = sessionStorage.getItem('baseUrl');
         const webBuilderApiUrl = sessionStorage.getItem('webBuilderApiUrl');
-        window.location = `${webBuilderApiUrl}/api/?id=${userId}&base_url=${baseUrl}`;
+        window.location = `${webBuilderApiUrl}/?id=${userId}&base_url=${baseUrl}`;
     };
     gotoDomainPanel = () => {
         const baseUrl = sessionStorage.getItem('baseUrl');

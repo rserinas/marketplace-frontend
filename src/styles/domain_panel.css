@@ -1,8 +1,22 @@
 .nav-domains {
-    border-bottom: 1px solid #efefef;
+    border-bottom: 2px solid #efefef;
     margin-bottom: 10px;
+    border-top: 2px solid #efefef;
 }
-
+.nav-domains div {
+    padding: 10px 0px 5px;
+    display: inline-block;
+}
+.nav-domains .domain-link-active a {
+    color: #8e9ca3!important;
+}
+.nav-domains div a:hover {
+    text-decoration: none!important;
+}
+.nav-domains div a {
+    color: #d4dadd;
+    font-size: 14px;
+}
 .domain-link {
     display:inline-block;
     padding: 10px 15px;
@@ -10,7 +24,7 @@
 }
 
 .domain-link-active {
-    text-decoration: underline;
+    border-bottom: 5px solid #3f71d7;
 }
 
 .side-link {
@@ -30,4 +44,52 @@
 .side-link-active {
     background-color: #5ACBF1;
     color:#ffffff;
+}
+.user-content h4{
+    margin: 30px 0px;
+    color: #465a63;
+}
+.user-content .light{
+    color: #8e9ca3;
+    width: 150px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.user-content .dark{
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+}
+.user-content .edit-form .light{
+    margin: 5px 0px;
+}
+.user-content .edit-form input{
+    width: 300px;
+}
+.user-content .edit-form .green {
+    background-color: #2ca94f;
+    border-color: #2ca94f;
+    border-radius: 30px;
+    height: 50px;
+    width: 160px;
+    float: right;
+    margin-right: 50px;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out
+}
+.user-content .edit-form .green:hover {
+    background-color: white;
+    border-color: #2ca94f;
+    color: #2ca94f;
+}
+.user-content .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px!important;
+}
+
+.user-content .table>tbody+tbody {
+    border-top: 0px!important;
 }

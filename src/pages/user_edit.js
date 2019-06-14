@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { showAlert, fetchProfile, updateUser } from '../actions/user_edit.action';
-
+import { Form } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 class UserEdit extends Component {
   constructor (props) {
@@ -22,6 +23,10 @@ class UserEdit extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  componentDidMount = () => {
+    this.props.fetchProfile();
+  };
+  
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -34,8 +39,8 @@ class UserEdit extends Component {
     }
   }
 
-  submitRecord = () => {
-    
+  submitRecord = (e) => {
+    e.preventDefault();
     if (this.props.alert.error !== 2) {
       this.props.showAlert({ error: 2, msg: '' });
     }
@@ -57,8 +62,8 @@ class UserEdit extends Component {
       zip_code:      this.state.zip_code,
     };
 
-    if ( data.fname == null || data.lname == null || data.address1 == null 
-      || data.city == null || data.state == null || data.country == null) {
+    if ( data.fname == '' || data.lname == '' || data.phone == '' || data.address1 == '' 
+      || data.city == '' || data.state == '' || data.country == '' || data.zip_code == '' || data.company_name == '') {
       alert = {
         error: 1,
         msg: 'Customer details are required.',
@@ -78,12 +83,18 @@ class UserEdit extends Component {
       <React.Fragment>
         <div className="container">
           <div className="nav-domains">
-            <a href={`${baseUrl}/user-profile`} className="domain-link">View User Profile</a>
-            <a href={`${baseUrl}/user-edit`} className="domain-link domain-link-active">Edit User Profile</a>
-            <a href={`${baseUrl}/user-password`} className="domain-link">Change Password</a>
+            <div>
+              <a href={`${baseUrl}/user-profile`} className="domain-link">View User Profile</a>
+            </div>
+            <div className="domain-link-active">
+              <a href={`${baseUrl}/user-edit`} className="domain-link">Edit User Profile</a>
+            </div>
+            <div>
+              <a href={`${baseUrl}/user-password`} className="domain-link">Change Password</a>
+            </div>
           </div>
-          <div style={{clear: 'both'}}>
-            <h1 className="dont-break-out">Edit User Profile</h1>
+          <div className="user-content" style={{clear: 'both'}}>
+            <h4 className="dont-break-out">Edit User Profile</h4>
             {(this.props.alert.error !== 2) ?
               <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
                 <strong>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong> 
@@ -92,80 +103,113 @@ class UserEdit extends Component {
             : ''
             }
             { ! this.props.rec ? null :
-            <div className="container">
-              <div className="well col-sm-6">
-                <div className="form-group">
-                  <label htmlFor="fname">First Name:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.fname} id="fname" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lname">Last Name:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.lname} id="lname" />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="phone">Phone:<br />
-                  <small>This phone number will be used to verify your account</small>
-                  </label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.phone} id="phone" />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="company">Company:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.company_name} id="company_name" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="address1">Address 1:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.address1} id="address1" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="address2">Address 2:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.address2} id="address2" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="country">Country:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.country} id="country" />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="state">State / Province:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.state} id="state" />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="city">City:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.city} id="city" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="zip">Zip Code:</label>
-                  <input type="text" className="form-control input-md" onChange={this.handleInputChange}
-                  value={this.props.rec.zip_code} id="zip_code" />
-                </div>
-                <div className="form-group">
-                  <button className="btn btn-primary btn-lg" onClick={ this.submitRecord }>
-                  Update Profile
-                  </button>
-                </div>
+            <div className="edit-form">
+                <Form>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">First Name:</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="fname" />
+                    </Form.Group>
+                  </Form.Row>
+                  
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Last Name:</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="lname" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom01">
+                      <hr/>
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Phone:</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="phone" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom01">
+                      <hr/>
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Address 1</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="address1" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Address 2</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="address2" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">City</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="city" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">State</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="state" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Country</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="country" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Postal Code</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="zip_code" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="12" controlId="validationCustom01">
+                      <hr/>
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="2" controlId="validationCustom01">
+                      <label className="light">Company:</label>
+                    </Form.Group>
+                    <Form.Group as={Col} md="10" controlId="validationCustom02">
+                      <input type="text" className="form-control input-md" onChange={this.handleInputChange} id="company_name" />
+                    </Form.Group>
+                  </Form.Row>
+                  <Form.Row>
+                    <Form.Group as={Col} md="6" controlId="validationCustom01">
+                      <button className="btn btn-primary green" onClick={ this.submitRecord.bind(this) }>
+                      Update Profile
+                      </button>
+                    </Form.Group>
+                  </Form.Row>
+                </Form>
               </div>
-            </div>
-            }
-            {this.props.alert.error !== 2 ?
-              <div className={"alert "+(this.props.alert.error===1 ? 'alert-warning' : 'alert-success')}>
-                <strong style={{fontSize:'150%'}}>{(this.props.alert.error===1 ? 'Warning : ' : 'Success : ')}</strong>
-                {this.props.alert.msg}
-              </div>
-            : ''
             }
           </div>
         </div>
