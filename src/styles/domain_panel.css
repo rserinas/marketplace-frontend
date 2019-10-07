@@ -90,3 +90,6 @@
     border-top: 0px!important;
 }
 
+.user-content .table>tbody+tbody {
+    border-top: 0px!important;
+}
